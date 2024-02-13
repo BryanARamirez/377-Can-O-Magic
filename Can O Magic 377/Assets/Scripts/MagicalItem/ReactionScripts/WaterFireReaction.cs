@@ -35,6 +35,5 @@ public class WaterFireReaction : BaseReactionScript
     public override void Reaction()
     {
         _steam.GetComponent<SteamScript>().ActivateSteam();
-
     }
 }

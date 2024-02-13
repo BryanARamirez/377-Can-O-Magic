@@ -10,6 +10,7 @@ public class SteamScript : MonoBehaviour
 
     [SerializeField] private bool drop = false;
 
+    //use to test steam
     private void Update()
     {
         if (drop)
