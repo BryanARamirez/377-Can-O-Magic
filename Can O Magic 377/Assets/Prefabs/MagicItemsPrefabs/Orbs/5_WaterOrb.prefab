@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 7421709520098952089}
   - component: {fileID: 9213162071527072938}
   - component: {fileID: 5457241882393097733}
+  - component: {fileID: 664031135746989991}
+  - component: {fileID: 521514668897651710}
+  - component: {fileID: 3281358603740240765}
   m_Layer: 0
   m_Name: 5_WaterOrb
   m_TagString: MagicItem
@@ -75,6 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemData: {fileID: 11400000, guid: 84e36022475c7f04ca306c580ae14686, type: 2}
+  _hasReacted: 0
 --- !u!114 &5457241882393097733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,6 +94,45 @@ MonoBehaviour:
   _mergeToPrefab: {fileID: 3958378610598462008, guid: b738de7e562181349a549c0f47e60823,
     type: 3}
   _isMerging: 0
+--- !u!114 &664031135746989991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958378610598462008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531b8d2f9764eb841b43be93e6d3bb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &521514668897651710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958378610598462008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33365b27bf4f24a42924debff3589b61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _reactionFor: 2
+  _steam: {fileID: 0}
+--- !u!114 &3281358603740240765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958378610598462008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 691ded5ef099eb1418eb29a123ac607a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _reactionFor: 13
 --- !u!1 &5142477212843731676
 GameObject:
   m_ObjectHideFlags: 0

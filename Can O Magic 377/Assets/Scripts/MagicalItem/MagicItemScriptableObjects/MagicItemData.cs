@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: [Lam, Justin]
+ * Last Updated: [02/08/2024]
+ * [Scriptable object of data for magical item]
+ */
+
 [CreateAssetMenu(fileName = "New MagicItemData", menuName = "Magic Item Data", order = 51)]
 public class MagicItemData : ScriptableObject
 {
