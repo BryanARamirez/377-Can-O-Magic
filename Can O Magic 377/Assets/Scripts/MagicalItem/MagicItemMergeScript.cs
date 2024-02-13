@@ -2,22 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: [Lam, Justin]
+ * Last Updated: [2/12/2024]
+ * [Merges magic items when touches the same type of magic items]
+ */
+
 public class MagicItemMergeScript : MonoBehaviour
 {
-    //on collision enter
-    //Checks if it is colliding with the same magic item
-    //adds new magic item
-    //removes this and colliding object
     private MagicalItemScript _magicalItemScript;
 
+    //vars for what the game object can merge into and if it can merge
     [SerializeField] private GameObject _mergeToPrefab;
     [SerializeField] private bool _isMerging = false;
 
+    /// <summary>
+    /// get the needed stuff from game object
+    /// </summary>
     private void Awake()
     {
         _magicalItemScript = GetComponent<MagicalItemScript>();
     }
 
+    /// <summary>
+    /// on collision enter:
+    /// gets the item script and the merge script from game object
+    /// checks if it can merge
+    /// makes sure that only one is running script to merge
+    /// instantiates new game object of _mergeToPrefab
+    /// destroys this and other gameobjects
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "MagicItem")
