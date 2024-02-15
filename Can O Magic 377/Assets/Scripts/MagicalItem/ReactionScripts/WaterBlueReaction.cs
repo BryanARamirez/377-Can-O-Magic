@@ -15,7 +15,7 @@ public class WaterBlueReaction : BaseReactionScript
         _reactionFor = MagicItemEnum.BlueRune;
     }
 
-    public override void Reaction()
+    public override void Reaction(GameObject otherItem)
     {
         Debug.Log("tsunami");
     }

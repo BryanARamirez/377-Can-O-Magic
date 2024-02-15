@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [02/12/2024]
+ * Last Updated: [02/15/2024]
  * [calls to activate steam when called to react]
  */
 
@@ -32,7 +32,7 @@ public class WaterFireReaction : BaseReactionScript
     /// <summary>
     /// calls the steam's function for them
     /// </summary>
-    public override void Reaction()
+    public override void Reaction(GameObject otherItem)
     {
         _steam.GetComponent<SteamScript>().ActivateSteam();
     }

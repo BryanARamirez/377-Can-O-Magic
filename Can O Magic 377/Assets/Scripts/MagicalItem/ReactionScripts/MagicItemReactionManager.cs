@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [02/12/2024]
+ * Last Updated: [02/15/2024]
  * [scripts to manage all reaction when magic item touches other magic items]
  */
 
@@ -53,7 +53,7 @@ public class MagicItemReactionManager : MonoBehaviour
                 _magicalItemScript.hasReacted = true;
                 otherMagicalItemScript.hasReacted = true;
 
-                temp.Reaction();
+                temp.Reaction(collision.gameObject);
             }
         }
     }
