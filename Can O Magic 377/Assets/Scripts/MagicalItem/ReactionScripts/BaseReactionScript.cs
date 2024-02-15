@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [2/12/2024]
+ * Last Updated: [2/15/2024]
  * [Base class that all reaction needs to inherit from]
  */
 
@@ -16,7 +16,7 @@ public class BaseReactionScript : MonoBehaviour
     /// <summary>
     /// reaction that needs to be overrided when inheritted from
     /// </summary>
-    public virtual void Reaction()
+    public virtual void Reaction(GameObject otherItem)
     {
         
     }
