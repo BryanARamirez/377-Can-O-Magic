@@ -52,6 +52,9 @@ public class SlimeBallScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// on destroy, make sure all stuck objects can interact with eachother again
+    /// </summary>
     private void OnDestroy()
     {
         CheckForNull();

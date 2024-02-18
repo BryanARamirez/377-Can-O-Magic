@@ -16,6 +16,8 @@ public class MagicalItemScript : MonoBehaviour
     //has it already reacted
     [SerializeField] private bool _hasReacted = false;
 
+    [SerializeField] private bool _isMimic = false;
+
     /// <summary>
     /// get the magic item's type of magic item
     /// </summary>
@@ -29,11 +31,26 @@ public class MagicalItemScript : MonoBehaviour
         _hasReacted = true;
     }
 
+    public void SetMimic()
+    {
+        _isMimic = true;
+    }
+
+    public void GetPoints()
+    {
+
+    }
+
     /// <summary>
     /// get and set whether or not the magic item has reacted
     /// </summary>
     public bool hasReacted
     {
         get { return _hasReacted; }
+    }
+
+    public bool isMimic
+    {
+        get { return _isMimic; }
     }
 }
