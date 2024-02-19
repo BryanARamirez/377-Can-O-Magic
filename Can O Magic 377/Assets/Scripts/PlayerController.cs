@@ -15,11 +15,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int currentObjIndex;
     [SerializeField] private List<GameObject> magicObj = new List<GameObject>();
     [SerializeField] private SteamScript steamScript;
-    private int randomNextIndex;
+    public int randomNextIndex;
     private bool isWaiting;
 
     private void Awake()
     {
+        Application.targetFrameRate = 60;
         isWaiting = false;
         int randomIndex = Random.Range(0, magicObj.Count);
         currentObjIndex = randomIndex;
