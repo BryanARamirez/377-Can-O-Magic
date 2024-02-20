@@ -7,6 +7,8 @@ TagManager:
   - MagicItem
   - Steam
   - PowerItem
+  - TopRight
+  - BottomLeft
   layers:
   - Default
   - TransparentFX
