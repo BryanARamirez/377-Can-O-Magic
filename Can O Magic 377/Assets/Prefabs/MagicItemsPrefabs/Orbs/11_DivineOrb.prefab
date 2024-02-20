@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5134804166630324673}
   - component: {fileID: 7421709520098952089}
   - component: {fileID: 9213162071527072938}
+  - component: {fileID: 745597720648618660}
+  - component: {fileID: 7407488144168671744}
   m_Layer: 0
   m_Name: 11_DivineOrb
   m_TagString: MagicItem
@@ -59,7 +61,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 8
   m_CollisionDetection: 0
 --- !u!114 &9213162071527072938
 MonoBehaviour:
@@ -74,6 +76,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemData: {fileID: 11400000, guid: 2bd5fbec927686a458e82fd628b38a08, type: 2}
+  _hasReacted: 0
+  _isMimic: 0
+--- !u!114 &745597720648618660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958378610598462008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531b8d2f9764eb841b43be93e6d3bb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7407488144168671744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958378610598462008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b26bedbbc574d345b1906ee1c460b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _reactionFor: 15
+  _getPowerItem: 2
 --- !u!1 &5142477212843731676
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +195,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5142477212843731676}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 9c433ad0bd129ac4586a08ae16eef101, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

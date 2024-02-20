@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [2/12/2024]
+ * Last Updated: [2/17/2024]
  * [Merges magic items when touches the same type of magic items]
  */
 
@@ -35,7 +35,7 @@ public class MagicItemMergeScript : MonoBehaviour
     /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "MagicItem")
+        if (collision.gameObject.tag == "MagicItem" && collision.gameObject.gameObject.GetComponent<MagicItemMergeScript>() != null)
         {
             MagicalItemScript otherMagicalItemScript = collision.gameObject.GetComponent<MagicalItemScript>();
             MagicItemMergeScript otherMergeScript = collision.gameObject.GetComponent<MagicItemMergeScript>();
