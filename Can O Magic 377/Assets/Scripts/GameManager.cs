@@ -21,4 +21,8 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(false);
         playerController.enabled = true;
     }
+    public void quitGame()
+    {
+        Application.Quit();
+    }
 }
