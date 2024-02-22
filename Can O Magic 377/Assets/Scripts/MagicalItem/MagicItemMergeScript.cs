@@ -14,7 +14,9 @@ public class MagicItemMergeScript : MonoBehaviour
 
     //vars for what the game object can merge into and if it can merge
     [SerializeField] private GameObject _mergeToPrefab;
+    [SerializeField] private GameObject _auraMergePrefab;
     [SerializeField] private bool _isMerging = false;
+    public bool isInAura = false;
 
     /// <summary>
     /// get the needed stuff from game object
@@ -40,6 +42,10 @@ public class MagicItemMergeScript : MonoBehaviour
             MagicalItemScript otherMagicalItemScript = collision.gameObject.GetComponent<MagicalItemScript>();
             MagicItemMergeScript otherMergeScript = collision.gameObject.GetComponent<MagicItemMergeScript>();
 
+            //Gets the ID of the Enum to compare for HolyAura - Bryan 
+            int mergeID = (int)_magicalItemScript.magicItemName;
+            int otherMergeID = (int) otherMagicalItemScript.magicItemName;
+
             if (!otherMergeScript.isMerging && !isMerging && _magicalItemScript.magicItemName == otherMagicalItemScript.magicItemName)
             {
                 int thisID = gameObject.GetInstanceID();
@@ -60,6 +66,35 @@ public class MagicItemMergeScript : MonoBehaviour
                     return;
                 }
             }
+
+            //Allows Holy Aura Merge to happen by checking if the magic item is inside of the holy aura - Bryan
+            if (!otherMergeScript.isMerging && !isMerging && isInAura == true && otherMergeScript.isInAura == true && mergeID == otherMergeID - 1)
+            {
+                isMerging = true;
+                otherMergeScript.isMerging = true;
+
+                Vector3 spawnNewItem = (gameObject.transform.position + collision.transform.position) / 2f;
+                GameObject newItem = Instantiate(_auraMergePrefab, spawnNewItem, Quaternion.identity);
+
+                Destroy(collision.gameObject);
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    //Trigger to check if the magic item has entered the holy aura and to also check if it has exited it. - Bryan
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "HolyAura")
+        {
+            isInAura = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "HolyAura")
+        {
+            isInAura = false;
         }
     }
 

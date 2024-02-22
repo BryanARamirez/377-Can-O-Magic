@@ -76,6 +76,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemData: {fileID: 11400000, guid: f6dd1f65218c5114aa9d945446dde2af, type: 2}
   _hasReacted: 0
+  _isMimic: 0
 --- !u!114 &5457241882393097733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,7 +91,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mergeToPrefab: {fileID: 3958378610598462008, guid: 17f12d918de4f1c4586fe88bb0b3ab12,
     type: 3}
+  _auraMergePrefab: {fileID: 3958378610598462008, guid: 1463dd257c220854aaae058806c1dff0,
+    type: 3}
   _isMerging: 0
+  isInAura: 0
 --- !u!1 &5142477212843731676
 GameObject:
   m_ObjectHideFlags: 0
