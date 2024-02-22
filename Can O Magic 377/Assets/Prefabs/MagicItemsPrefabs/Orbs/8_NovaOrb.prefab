@@ -78,6 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemData: {fileID: 11400000, guid: c56a2edb6503c9f44b4aef21a184ff41, type: 2}
   _hasReacted: 0
+  _isMimic: 0
 --- !u!114 &5457241882393097733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,7 +93,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mergeToPrefab: {fileID: 3958378610598462008, guid: 1af31f82d6fa82d4cb764e9fddf867de,
     type: 3}
+  _auraMergePrefab: {fileID: 3958378610598462008, guid: 2b5e978e38149ef41a2575385e581fa6,
+    type: 3}
   _isMerging: 0
+  isInAura: 0
 --- !u!114 &7721766647560876216
 MonoBehaviour:
   m_ObjectHideFlags: 0

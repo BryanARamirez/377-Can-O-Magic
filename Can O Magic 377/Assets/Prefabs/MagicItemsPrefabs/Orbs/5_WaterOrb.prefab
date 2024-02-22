@@ -95,7 +95,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mergeToPrefab: {fileID: 3958378610598462008, guid: b738de7e562181349a549c0f47e60823,
     type: 3}
+  _auraMergePrefab: {fileID: 3958378610598462008, guid: e64bed18b31e49745ad2f21e510b630a,
+    type: 3}
   _isMerging: 0
+  isInAura: 0
 --- !u!114 &664031135746989991
 MonoBehaviour:
   m_ObjectHideFlags: 0
