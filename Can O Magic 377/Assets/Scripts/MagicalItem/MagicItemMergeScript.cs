@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * Author: [Lam, Justin]
- * Last Updated: [2/17/2024]
+ * Author: [Lam, Justin; Ramirez, Bryan]
+ * Last Updated: [2/21/2024]
  * [Merges magic items when touches the same type of magic items]
  */
 
@@ -16,7 +16,7 @@ public class MagicItemMergeScript : MonoBehaviour
     [SerializeField] private GameObject _mergeToPrefab;
     [SerializeField] private GameObject _auraMergePrefab;
     [SerializeField] private bool _isMerging = false;
-    public bool isInAura = false;
+    private bool _isInAura = false;
 
     /// <summary>
     /// get the needed stuff from game object
@@ -68,7 +68,7 @@ public class MagicItemMergeScript : MonoBehaviour
             }
 
             //Allows Holy Aura Merge to happen by checking if the magic item is inside of the holy aura - Bryan
-            if (!otherMergeScript.isMerging && !isMerging && isInAura == true && otherMergeScript.isInAura == true && mergeID == otherMergeID - 1)
+            if (!otherMergeScript.isMerging && !isMerging && _isInAura == true && otherMergeScript._isInAura == true && mergeID == otherMergeID - 1)
             {
                 isMerging = true;
                 otherMergeScript.isMerging = true;
@@ -87,14 +87,14 @@ public class MagicItemMergeScript : MonoBehaviour
     {
         if (other.gameObject.tag == "HolyAura")
         {
-            isInAura = true;
+            _isInAura = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "HolyAura")
         {
-            isInAura = false;
+            _isInAura = false;
         }
     }
 
