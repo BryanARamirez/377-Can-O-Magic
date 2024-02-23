@@ -98,7 +98,6 @@ MonoBehaviour:
   _auraMergePrefab: {fileID: 3958378610598462008, guid: e64bed18b31e49745ad2f21e510b630a,
     type: 3}
   _isMerging: 0
-  isInAura: 0
 --- !u!114 &664031135746989991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33365b27bf4f24a42924debff3589b61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reactionFor: 2
+  _reactionFor: 52
 --- !u!114 &3281358603740240765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691ded5ef099eb1418eb29a123ac607a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reactionFor: 13
+  _reactionFor: 2
 --- !u!114 &8352348143334152921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b26bedbbc574d345b1906ee1c460b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reactionFor: 12
+  _reactionFor: 1
   _getPowerItem: 0
 --- !u!1 &5142477212843731676
 GameObject:

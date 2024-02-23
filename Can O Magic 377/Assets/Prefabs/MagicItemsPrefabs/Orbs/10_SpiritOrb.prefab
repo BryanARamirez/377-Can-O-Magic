@@ -93,6 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mergeToPrefab: {fileID: 3958378610598462008, guid: b93f8f6d002acec4ebb93a8348f942ef,
     type: 3}
+  _auraMergePrefab: {fileID: 0}
   _isMerging: 0
 --- !u!114 &-1332552447630412236
 MonoBehaviour:
@@ -118,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b26bedbbc574d345b1906ee1c460b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reactionFor: 14
+  _reactionFor: 3
   _getPowerItem: 1
 --- !u!1 &5142477212843731676
 GameObject:

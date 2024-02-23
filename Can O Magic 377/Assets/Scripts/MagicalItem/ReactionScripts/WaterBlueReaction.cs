@@ -12,8 +12,8 @@ public class WaterBlueReaction : BaseReactionScript
 {
     //game object for steam
     private GameObject _steam;
-    [SerializeField] private Transform _topRightOfCan;
-    [SerializeField] private Transform _bottomLeftOfCan;
+    private Transform _topRightOfCan;
+    private Transform _bottomLeftOfCan;
 
     private void Reset()
     {
