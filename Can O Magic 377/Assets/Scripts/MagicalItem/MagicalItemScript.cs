@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [02/12/2024]
+ * Last Updated: [02/17/2024]
  * [Manages all the scripts for magic items and holds data for all magic items]
  */
 
@@ -16,6 +16,8 @@ public class MagicalItemScript : MonoBehaviour
     //has it already reacted
     [SerializeField] private bool _hasReacted = false;
 
+    [SerializeField] private bool _isMimic = false;
+
     /// <summary>
     /// get the magic item's type of magic item
     /// </summary>
@@ -24,12 +26,31 @@ public class MagicalItemScript : MonoBehaviour
         get { return _itemData.magicItemName; }
     }
 
+    public void Reacted()
+    {
+        _hasReacted = true;
+    }
+
+    public void SetMimic()
+    {
+        _isMimic = true;
+    }
+
+    public void GetPoints()
+    {
+
+    }
+
     /// <summary>
     /// get and set whether or not the magic item has reacted
     /// </summary>
     public bool hasReacted
     {
         get { return _hasReacted; }
-        set { _hasReacted = value; }
+    }
+
+    public bool isMimic
+    {
+        get { return _isMimic; }
     }
 }

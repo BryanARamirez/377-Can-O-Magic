@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7421709520098952089}
   - component: {fileID: 9213162071527072938}
   - component: {fileID: 5457241882393097733}
+  - component: {fileID: 7721766647560876216}
+  - component: {fileID: 2851933794578665598}
   m_Layer: 0
   m_Name: 8_NovaOrb
   m_TagString: MagicItem
@@ -76,6 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemData: {fileID: 11400000, guid: c56a2edb6503c9f44b4aef21a184ff41, type: 2}
   _hasReacted: 0
+  _isMimic: 0
 --- !u!114 &5457241882393097733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,7 +93,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mergeToPrefab: {fileID: 3958378610598462008, guid: 1af31f82d6fa82d4cb764e9fddf867de,
     type: 3}
+  _auraMergePrefab: {fileID: 3958378610598462008, guid: 2b5e978e38149ef41a2575385e581fa6,
+    type: 3}
   _isMerging: 0
+--- !u!114 &7721766647560876216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958378610598462008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531b8d2f9764eb841b43be93e6d3bb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2851933794578665598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958378610598462008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d822242800c4ee64184a015ae72418de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _reactionFor: 53
 --- !u!1 &5142477212843731676
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,7 +212,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5142477212843731676}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 9c433ad0bd129ac4586a08ae16eef101, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
