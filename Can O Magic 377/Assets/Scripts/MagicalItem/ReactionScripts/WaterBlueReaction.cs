@@ -46,9 +46,13 @@ public class WaterBlueReaction : BaseReactionScript
             {
                 _steam.GetComponent<SteamScript>().ActivateSteam();
                 magicItem.GetComponent<MagicalItemScript>().Reacted();
-            } 
+            }
 
-            magicItem.transform.position = new Vector3(Random.Range(_bottomLeftOfCan.position.x, _topRightOfCan.position.x), Random.Range(_bottomLeftOfCan.position.y, _topRightOfCan.position.y), 0f);
+            if (magicItem.GetComponent<MagicalItemScript>().hasDropped)
+            {
+                magicItem.transform.position = new Vector3(Random.Range(_bottomLeftOfCan.position.x, _topRightOfCan.position.x), Random.Range(_bottomLeftOfCan.position.y, _topRightOfCan.position.y), 0f);
+
+            }       
         }
     }
 }

@@ -15,11 +15,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int currentObjIndex;
     [SerializeField] private List<GameObject> magicObj = new List<GameObject>();
     [SerializeField] private SteamScript steamScript;
-    private int randomNextIndex;
+    public int randomNextIndex;
     private bool isWaiting;
 
     private void Awake()
     {
+        Application.targetFrameRate = 60;
         isWaiting = false;
         int randomIndex = Random.Range(0, magicObj.Count);
         currentObjIndex = randomIndex;
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
                 if (touch.phase == TouchPhase.Ended && touchedPos.x <= rightDis && touchedPos.x >= leftDis && isWaiting == false)
                 {
                     isWaiting = true;
+                    currentObj.GetComponent<MagicalItemScript>().SetDrop();
                     currentObj.GetComponent<Rigidbody>().useGravity = true;
                     currentObj.transform.parent = null;
                     StartCoroutine(spawnNext(1));

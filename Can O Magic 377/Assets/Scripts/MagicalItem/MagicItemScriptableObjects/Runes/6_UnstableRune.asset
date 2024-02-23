@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c67acc20bf0e947be05dc48c5356e5, type: 3}
   m_Name: 6_UnstableRune
   m_EditorClassIdentifier: 
-  _magicItemName: 16
+  _magicItemName: 5
   _points: 64

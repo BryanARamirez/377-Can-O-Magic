@@ -13,6 +13,8 @@ public class MagicalItemScript : MonoBehaviour
     //what is magic item
     [SerializeField] private MagicItemData _itemData;
 
+    [SerializeField] private bool _hasDropped = false;
+
     //has it already reacted
     [SerializeField] private bool _hasReacted = false;
 
@@ -36,6 +38,11 @@ public class MagicalItemScript : MonoBehaviour
         _isMimic = true;
     }
 
+    public void SetDrop()
+    {
+        _hasDropped = true;
+    }
+
     public void GetPoints()
     {
 
@@ -52,5 +59,10 @@ public class MagicalItemScript : MonoBehaviour
     public bool isMimic
     {
         get { return _isMimic; }
+    }
+
+    public bool hasDropped
+    {
+        get { return _hasDropped; }
     }
 }
