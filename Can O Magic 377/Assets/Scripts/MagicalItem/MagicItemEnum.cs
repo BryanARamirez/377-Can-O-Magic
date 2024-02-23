@@ -21,11 +21,10 @@ public enum MagicItemEnum
     NecroticOrb = 58,
     SpiritOrb = 59,
     DivineOrb = 60,
-    BlankRune,
-    GreenRune,
-    BlueRune,
-    PurpleRune,
-    RedRune,
-    UnstableRune,
-    End
+    BlankRune = 0,
+    GreenRune = 1,
+    BlueRune = 2,
+    PurpleRune = 3,
+    RedRune = 4,
+    UnstableRune = 5,
 }

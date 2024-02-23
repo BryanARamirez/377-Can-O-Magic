@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b26bedbbc574d345b1906ee1c460b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reactionFor: 15
+  _reactionFor: 4
   _getPowerItem: 2
 --- !u!1 &5142477212843731676
 GameObject:
