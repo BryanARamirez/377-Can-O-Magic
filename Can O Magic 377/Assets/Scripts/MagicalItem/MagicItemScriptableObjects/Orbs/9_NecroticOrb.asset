@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c67acc20bf0e947be05dc48c5356e5, type: 3}
   m_Name: 9_NecroticOrb
   m_EditorClassIdentifier: 
-  _magicItemName: 8
+  _magicItemName: 58
   _points: 758

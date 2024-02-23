@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
                 if (touch.phase == TouchPhase.Ended && touchedPos.x <= rightDis && touchedPos.x >= leftDis && isWaiting == false)
                 {
                     isWaiting = true;
+                    currentObj.GetComponent<MagicalItemScript>().SetDrop();
                     currentObj.GetComponent<Rigidbody>().useGravity = true;
                     currentObj.transform.parent = null;
                     StartCoroutine(spawnNext(1));
