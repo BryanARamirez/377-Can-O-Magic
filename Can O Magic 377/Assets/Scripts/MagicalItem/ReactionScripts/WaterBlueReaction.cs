@@ -42,7 +42,7 @@ public class WaterBlueReaction : BaseReactionScript
         GameObject[] AllMagicItems = GameObject.FindGameObjectsWithTag("MagicItem");
         foreach (GameObject magicItem in AllMagicItems)
         {
-            if (magicItem.GetComponent<MagicalItemScript>().magicItemName == MagicItemEnum.FireOrb)
+            if (magicItem.GetComponent<MagicalItemScript>().magicItemName == MagicItemEnum.FireOrb && !magicItem.GetComponent<MagicalItemScript>().hasReacted)
             {
                 _steam.GetComponent<SteamScript>().ActivateSteam();
                 magicItem.GetComponent<MagicalItemScript>().Reacted();
