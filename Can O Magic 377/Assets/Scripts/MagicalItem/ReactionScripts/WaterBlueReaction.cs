@@ -4,8 +4,10 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [02/12/2024]
- * [WIP, test script to test multiple reactions]
+ * Last Updated: [02/24/2024]
+ * [reaction that removes all power item, 
+ * cause steam if fire orb is present, 
+ * and randomizes all magic item location]
  */
 
 public class WaterBlueReaction : BaseReactionScript
@@ -30,6 +32,12 @@ public class WaterBlueReaction : BaseReactionScript
         _bottomLeftOfCan = GameObject.FindGameObjectWithTag("BottomLeft").transform;
     }
 
+    /// <summary>
+    /// removes all power item,
+    /// cause steam if fire orb is present,
+    /// and randomizes all magic item location
+    /// </summary>
+    /// <param name="otherItem"></param>
     public override void Reaction(GameObject otherItem)
     {
         GameObject[] AllPowerItems = GameObject.FindGameObjectsWithTag("PowerItem");
