@@ -7,6 +7,11 @@ using UnityEngine;
  * [Script for the slime ball]
  */
 
+
+//TODO: MAKE A BOOL ON MAGIC ITEM:isStuck
+//AND IF BOTH ARE STUCK AND COLLIDE
+//IGNORE COLLISION.
+//ON COLLISION EXIT, then un ignore collision
 public class SlimeBallScript : MonoBehaviour
 {
     [SerializeField]private List<GameObject> _stuckObjects;
