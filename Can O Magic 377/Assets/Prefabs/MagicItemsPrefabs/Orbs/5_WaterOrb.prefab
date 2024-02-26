@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 521514668897651710}
   - component: {fileID: 3281358603740240765}
   - component: {fileID: 8352348143334152921}
+  - component: {fileID: 3195269525718329347}
   m_Layer: 0
   m_Name: 5_WaterOrb
   m_TagString: MagicItem
@@ -79,6 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemData: {fileID: 11400000, guid: 84e36022475c7f04ca306c580ae14686, type: 2}
+  _hasDropped: 0
   _hasReacted: 0
   _isMimic: 0
 --- !u!114 &5457241882393097733
@@ -94,8 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mergeToPrefab: {fileID: 3958378610598462008, guid: b738de7e562181349a549c0f47e60823,
-    type: 3}
-  _auraMergePrefab: {fileID: 3958378610598462008, guid: e64bed18b31e49745ad2f21e510b630a,
     type: 3}
   _isMerging: 0
 --- !u!114 &664031135746989991
@@ -150,6 +150,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _reactionFor: 1
   _getPowerItem: 0
+--- !u!114 &3195269525718329347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958378610598462008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7503ab81b0ee51a48af8858d5db881ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemSprite: {fileID: 21300000, guid: fc6c044d9de9fc046b8b0f8f53301056, type: 3}
 --- !u!1 &5142477212843731676
 GameObject:
   m_ObjectHideFlags: 0
