@@ -15,11 +15,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int currentObjIndex;
     [SerializeField] private List<GameObject> magicObj = new List<GameObject>();
     [SerializeField] private SteamScript steamScript;
+    private PlayerData _playerData;
     public int randomNextIndex;
     private bool isWaiting;
 
     private void Awake()
     {
+        _playerData = GetComponent<PlayerData>();
+
         Application.targetFrameRate = 60;
         isWaiting = false;
         int randomIndex = Random.Range(0, magicObj.Count);
@@ -29,6 +32,7 @@ public class PlayerController : MonoBehaviour
         currentObj.transform.position = this.transform.position;
         currentObj.GetComponent<Rigidbody>().useGravity = false;
         randomNextIndex = Random.Range(0, magicObj.Count);
+        _playerData.DisplayNextItem(magicObj[randomNextIndex].GetComponent<NextMagicItemSprite>().itemSprite);
         nextObjIndex = randomNextIndex;
     }
 
@@ -68,6 +72,7 @@ public class PlayerController : MonoBehaviour
         currentObj.transform.position = this.transform.position;
         currentObjIndex = randomNextIndex;
         randomNextIndex = Random.Range(0, magicObj.Count);
+        _playerData.DisplayNextItem(magicObj[randomNextIndex].GetComponent<NextMagicItemSprite>().itemSprite);
         currentObj.GetComponent<Rigidbody>().useGravity = false;
     }
 }

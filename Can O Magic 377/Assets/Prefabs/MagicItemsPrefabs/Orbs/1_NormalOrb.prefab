@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7421709520098952089}
   - component: {fileID: 9213162071527072938}
   - component: {fileID: 5457241882393097733}
+  - component: {fileID: 3758202531453558251}
   m_Layer: 0
   m_Name: 1_NormalOrb
   m_TagString: MagicItem
@@ -75,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemData: {fileID: 11400000, guid: f6dd1f65218c5114aa9d945446dde2af, type: 2}
+  _hasDropped: 0
   _hasReacted: 0
   _isMimic: 0
 --- !u!114 &5457241882393097733
@@ -91,10 +93,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mergeToPrefab: {fileID: 3958378610598462008, guid: 17f12d918de4f1c4586fe88bb0b3ab12,
     type: 3}
-  _auraMergePrefab: {fileID: 3958378610598462008, guid: 1463dd257c220854aaae058806c1dff0,
-    type: 3}
   _isMerging: 0
-  isInAura: 0
+--- !u!114 &3758202531453558251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958378610598462008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7503ab81b0ee51a48af8858d5db881ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemSprite: {fileID: 21300000, guid: 65def46ec8fd6934793de89e40b50826, type: 3}
 --- !u!1 &5142477212843731676
 GameObject:
   m_ObjectHideFlags: 0
