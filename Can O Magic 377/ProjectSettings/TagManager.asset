@@ -8,6 +8,9 @@ TagManager:
   - Steam
   - PowerItem
   - HolyAura
+  - BottomLeft
+  - TopRight
+  - TsunamiLimiter
   layers:
   - Default
   - TransparentFX

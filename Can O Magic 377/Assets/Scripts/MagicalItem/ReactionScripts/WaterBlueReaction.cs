@@ -14,6 +14,7 @@ public class WaterBlueReaction : BaseReactionScript
 {
     //game object for steam
     private GameObject _steam;
+    private TsunamiLimiterScript _tsunamiLimiterScript;
     private Transform _topRightOfCan;
     private Transform _bottomLeftOfCan;
 
@@ -27,7 +28,8 @@ public class WaterBlueReaction : BaseReactionScript
     /// </summary>
     private void Awake()
     {
-        _steam = GameObject.FindWithTag("Steam");
+        _steam = GameObject.FindGameObjectWithTag("Steam");
+        _tsunamiLimiterScript = GameObject.FindGameObjectWithTag("TsunamiLimiter").GetComponent<TsunamiLimiterScript>();
         _topRightOfCan = GameObject.FindGameObjectWithTag("TopRight").transform;
         _bottomLeftOfCan = GameObject.FindGameObjectWithTag("BottomLeft").transform;
     }
@@ -47,6 +49,8 @@ public class WaterBlueReaction : BaseReactionScript
             Destroy(powerItem);
         }
 
+        _tsunamiLimiterScript.LimitTsunami();
+
         GameObject[] AllMagicItems = GameObject.FindGameObjectsWithTag("MagicItem");
         foreach (GameObject magicItem in AllMagicItems)
         {
@@ -58,7 +62,7 @@ public class WaterBlueReaction : BaseReactionScript
 
             if (magicItem.GetComponent<MagicalItemScript>().hasDropped)
             {
-                magicItem.transform.position = new Vector3(Random.Range(_bottomLeftOfCan.position.x, _topRightOfCan.position.x), Random.Range(_bottomLeftOfCan.position.y, _topRightOfCan.position.y), 0f);
+                magicItem.transform.position = new Vector3(Random.Range(_bottomLeftOfCan.position.x, _topRightOfCan.position.x), Random.Range(_bottomLeftOfCan.position.y, _topRightOfCan.position.y-1f), 0f);
 
             }       
         }
