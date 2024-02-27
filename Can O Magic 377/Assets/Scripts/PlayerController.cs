@@ -7,12 +7,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //How far the touch for dragging goes to the right
-    private int rightDis = 5;
+    private float rightDis = 3.5f;
     //How far the touch for dragging goes to the left
-    private int leftDis = -5;
+    private float leftDis = -3.5f;
     [SerializeField] private GameObject currentObj;
     [SerializeField] private int nextObjIndex;
     [SerializeField] private int currentObjIndex;
+    [SerializeField] private int zDist = 32;
     [SerializeField] private List<GameObject> magicObj = new List<GameObject>();
     [SerializeField] private SteamScript steamScript;
     private PlayerData _playerData;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
         Application.targetFrameRate = 60;
         isWaiting = false;
+        steamScript = FindAnyObjectByType<SteamScript>();
         int randomIndex = Random.Range(0, magicObj.Count);
         currentObjIndex = randomIndex;
         currentObj = Instantiate(magicObj[randomIndex]);
@@ -38,29 +40,32 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.touchCount > 0)
+        if(_playerData.inTutorial == false)
         {
-            Touch touch = Input.GetTouch(0);
-            Vector3 touchedPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, 10));
-            if (touchedPos.x <= rightDis && touchedPos.x >= leftDis)
+            if (Input.touchCount > 0)
             {
-                if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
+                Touch touch = Input.GetTouch(0);
+                Vector3 touchedPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, zDist));
+                if (touchedPos.x <= rightDis && touchedPos.x >= leftDis)
                 {
-                    Vector3 lockedPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, 10));
-                    lockedPos.y = this.transform.position.y;
-                    transform.position = lockedPos;
-                }
-                if (touch.phase == TouchPhase.Ended && touchedPos.x <= rightDis && touchedPos.x >= leftDis && isWaiting == false)
-                {
-                    isWaiting = true;
-                    currentObj.GetComponent<MagicalItemScript>().SetDrop();
-                    currentObj.GetComponent<Rigidbody>().useGravity = true;
-                    currentObj.transform.parent = null;
-                    StartCoroutine(spawnNext(1));
-                    steamScript.OnDrop();
+                    if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
+                    {
+                        Vector3 lockedPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, zDist));
+                        lockedPos.y = this.transform.position.y;
+                        transform.position = lockedPos;
+                    }
+                    if (touch.phase == TouchPhase.Ended && touchedPos.x <= rightDis && touchedPos.x >= leftDis && isWaiting == false)
+                    {
+                        isWaiting = true;
+                        currentObj.GetComponent<MagicalItemScript>().SetDrop();
+                        currentObj.GetComponent<Rigidbody>().useGravity = true;
+                        currentObj.transform.parent = null;
+                        StartCoroutine(spawnNext(1));
+                        steamScript.OnDrop();
+                    }
                 }
             }
-        }
+        } 
     }
 
     IEnumerator spawnNext(float delayTime)
