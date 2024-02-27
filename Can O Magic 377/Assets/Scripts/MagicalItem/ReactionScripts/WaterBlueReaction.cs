@@ -17,6 +17,7 @@ public class WaterBlueReaction : BaseReactionScript
     private TsunamiLimiterScript _tsunamiLimiterScript;
     private Transform _topRightOfCan;
     private Transform _bottomLeftOfCan;
+    public GameObject[] AllMagicItems;
 
     private void Reset()
     {
@@ -51,7 +52,7 @@ public class WaterBlueReaction : BaseReactionScript
 
         _tsunamiLimiterScript.LimitTsunami();
 
-        GameObject[] AllMagicItems = GameObject.FindGameObjectsWithTag("MagicItem");
+        AllMagicItems = GameObject.FindGameObjectsWithTag("MagicItem");
         foreach (GameObject magicItem in AllMagicItems)
         {
             if (magicItem.GetComponent<MagicalItemScript>().magicItemName == MagicItemEnum.FireOrb && !magicItem.GetComponent<MagicalItemScript>().hasReacted)

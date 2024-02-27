@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerData : MonoBehaviour
 {
@@ -9,6 +12,8 @@ public class PlayerData : MonoBehaviour
     [SerializeField] private int imageIndex;
     [SerializeField] private TutorialScript tutorialScript;
     [SerializeField] private int currentScore;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    private GameObject[] itemsInCan;
     public bool inTutorial;
 
     private void Awake()
@@ -28,5 +33,21 @@ public class PlayerData : MonoBehaviour
     public void DisplayNextItem(Sprite nextItemSprite)
     {
         NextImage.sprite = nextItemSprite;
+    }
+
+    private void Update()
+    {
+        UpdateScore();
+        
+    }
+
+    public void UpdateScore()
+    {
+        itemsInCan = GameObject.FindGameObjectsWithTag("MagicItem");
+        currentScore = 0;
+        for (int i = 0; i < itemsInCan.Length; i++)
+        {
+            currentScore += itemsInCan[i].GetComponent<MagicalItemScript>().GetPoints();
+        }
     }
 }
