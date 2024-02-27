@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5457241882393097733}
   - component: {fileID: -1332552447630412236}
   - component: {fileID: 4120498871423860361}
+  - component: {fileID: -2418207135816653789}
   m_Layer: 0
   m_Name: 10_SpiritOrb
   m_TagString: MagicItem
@@ -77,6 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemData: {fileID: 11400000, guid: e9c6ff892a8781b4a9dad159afedfb19, type: 2}
+  _hasDropped: 0
   _hasReacted: 0
   _isMimic: 0
 --- !u!114 &5457241882393097733
@@ -93,7 +95,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mergeToPrefab: {fileID: 3958378610598462008, guid: b93f8f6d002acec4ebb93a8348f942ef,
     type: 3}
-  _auraMergePrefab: {fileID: 0}
   _isMerging: 0
 --- !u!114 &-1332552447630412236
 MonoBehaviour:
@@ -121,6 +122,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _reactionFor: 3
   _getPowerItem: 1
+--- !u!114 &-2418207135816653789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958378610598462008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb438be71680cc44f8f7f640055c54b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5142477212843731676
 GameObject:
   m_ObjectHideFlags: 0

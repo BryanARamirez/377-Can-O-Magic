@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5134804166630324673}
   - component: {fileID: 7421709520098952089}
   - component: {fileID: 9213162071527072938}
+  - component: {fileID: -4608445620967423817}
   m_Layer: 0
   m_Name: 6_UnstableRune
   m_TagString: MagicItem
@@ -74,7 +75,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemData: {fileID: 11400000, guid: d175d1b20da743c489144333c97a3b57, type: 2}
+  _hasDropped: 0
   _hasReacted: 0
+  _isMimic: 0
+--- !u!114 &-4608445620967423817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958378610598462008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb438be71680cc44f8f7f640055c54b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6036662526934018163
 GameObject:
   m_ObjectHideFlags: 0
