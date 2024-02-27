@@ -12,7 +12,7 @@ public class PlayerData : MonoBehaviour
     [SerializeField] private int imageIndex;
     [SerializeField] private TutorialScript tutorialScript;
     [SerializeField] private int currentScore;
-    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TMP_Text scoreText;
     private GameObject[] itemsInCan;
     public bool inTutorial;
 
@@ -38,7 +38,7 @@ public class PlayerData : MonoBehaviour
     private void Update()
     {
         UpdateScore();
-        
+        scoreText.text = "Score: " + currentScore.ToString();
     }
 
     public void UpdateScore()
