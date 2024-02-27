@@ -21,6 +21,6 @@ public class MagicItemData : ScriptableObject
 
     public int points
     {
-        get { return points; }
+        get { return _points; }
     }
 }

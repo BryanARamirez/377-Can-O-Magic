@@ -43,9 +43,9 @@ public class MagicalItemScript : MonoBehaviour
         _hasDropped = true;
     }
 
-    public void GetPoints()
+    public int GetPoints()
     {
-
+        return _itemData.points;
     }
 
     /// <summary>
