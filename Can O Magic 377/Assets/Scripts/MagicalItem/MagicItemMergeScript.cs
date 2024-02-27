@@ -52,6 +52,7 @@ public class MagicItemMergeScript : MonoBehaviour
 
                     Vector3 spawnNewItem = (gameObject.transform.position + collision.transform.position) / 2f;
                     GameObject newItem = Instantiate(_mergeToPrefab, spawnNewItem, Quaternion.identity);
+                    newItem.GetComponent<MagicalItemScript>().SetDrop();
 
                     Destroy(collision.gameObject);
                     Destroy(gameObject);
@@ -74,6 +75,7 @@ public class MagicItemMergeScript : MonoBehaviour
 
                 Vector3 spawnNewItem = (gameObject.transform.position + collision.transform.position) / 2f;
                 GameObject newItem = Instantiate(_mergeToPrefab, spawnNewItem, Quaternion.identity);
+                newItem.GetComponent<MagicalItemScript>().SetDrop();
 
                 Destroy(collision.gameObject);
                 Destroy(gameObject);
