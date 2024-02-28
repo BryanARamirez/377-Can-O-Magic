@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     //How far the touch for dragging goes to the right
-    private float rightDis = 3.75f;
+    private float rightDis = 4f;
     //How far the touch for dragging goes to the left
-    private float leftDis = -3.75f;
+    private float leftDis = -4f;
     [SerializeField] private GameObject currentObj;
     [SerializeField] private int nextObjIndex;
     [SerializeField] private int currentObjIndex;
