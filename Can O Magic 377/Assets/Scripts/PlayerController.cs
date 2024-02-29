@@ -6,9 +6,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //How far the touch for dragging goes to the right
-    private float rightDis = 4f;
+    private float rightDis = 4.5f;
     //How far the touch for dragging goes to the left
-    private float leftDis = -4f;
+    private float leftDis = -4.5f;
     [SerializeField] private GameObject currentObj;
     [SerializeField] private int nextObjIndex;
     [SerializeField] private int currentObjIndex;
