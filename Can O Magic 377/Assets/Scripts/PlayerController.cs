@@ -44,15 +44,18 @@ public class PlayerController : MonoBehaviour
             {
                 Touch touch = Input.GetTouch(0);
                 Vector3 touchedPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, zDist));
-                if (touchedPos.x <= boundary && touchedPos.x >= -boundary)
+                if (touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance)
                 {
                     if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
                     {
                         Vector3 lockedPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, zDist));
                         lockedPos.y = this.transform.position.y;
-                        transform.position = lockedPos;
+                        if (lockedPos.x < boundary && lockedPos.x > -boundary)
+                        {
+                            transform.position = lockedPos;
+                        }
                     }
-                    if (touch.phase == TouchPhase.Ended && touchedPos.x <= boundary && touchedPos.x >= -boundary && isWaiting == false)
+                    if (touch.phase == TouchPhase.Ended && touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance && isWaiting == false)
                     {
                         isWaiting = true;
                         currentObj.GetComponent<MagicalItemScript>().SetDrop();
