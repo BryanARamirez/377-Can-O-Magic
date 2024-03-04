@@ -6,9 +6,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //How far the touch for dragging goes to the right
-    private float rightDis = 4.5f;
-    //How far the touch for dragging goes to the left
-    private float leftDis = -4.5f;
+    private float middleToWallDistance = 4.6f;
+    private float boundary;
     [SerializeField] private GameObject currentObj;
     [SerializeField] private int nextObjIndex;
     [SerializeField] private int currentObjIndex;
@@ -31,6 +30,7 @@ public class PlayerController : MonoBehaviour
         currentObj.transform.parent = this.transform;
         currentObj.transform.position = this.transform.position;
         currentObj.GetComponent<Rigidbody>().useGravity = false;
+        boundary = middleToWallDistance - currentObj.GetComponentInChildren<Collider>().bounds.size.x/2;
         randomNextIndex = Random.Range(0, magicObj.Count);
         _playerData.DisplayNextItem(magicObj[randomNextIndex].GetComponent<NextMagicItemSprite>().itemSprite);
         nextObjIndex = randomNextIndex;
@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
             {
                 Touch touch = Input.GetTouch(0);
                 Vector3 touchedPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, zDist));
-                if (touchedPos.x <= rightDis && touchedPos.x >= leftDis)
+                if (touchedPos.x <= boundary && touchedPos.x >= -boundary)
                 {
                     if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
                     {
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
                         lockedPos.y = this.transform.position.y;
                         transform.position = lockedPos;
                     }
-                    if (touch.phase == TouchPhase.Ended && touchedPos.x <= rightDis && touchedPos.x >= leftDis && isWaiting == false)
+                    if (touch.phase == TouchPhase.Ended && touchedPos.x <= boundary && touchedPos.x >= -boundary && isWaiting == false)
                     {
                         isWaiting = true;
                         currentObj.GetComponent<MagicalItemScript>().SetDrop();
@@ -77,5 +77,6 @@ public class PlayerController : MonoBehaviour
         randomNextIndex = Random.Range(0, magicObj.Count);
         _playerData.DisplayNextItem(magicObj[randomNextIndex].GetComponent<NextMagicItemSprite>().itemSprite);
         currentObj.GetComponent<Rigidbody>().useGravity = false;
+        boundary = middleToWallDistance - currentObj.GetComponentInChildren<Collider>().bounds.size.x/2;
     }
 }
