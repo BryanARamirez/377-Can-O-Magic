@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1453,7 +1453,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1489136049}
+      - m_Target: {fileID: 1489136053}
         m_TargetAssemblyTypeName: PowerItemMenuScript, Assembly-CSharp
         m_MethodName: SlimeBallSpawn
         m_Mode: 1
@@ -1719,7 +1719,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1489136049}
+      - m_Target: {fileID: 1489136053}
         m_TargetAssemblyTypeName: PowerItemMenuScript, Assembly-CSharp
         m_MethodName: MimicToungeSpawn
         m_Mode: 1
@@ -1769,39 +1769,13 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350983766}
   m_CullTransparentMesh: 1
---- !u!1 &1489136048 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 217404956738311228, guid: 34eee17f95834e64a87b29366b6b34f7,
-    type: 3}
-  m_PrefabInstance: {fileID: 5229945386362699917}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1489136049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489136048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5143b5f68e7c34f4d8a396c5767e34e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
-  holyAuraPrefab: {fileID: 4537173832017922449, guid: b973b7420564b11418c5807e0192c2a3,
-    type: 3}
-  mimicToungePrefab: {fileID: 4180723753599176874, guid: 6e0efad76907afb42adf3828c39a6a65,
-    type: 3}
-  slimeBallPrefab: {fileID: 3736714292386934412, guid: 103c2735f31d4ac4593e41e3f2eedcc6,
-    type: 3}
-  gameManager: {fileID: 1489136051}
 --- !u!114 &1489136051 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7030730925497675452, guid: 34eee17f95834e64a87b29366b6b34f7,
     type: 3}
   m_PrefabInstance: {fileID: 5229945386362699917}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489136048}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eddd7bfb59d983547af4ddb1f9afc893, type: 3}
@@ -1813,6 +1787,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5229945386362699917}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1489136053 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6972819490578618005, guid: 34eee17f95834e64a87b29366b6b34f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 5229945386362699917}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5143b5f68e7c34f4d8a396c5767e34e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1510736472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,7 +1882,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1489136049}
+      - m_Target: {fileID: 1489136053}
         m_TargetAssemblyTypeName: PowerItemMenuScript, Assembly-CSharp
         m_MethodName: HolyAuraSpawn
         m_Mode: 1
@@ -2490,23 +2476,8 @@ MonoBehaviour:
   currentObjIndex: 0
   zDist: 32
   magicObj:
-  - {fileID: 3958378610598462008, guid: aa5f7b0e302f8804faabddff960ab0ec, type: 3}
-  - {fileID: 3958378610598462008, guid: 9a5e10ab85000be4fbdb59f770f1f276, type: 3}
-  - {fileID: 3958378610598462008, guid: 1463dd257c220854aaae058806c1dff0, type: 3}
-  - {fileID: 3958378610598462008, guid: 1463dd257c220854aaae058806c1dff0, type: 3}
-  - {fileID: 3958378610598462008, guid: 17f12d918de4f1c4586fe88bb0b3ab12, type: 3}
-  - {fileID: 3958378610598462008, guid: 17f12d918de4f1c4586fe88bb0b3ab12, type: 3}
-  - {fileID: 3958378610598462008, guid: 6da915f13ab69bb42b382423bc3b2811, type: 3}
-  - {fileID: 3958378610598462008, guid: 6da915f13ab69bb42b382423bc3b2811, type: 3}
-  - {fileID: 3958378610598462008, guid: 6da915f13ab69bb42b382423bc3b2811, type: 3}
-  - {fileID: 3958378610598462008, guid: cade5f64b5067f843ac127b16df5bdc6, type: 3}
-  - {fileID: 3958378610598462008, guid: 1463dd257c220854aaae058806c1dff0, type: 3}
-  - {fileID: 3958378610598462008, guid: 1463dd257c220854aaae058806c1dff0, type: 3}
-  - {fileID: 3958378610598462008, guid: cade5f64b5067f843ac127b16df5bdc6, type: 3}
-  - {fileID: 3958378610598462008, guid: 6da915f13ab69bb42b382423bc3b2811, type: 3}
-  - {fileID: 3958378610598462008, guid: 6da915f13ab69bb42b382423bc3b2811, type: 3}
-  - {fileID: 3958378610598462008, guid: 6da915f13ab69bb42b382423bc3b2811, type: 3}
-  - {fileID: 3958378610598462008, guid: 17f12d918de4f1c4586fe88bb0b3ab12, type: 3}
+  - {fileID: 2481502674135989606, guid: 179edd9a10892b240ac7ac4763bbdf5f, type: 3}
+  - {fileID: 3958378610598462008, guid: 34131681c82f59346999df199a9cecac, type: 3}
   steamScript: {fileID: 0}
   randomNextIndex: 0
   isPowerItemMenuOpen: 0
@@ -2659,11 +2630,7 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1249094304}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 217404956738311228, guid: 34eee17f95834e64a87b29366b6b34f7,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1489136049}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34eee17f95834e64a87b29366b6b34f7, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

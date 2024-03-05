@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
                 Vector3 touchedPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, zDist));
                 if(isPowerItemMenuOpen == false)
                 {
-                    if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved && !isPowerItemMenuOpen)
+                    if (touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance)
                     {
                         if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
                         {
@@ -60,21 +60,17 @@ public class PlayerController : MonoBehaviour
                             }
                         }
                     }
-                    if (touch.phase == TouchPhase.Ended && touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance && isWaiting == false && !isPowerItemMenuOpen)
+                    if (touch.phase == TouchPhase.Ended && touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance && isWaiting == false)
                     {
                         isWaiting = true;
-                        if(currentObj.GetComponent<MagicalItemScript>() != null)
+                        if (currentObj.GetComponent<MagicalItemScript>() != null)
                         {
-                            isWaiting = true;
-                            if (currentObj.GetComponent<MagicalItemScript>() != null)
-                            {
-                                currentObj.GetComponent<MagicalItemScript>().SetDrop();
-                            }
-                            currentObj.GetComponent<Rigidbody>().useGravity = true;
-                            currentObj.transform.parent = null;
-                            StartCoroutine(spawnNext(1));
-                            steamScript.OnDrop();
+                            currentObj.GetComponent<MagicalItemScript>().SetDrop();
                         }
+                        currentObj.GetComponent<Rigidbody>().useGravity = true;
+                        currentObj.transform.parent = null;
+                        StartCoroutine(spawnNext(1));
+                        steamScript.OnDrop();
                     }
                 }
             }

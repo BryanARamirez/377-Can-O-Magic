@@ -56,6 +56,7 @@ public class PowerItemData : Singleton<PowerItemData>
     /// <param name="powerItem">power item type they can use</param>
     public void GainPowerItem(PowerItemEnum powerItem)
     {
+        Debug.Log("player got " + powerItem);
         _availableItems[powerItem] = true;
     }
 
