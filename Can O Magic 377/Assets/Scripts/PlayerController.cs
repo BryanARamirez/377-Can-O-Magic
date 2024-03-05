@@ -46,28 +46,31 @@ public class PlayerController : MonoBehaviour
             {
                 Touch touch = Input.GetTouch(0);
                 Vector3 touchedPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, zDist));
-                if (touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance)
+                if(isPowerItemMenuOpen == false)
                 {
-                    if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
+                    if (touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance)
                     {
-                        Vector3 lockedPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, zDist));
-                        lockedPos.y = this.transform.position.y;
-                        if (lockedPos.x < boundary && lockedPos.x > -boundary)
+                        if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
                         {
-                            transform.position = lockedPos;
+                            Vector3 lockedPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, zDist));
+                            lockedPos.y = this.transform.position.y;
+                            if (lockedPos.x < boundary && lockedPos.x > -boundary)
+                            {
+                                transform.position = lockedPos;
+                            }
                         }
-                    }
-                    if (touch.phase == TouchPhase.Ended && touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance && isWaiting == false)
-                    {
-                        isWaiting = true;
-                        if(currentObj.GetComponent<MagicalItemScript>() != null)
+                        if (touch.phase == TouchPhase.Ended && touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance && isWaiting == false)
                         {
-                            currentObj.GetComponent<MagicalItemScript>().SetDrop();
+                            isWaiting = true;
+                            if (currentObj.GetComponent<MagicalItemScript>() != null)
+                            {
+                                currentObj.GetComponent<MagicalItemScript>().SetDrop();
+                            }
+                            currentObj.GetComponent<Rigidbody>().useGravity = true;
+                            currentObj.transform.parent = null;
+                            StartCoroutine(spawnNext(1));
+                            steamScript.OnDrop();
                         }
-                        currentObj.GetComponent<Rigidbody>().useGravity = true;
-                        currentObj.transform.parent = null;
-                        StartCoroutine(spawnNext(1));
-                        steamScript.OnDrop();
                     }
                 }
             }
