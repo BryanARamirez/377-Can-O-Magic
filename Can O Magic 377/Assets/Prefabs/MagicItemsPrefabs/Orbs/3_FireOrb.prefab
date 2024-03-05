@@ -81,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: be408836ecd58b3478dd645483908844,
         type: 3}
       propertyPath: m_Name
-      value: 3_FireOrb 1
+      value: 3_FireOrb
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: be408836ecd58b3478dd645483908844,
         type: 3}
