@@ -10,14 +10,24 @@ using UnityEngine;
 
 public class PowerItemData : Singleton<PowerItemData>
 {
-    private Dictionary<PowerItemEnum, bool> availableItems;
+    private PlayerController _playerController;
+    private Dictionary<PowerItemEnum, bool> _availableItems;
+
+    [SerializeField] private List<PowerItemEnum> _powerItemPrefabListKey;
+    [SerializeField] private List<GameObject> _powerItemPrefabListValue;
+    private Dictionary<PowerItemEnum, GameObject> _powerItemPrefabs;
 
     private void OnEnable()
     {
-        availableItems = new Dictionary<PowerItemEnum, bool>();
-        availableItems.Add(PowerItemEnum.SlimeBall, false);
-        availableItems.Add(PowerItemEnum.MimicTongue, false);
-        availableItems.Add(PowerItemEnum.HolyAura, false);
+        _playerController = GameObject.FindAnyObjectByType<PlayerController>();
+
+        _availableItems = new Dictionary<PowerItemEnum, bool>();
+        _powerItemPrefabs = new Dictionary<PowerItemEnum, GameObject>();
+        for (int index = 0; index < _powerItemPrefabListKey.Count; index++)
+        {
+            _availableItems.Add(_powerItemPrefabListKey[index], false);
+            _powerItemPrefabs.Add(_powerItemPrefabListKey[index], _powerItemPrefabListValue[index]);
+        }
     }
 
     /// <summary>
@@ -26,11 +36,12 @@ public class PowerItemData : Singleton<PowerItemData>
     /// <param name="powerItem"></param>
     public void UsePowerItem(PowerItemEnum powerItem)
     {
-        if (availableItems[powerItem])
+        if (_availableItems[powerItem])
         {
             //replace with function to replace current item with power item
             Debug.Log("used " + powerItem);
-            availableItems[powerItem] = false;
+            _playerController.ReplaceCurrentItem(_powerItemPrefabs[powerItem]);
+            _availableItems[powerItem] = false;
         }
         else
         {
@@ -45,7 +56,7 @@ public class PowerItemData : Singleton<PowerItemData>
     /// <param name="powerItem">power item type they can use</param>
     public void GainPowerItem(PowerItemEnum powerItem)
     {
-        availableItems[powerItem] = true;
+        _availableItems[powerItem] = true;
     }
 
     /// <summary>
@@ -53,7 +64,7 @@ public class PowerItemData : Singleton<PowerItemData>
     /// </summary>
     public bool hasSlime
     {
-        get { return availableItems[PowerItemEnum.SlimeBall]; }
+        get { return _availableItems[PowerItemEnum.SlimeBall]; }
     }
 
     /// <summary>
@@ -61,7 +72,7 @@ public class PowerItemData : Singleton<PowerItemData>
     /// </summary>
     public bool hasMimic
     {
-        get { return availableItems[PowerItemEnum.MimicTongue]; }
+        get { return _availableItems[PowerItemEnum.MimicTongue]; }
     }
 
     /// <summary>
@@ -69,6 +80,6 @@ public class PowerItemData : Singleton<PowerItemData>
     /// </summary>
     public bool hasHoly
     {
-        get { return availableItems[PowerItemEnum.HolyAura]; }
+        get { return _availableItems[PowerItemEnum.HolyAura]; }
     }
 }

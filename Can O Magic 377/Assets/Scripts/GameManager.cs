@@ -12,22 +12,6 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private PowerItemMenuScript powerItemMenuScript;
     private GameData gameData;
 
-    public override void Awake()
-    {
-        base.Awake();
-        gameData = GetComponent<GameData>();
-        if(gameData.hasDoneTutorial)
-        {
-            SceneManager.LoadScene(1);
-        }
-        else
-        {
-            tutorialScript = FindAnyObjectByType<TutorialScript>();
-        }
-        playerController = FindAnyObjectByType<PlayerController>();
-        powerItemMenuScript = GetComponent<PowerItemMenuScript>();
-        powerItemMenuScript.playerController = playerController;
-    }
     private void Update()
     {
         if (tutorialScript != null)
@@ -69,6 +53,18 @@ public class GameManager : Singleton<GameManager>
     }
     private void OnEnable()
     {
+        gameData = GetComponent<GameData>();
+        if (gameData.hasDoneTutorial)
+        {
+            SceneManager.LoadScene(1);
+        }
+        else
+        {
+            tutorialScript = FindAnyObjectByType<TutorialScript>();
+        }
+        playerController = FindAnyObjectByType<PlayerController>();
+        powerItemMenuScript = GetComponent<PowerItemMenuScript>();
+
         SceneManager.sceneLoaded += OnChangeScene;
     }
     private void OnDisable()
@@ -78,7 +74,6 @@ public class GameManager : Singleton<GameManager>
     private void OnChangeScene(Scene scene, LoadSceneMode mode)
     {
         playerController = FindAnyObjectByType<PlayerController>();
-        powerItemMenuScript.playerController = playerController;
     }
     IEnumerator powerItemMenuFalse(float delayTime)
     {
