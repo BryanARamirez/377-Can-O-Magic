@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
                 Vector3 touchedPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, zDist));
                 if (touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance)
                 {
-                    if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
+                    if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved && !isPowerItemMenuOpen)
                     {
                         Vector3 lockedPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, zDist));
                         lockedPos.y = this.transform.position.y;
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
                             transform.position = lockedPos;
                         }
                     }
-                    if (touch.phase == TouchPhase.Ended && touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance && isWaiting == false)
+                    if (touch.phase == TouchPhase.Ended && touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance && isWaiting == false && !isPowerItemMenuOpen)
                     {
                         isWaiting = true;
                         if(currentObj.GetComponent<MagicalItemScript>() != null)
@@ -72,6 +72,15 @@ public class PlayerController : MonoBehaviour
                 }
             }
         } 
+    }
+
+    public void ReplaceCurrentItem(GameObject newItem)
+    {
+        Destroy(currentObj);
+        currentObj = Instantiate(newItem);
+        currentObj.transform.parent = transform;
+        currentObj.transform.position = transform.position;
+        boundary = middleToWallDistance - currentObj.GetComponentInChildren<Collider>().bounds.size.x / 2;
     }
 
     IEnumerator spawnNext(float delayTime)

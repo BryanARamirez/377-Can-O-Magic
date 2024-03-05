@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7586370148864562488}
   - component: {fileID: 7030730925497675452}
   - component: {fileID: 1576042094548284601}
+  - component: {fileID: 745841386447733496}
+  - component: {fileID: 6972819490578618005}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -49,8 +51,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 4330800039075335937}
+  powerItemMenu: {fileID: 0}
   playerController: {fileID: 0}
   tutorialScript: {fileID: 0}
+  powerItemMenuScript: {fileID: 0}
 --- !u!114 &1576042094548284601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +70,35 @@ MonoBehaviour:
   hasDoneTutorial: 0
   hasDoneTutorialInt: 0
   highScore: 0
+--- !u!114 &745841386447733496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217404956738311228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f58a8d6dc3e1641acd2564d28065c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _powerItemPrefabListKey: 000000000100000002000000
+  _powerItemPrefabListValue:
+  - {fileID: 3736714292386934412, guid: 103c2735f31d4ac4593e41e3f2eedcc6, type: 3}
+  - {fileID: 4180723753599176874, guid: 6e0efad76907afb42adf3828c39a6a65, type: 3}
+  - {fileID: 4537173832017922449, guid: b973b7420564b11418c5807e0192c2a3, type: 3}
+--- !u!114 &6972819490578618005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217404956738311228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5143b5f68e7c34f4d8a396c5767e34e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1471549137652499964
 GameObject:
   m_ObjectHideFlags: 0
