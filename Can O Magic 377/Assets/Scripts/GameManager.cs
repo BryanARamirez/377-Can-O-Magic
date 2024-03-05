@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject powerItemMenu;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private TutorialScript tutorialScript;
+    [SerializeField] private PowerItemMenuScript powerItemMenuScript;
     private GameData gameData;
 
     public override void Awake()
@@ -23,6 +25,8 @@ public class GameManager : Singleton<GameManager>
             tutorialScript = FindAnyObjectByType<TutorialScript>();
         }
         playerController = FindAnyObjectByType<PlayerController>();
+        powerItemMenuScript = GetComponent<PowerItemMenuScript>();
+        powerItemMenuScript.playerController = playerController;
     }
     private void Update()
     {
@@ -36,9 +40,12 @@ public class GameManager : Singleton<GameManager>
     }
     public void pauseGame()
     {
-        Time.timeScale = 0;
-        pauseMenu.SetActive(true);
-        playerController.enabled = false;
+        if(playerController.isPowerItemMenuOpen == false)
+        {
+            Time.timeScale = 0;
+            pauseMenu.SetActive(true);
+            playerController.enabled = false;
+        }
     }
     public void unpauseGame()
     {
@@ -49,6 +56,16 @@ public class GameManager : Singleton<GameManager>
     public void quitGame()
     {
         Application.Quit();
+    }
+    public void powerItemOpen()
+    {
+        playerController.isPowerItemMenuOpen = true;
+        powerItemMenu.SetActive(true);
+    }
+    public void powerItemClose()
+    {
+        powerItemMenu.SetActive(false);
+        StartCoroutine(powerItemMenuFalse(1));
     }
     private void OnEnable()
     {
@@ -61,5 +78,11 @@ public class GameManager : Singleton<GameManager>
     private void OnChangeScene(Scene scene, LoadSceneMode mode)
     {
         playerController = FindAnyObjectByType<PlayerController>();
+        powerItemMenuScript.playerController = playerController;
+    }
+    IEnumerator powerItemMenuFalse(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        playerController.isPowerItemMenuOpen = false;
     }
 }

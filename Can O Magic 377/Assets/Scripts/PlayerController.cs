@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     //How far the touch for dragging goes to the right
     private float middleToWallDistance = 4.6f;
     private float boundary;
-    [SerializeField] private GameObject currentObj;
+    public GameObject currentObj;
     [SerializeField] private int nextObjIndex;
     [SerializeField] private int currentObjIndex;
     [SerializeField] private int zDist = 32;
@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private PlayerData _playerData;
     public int randomNextIndex;
     private bool isWaiting;
+    public bool isPowerItemMenuOpen;
 
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
         randomNextIndex = Random.Range(0, magicObj.Count);
         _playerData.DisplayNextItem(magicObj[randomNextIndex].GetComponent<NextMagicItemSprite>().itemSprite);
         nextObjIndex = randomNextIndex;
+        isPowerItemMenuOpen = false;
     }
 
     void Update()
@@ -58,7 +60,10 @@ public class PlayerController : MonoBehaviour
                     if (touch.phase == TouchPhase.Ended && touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance && isWaiting == false)
                     {
                         isWaiting = true;
-                        currentObj.GetComponent<MagicalItemScript>().SetDrop();
+                        if(currentObj.GetComponent<MagicalItemScript>() != null)
+                        {
+                            currentObj.GetComponent<MagicalItemScript>().SetDrop();
+                        }
                         currentObj.GetComponent<Rigidbody>().useGravity = true;
                         currentObj.transform.parent = null;
                         StartCoroutine(spawnNext(1));
