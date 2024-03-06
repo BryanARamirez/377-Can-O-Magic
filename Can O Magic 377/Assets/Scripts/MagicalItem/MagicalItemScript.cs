@@ -45,7 +45,14 @@ public class MagicalItemScript : MonoBehaviour
 
     public int GetPoints()
     {
-        return _itemData.points;
+        if (!_isMimic)
+        {
+            return _itemData.points;
+        }
+        else
+        {
+            return _itemData.points/2;
+        }
     }
 
     /// <summary>
