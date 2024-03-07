@@ -7,6 +7,7 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject powerItemMenu;
+    [SerializeField] private GameObject leaderboardMenu;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private TutorialScript tutorialScript;
     [SerializeField] private PowerItemMenuScript powerItemMenuScript;
@@ -24,18 +25,24 @@ public class GameManager : Singleton<GameManager>
     }
     public void pauseGame()
     {
-        if(playerController.isPowerItemMenuOpen == false)
+        if(leaderboardMenu.activeInHierarchy == false)
         {
-            Time.timeScale = 0;
-            pauseMenu.SetActive(true);
-            playerController.enabled = false;
+            if (playerController.isPowerItemMenuOpen == false)
+            {
+                if (pauseMenu.activeInHierarchy == false)
+                {
+                    Time.timeScale = 0;
+                    pauseMenu.SetActive(true);
+                    playerController.enabled = false;
+                }
+                else
+                {
+                    Time.timeScale = 1;
+                    pauseMenu.SetActive(false);
+                    playerController.enabled = true;
+                }
+            }
         }
-    }
-    public void unpauseGame()
-    {
-        Time.timeScale = 1;
-        pauseMenu.SetActive(false);
-        playerController.enabled = true;
     }
     public void quitGame()
     {
@@ -43,13 +50,24 @@ public class GameManager : Singleton<GameManager>
     }
     public void powerItemOpen()
     {
-        playerController.isPowerItemMenuOpen = true;
-        powerItemMenu.SetActive(true);
+        if(leaderboardMenu.activeInHierarchy == false)
+        {
+            playerController.isPowerItemMenuOpen = true;
+            powerItemMenu.SetActive(true);
+        }
     }
     public void powerItemClose()
     {
-        powerItemMenu.SetActive(false);
-        StartCoroutine(powerItemMenuFalse(1));
+        if(leaderboardMenu.activeInHierarchy == false)
+        {
+            powerItemMenu.SetActive(false);
+            StartCoroutine(powerItemMenuFalse(1));
+        }
+    }
+    public void LeaderboardOpen()
+    {
+        leaderboardMenu.SetActive(!leaderboardMenu.activeInHierarchy);
+        pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
     }
     private void OnEnable()
     {
