@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public int randomNextIndex;
     private bool isWaiting;
     public bool isPowerItemMenuOpen;
+    private bool isReplacing = false;
 
     private void Awake()
     {
@@ -69,34 +70,80 @@ public class PlayerController : MonoBehaviour
                         }
                         currentObj.GetComponent<Rigidbody>().useGravity = true;
                         currentObj.transform.parent = null;
-                        StartCoroutine(spawnNext(1));
+                        isReplacing = false;
                         steamScript.OnDrop();
+                        StartCoroutine(spawnNext(1));
                     }
                 }
             }
         } 
     }
 
+
+    /// <summary>
+    /// replaces current item with newItem
+    /// done by destroying currentObj and Instantiating newItem
+    /// </summary>
+    /// <param name="newItem">Game Object to replace currentObj</param>
     public void ReplaceCurrentItem(GameObject newItem)
     {
-        Destroy(currentObj);
+        isReplacing = true;
+
+        if (currentObj != null)
+        {
+            Destroy(currentObj);
+        }
+
         currentObj = Instantiate(newItem);
+
         currentObj.transform.parent = transform;
         currentObj.transform.position = transform.position;
+        currentObj.GetComponent<Rigidbody>().useGravity = false;
+        boundary = middleToWallDistance - currentObj.GetComponentInChildren<Collider>().bounds.size.x / 2;
+    }
+
+    /// <summary>
+    /// replaces current item with newItem
+    /// done by destroying currentObj and Instantiating newItem 
+    /// </summary>
+    /// <param name="newItem">Game Object to replace currentObj</param>
+    /// <param name="mimic">if the new item is a mimic</param>
+    public void ReplaceCurrentItem(GameObject newItem, bool mimic)
+    {
+        isReplacing = true;
+
+        if (currentObj != null)
+        {
+            Destroy(currentObj);
+        }
+
+        currentObj = Instantiate(newItem);
+
+        if (mimic)
+        {
+            currentObj.GetComponent<MagicalItemScript>().SetMimic();
+        }
+
+        currentObj.transform.parent = transform;
+        currentObj.transform.position = transform.position;
+        currentObj.GetComponent<Rigidbody>().useGravity = false;
         boundary = middleToWallDistance - currentObj.GetComponentInChildren<Collider>().bounds.size.x / 2;
     }
 
     IEnumerator spawnNext(float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
-        isWaiting = false;
-        currentObj = Instantiate(magicObj[randomNextIndex]);
-        currentObj.transform.parent = this.transform;
-        currentObj.transform.position = this.transform.position;
-        currentObjIndex = randomNextIndex;
-        randomNextIndex = Random.Range(0, magicObj.Count);
-        _playerData.DisplayNextItem(magicObj[randomNextIndex].GetComponent<NextMagicItemSprite>().itemSprite);
-        currentObj.GetComponent<Rigidbody>().useGravity = false;
-        boundary = middleToWallDistance - currentObj.GetComponentInChildren<Collider>().bounds.size.x/2;
+        if (!isReplacing)
+        {
+            isWaiting = false;
+            currentObj = Instantiate(magicObj[randomNextIndex]);
+            currentObj.transform.parent = this.transform;
+            currentObj.transform.position = this.transform.position;
+            currentObjIndex = randomNextIndex;
+            randomNextIndex = Random.Range(0, magicObj.Count);
+            _playerData.DisplayNextItem(magicObj[randomNextIndex].GetComponent<NextMagicItemSprite>().itemSprite);
+            currentObj.GetComponent<Rigidbody>().useGravity = false;
+            boundary = middleToWallDistance - currentObj.GetComponentInChildren<Collider>().bounds.size.x / 2;
+        }
     }
 }

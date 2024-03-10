@@ -12,6 +12,7 @@ TagManager:
   - TopRight
   - TsunamiLimiter
   - CurrentScore
+  - PlayerController
   layers:
   - Default
   - TransparentFX
