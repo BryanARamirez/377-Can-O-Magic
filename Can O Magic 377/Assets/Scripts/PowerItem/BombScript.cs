@@ -29,7 +29,10 @@ public class BombScript : MonoBehaviour
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
+        if (other.transform.root.CompareTag("PowerItem") || other.transform.root.CompareTag("MagicItem"))
+        {
+            Destroy(other.transform.root.gameObject);
+        }
     }
 
     /// <summary>
@@ -42,6 +45,7 @@ public class BombScript : MonoBehaviour
         explosionHitBox.SetActive(true);
 
         yield return new WaitForSeconds(explosionTime);
+        
         Destroy(gameObject);
     }
 }

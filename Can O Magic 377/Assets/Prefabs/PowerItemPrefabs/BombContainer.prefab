@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4595567259776711895}
   m_Layer: 0
   m_Name: BombContainer
-  m_TagString: Untagged
+  m_TagString: PowerItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionHitBox: {fileID: 1094630802633580578}
-  explosionDelayTime: 3
+  explosionDelayTime: 2.5
   explosionTime: 0.1
 --- !u!1001 &121295699933762303
 PrefabInstance:
