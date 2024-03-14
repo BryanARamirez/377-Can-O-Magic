@@ -87,9 +87,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84331b525492cda409fe3e3e5d5fc47d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionHitBox: {fileID: 1094630802633580578}
-  explosionDelayTime: 2.5
-  explosionTime: 0.1
+  _explosionHitBox: {fileID: 1094630802633580578}
+  _explosionDelayTime: 2.5
+  _explosionTime: 0.1
 --- !u!1001 &121295699933762303
 PrefabInstance:
   m_ObjectHideFlags: 0

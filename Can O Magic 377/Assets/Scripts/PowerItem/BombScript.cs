@@ -10,9 +10,9 @@ using UnityEngine;
 
 public class BombScript : MonoBehaviour
 {
-    [SerializeField] private GameObject explosionHitBox;
-    [SerializeField] private float explosionDelayTime = 3f;
-    [SerializeField] private float explosionTime = .1f;
+    [SerializeField] private GameObject _explosionHitBox;
+    [SerializeField] private float _explosionDelayTime = 3f;
+    [SerializeField] private float _explosionTime = .1f;
 
     /// <summary>
     /// starts bomb explosion countdown
@@ -41,10 +41,10 @@ public class BombScript : MonoBehaviour
     /// <returns></returns>
     private IEnumerator Explode()
     {
-        yield return new WaitForSeconds(explosionDelayTime);
-        explosionHitBox.SetActive(true);
+        yield return new WaitForSeconds(_explosionDelayTime);
+        _explosionHitBox.SetActive(true);
 
-        yield return new WaitForSeconds(explosionTime);
+        yield return new WaitForSeconds(_explosionTime);
         
         Destroy(gameObject);
     }
