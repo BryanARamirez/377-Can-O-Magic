@@ -11,7 +11,7 @@ public class PlayerData : MonoBehaviour
     [SerializeField] private Image NextImage;
     [SerializeField] private int imageIndex;
     [SerializeField] private TutorialScript tutorialScript;
-    [SerializeField] private int currentScore;
+    public int currentScore;
     private int tempScore;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text firstPlaceScoreText;
@@ -19,14 +19,19 @@ public class PlayerData : MonoBehaviour
     [SerializeField] private TMP_Text thirdPlaceScoreText;
     [SerializeField] private TMP_Text fourthPlaceScoreText;
     [SerializeField] private TMP_Text fifthPlaceScoreText;
-    private GameData gameData;
+    [SerializeField] private TMP_Text firstNameText;
+    [SerializeField] private TMP_Text secondNameText;
+    [SerializeField] private TMP_Text thirdNameText;
+    [SerializeField] private TMP_Text fourthNameText;
+    [SerializeField] private TMP_Text fifthNameText;
+    [SerializeField] private TMP_Text test;
+    public GameObject verticalLeaderboardData;
     private GameObject[] itemsInCan;
     public bool inTutorial;
 
     private void Awake()
     {
         NextImage = FindAnyObjectByType<Image>();
-        gameData = FindAnyObjectByType<GameData>();
         tutorialScript = FindAnyObjectByType<TutorialScript>();
         if (tutorialScript != null )
         {
@@ -39,12 +44,12 @@ public class PlayerData : MonoBehaviour
     }
     private void OnApplicationQuit()
     {
-        if(currentScore > gameData.highScoreTable[0].highScore)
+        if(currentScore > GameData.Instance.highScoreTable[0].highScore)
         {
-            gameData.highScoreTable[0].highScore = currentScore;
-            gameData.RankScores();
+            GameData.Instance.highScoreTable[0].highScore = currentScore;
+            GameData.Instance.RankScores();
         }
-        gameData.Save();
+        GameData.Instance.Save();
     }
 
     public void DisplayNextItem(Sprite nextItemSprite)
@@ -56,6 +61,7 @@ public class PlayerData : MonoBehaviour
     {
         UpdateScore();
         scoreText.text = "Score: " + currentScore.ToString();
+        test.text = GameData.Instance.playerName;
         UpdateLeaderboard();
     }
 
@@ -70,10 +76,15 @@ public class PlayerData : MonoBehaviour
     }
     public void UpdateLeaderboard()
     {
-        firstPlaceScoreText.text = "1st " + gameData.highScoreTable[4].highScore;
-        secondPlaceScoreText.text = "2nd " + gameData.highScoreTable[3].highScore;
-        thirdPlaceScoreText.text = "3rd " + gameData.highScoreTable[2].highScore;
-        fourthPlaceScoreText.text = "4th " + gameData.highScoreTable[1].highScore;
-        fifthPlaceScoreText.text = "5th " + gameData.highScoreTable[0].highScore;
+        firstPlaceScoreText.text = "1st " + GameData.Instance.highScoreTable[4].highScore;
+        secondPlaceScoreText.text = "2nd " + GameData.Instance.highScoreTable[3].highScore;
+        thirdPlaceScoreText.text = "3rd " + GameData.Instance.highScoreTable[2].highScore;
+        fourthPlaceScoreText.text = "4th " + GameData.Instance.highScoreTable[1].highScore;
+        fifthPlaceScoreText.text = "5th " + GameData.Instance.highScoreTable[0].highScore;
+        firstNameText.text = GameData.Instance.highScoreTable[4].playerName;
+        secondNameText.text = GameData.Instance.highScoreTable[3].playerName;
+        thirdNameText.text = GameData.Instance.highScoreTable[2].playerName;
+        fourthNameText.text = GameData.Instance.highScoreTable[1].playerName;
+        fifthNameText.text = GameData.Instance.highScoreTable[0].playerName;
     }
 }

@@ -19,6 +19,12 @@ public class GameOverManager : Singleton<GameOverManager>
     public void OnGameOver()
     {
         Debug.Log("Game Over");
+        GameData.Instance.UpdateScoreboard();
+        GameData.Instance.Save();
+        GameData.Instance.keyboard.text = "";
+        GameData.Instance.playerName = "";
+        GameData.Instance.nameEntered = false;
+        GameData.Instance.gameIsOver = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

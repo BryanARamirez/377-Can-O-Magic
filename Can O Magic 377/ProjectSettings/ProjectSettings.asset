@@ -155,7 +155,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.ArtificerIntelligence.CanOMagic
-    Standalone: com.Unity-Technologies.com.unity.template.urp-blank
+    Standalone: com.Artificer-Intelligence.Can-O-Magic
     iPhone: com.Unity-Technologies.com.unity.template.urp-blank
   buildNumber:
     Standalone: 0
@@ -257,7 +257,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/zouko/OneDrive/Desktop/377 (MobileDev)/CanOMagic_Keystore/user.keystore
+  AndroidKeystoreName: C:/Users/bryan/Downloads/CanOMagic_Keystore/user.keystore
   AndroidKeyaliasName: can opener
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidBuildApkPerCpuArchitecture: 0

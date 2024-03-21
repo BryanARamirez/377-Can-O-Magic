@@ -28,8 +28,18 @@ public class GameOverTrigger : MonoBehaviour
     {
         if (_canGameOver && transform.position.y > _topOfCan.position.y)
         {
+            GameData.Instance.gameIsOver = true;
+            GameData.Instance.keyboard = TouchScreenKeyboard.Open(GameData.Instance.playerName);
+        }
+        if (string.IsNullOrEmpty(GameData.Instance.playerName) == false && GameData.Instance.keyboard.active == false)
+        {
+            GameData.Instance.nameEntered = true;
+        }
+        if (GameData.Instance.nameEntered)
+        {
             GameOverManager.Instance.OnGameOver();
         }
+        GameData.Instance.playerName = GameData.Instance.keyboard.text;
     }
 
     /// <summary>

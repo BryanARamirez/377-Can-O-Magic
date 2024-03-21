@@ -13,6 +13,7 @@ TagManager:
   - TsunamiLimiter
   - CurrentScore
   - PlayerController
+  - verticalLeaderboard
   layers:
   - Default
   - TransparentFX
