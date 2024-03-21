@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 5134804166630324673}
   - component: {fileID: 7421709520098952089}
   - component: {fileID: 9213162071527072938}
+  - component: {fileID: 6324685277514322470}
   - component: {fileID: -4608445620967423817}
+  - component: {fileID: 3511678783540692311}
+  - component: {fileID: 7953233458026222161}
   m_Layer: 0
   m_Name: 6_UnstableRune
   m_TagString: MagicItem
@@ -43,7 +46,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3958378610598462008}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -78,6 +81,18 @@ MonoBehaviour:
   _hasDropped: 0
   _hasReacted: 0
   _isMimic: 0
+--- !u!114 &6324685277514322470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958378610598462008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531b8d2f9764eb841b43be93e6d3bb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-4608445620967423817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,6 +105,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb438be71680cc44f8f7f640055c54b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3511678783540692311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958378610598462008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c8558ea4eba77647bcb203c20caf5de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chanceToChange: 0.1
+--- !u!114 &7953233458026222161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958378610598462008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34626b037242f644690956b0b8dd525c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _reactionFor: 5
 --- !u!1 &6036662526934018163
 GameObject:
   m_ObjectHideFlags: 0
