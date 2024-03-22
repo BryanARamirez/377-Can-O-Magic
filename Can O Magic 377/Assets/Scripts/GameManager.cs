@@ -5,19 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject pauseMenuV;
+    [SerializeField] private GameObject pauseMenuH;
     [SerializeField] private GameObject powerItemMenu;
     [SerializeField] private GameObject leaderboardMenu;
-    [SerializeField] private GameObject verticalLeaderboardData;
+    [SerializeField] private GameObject vLeaderboardData;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private TutorialScript tutorialScript;
     [SerializeField] private PowerItemMenuScript powerItemMenuScript;
 
+    [SerializeField] private GameObject verticalUI;
+    [SerializeField] private GameObject horizontalUI;
+    [SerializeField] private GameObject verticalButtons;
+    [SerializeField] private GameObject horizontalButtons;
+
     public override void Awake()
     {
         base.Awake();
-        verticalLeaderboardData = GameData.Instance.playerData.verticalLeaderboardData;
-        verticalLeaderboardData.SetActive(false);
+        GameData.Instance.playerData = FindAnyObjectByType<PlayerData>();
+        vLeaderboardData = GameData.Instance.playerData.vLeaderboardData;
+        verticalUI = GameData.Instance.playerData.verticalUI;
+        horizontalUI = GameData.Instance.playerData.horizontalUI;
+        vLeaderboardData.SetActive(false);
     }
     private void Update()
     {
@@ -28,6 +37,27 @@ public class GameManager : Singleton<GameManager>
                 SceneManager.LoadScene(1);
             }
         }
+        switch(Screen.orientation)
+        {
+            case ScreenOrientation.Portrait:
+            case ScreenOrientation.PortraitUpsideDown:
+                horizontalUI.SetActive(false);
+                horizontalButtons.SetActive(false);
+                verticalUI.SetActive(true);
+                verticalButtons.SetActive(true);
+                break;
+
+            case ScreenOrientation.LandscapeLeft:
+            case ScreenOrientation.LandscapeRight:
+                verticalUI.SetActive(false);
+                verticalButtons.SetActive(false);
+                horizontalUI.SetActive(true);
+                horizontalButtons.SetActive(true);
+                break;
+
+            default: 
+                break;
+        }
     }
     public void pauseGame()
     {
@@ -35,17 +65,42 @@ public class GameManager : Singleton<GameManager>
         {
             if (playerController.isPowerItemMenuOpen == false)
             {
-                if (pauseMenu.activeInHierarchy == false)
+                switch (Screen.orientation)
                 {
-                    Time.timeScale = 0;
-                    pauseMenu.SetActive(true);
-                    playerController.enabled = false;
-                }
-                else
-                {
-                    Time.timeScale = 1;
-                    pauseMenu.SetActive(false);
-                    playerController.enabled = true;
+                    case ScreenOrientation.Portrait:
+                    case ScreenOrientation.PortraitUpsideDown:
+                        if (pauseMenuV.activeInHierarchy == false)
+                        {
+                            Time.timeScale = 0;
+                            pauseMenuV.SetActive(true);
+                            playerController.enabled = false;
+                        }
+                        else
+                        {
+                            Time.timeScale = 1;
+                            pauseMenuV.SetActive(false);
+                            playerController.enabled = true;
+                        }
+                        break;
+
+                    case ScreenOrientation.LandscapeLeft:
+                    case ScreenOrientation.LandscapeRight:
+                        if (pauseMenuH.activeInHierarchy == false)
+                        {
+                            Time.timeScale = 0;
+                            pauseMenuH.SetActive(true);
+                            playerController.enabled = false;
+                        }
+                        else
+                        {
+                            Time.timeScale = 1;
+                            pauseMenuH.SetActive(false);
+                            playerController.enabled = true;
+                        }
+                        break;
+
+                    default:
+                        break;
                 }
             }
         }
@@ -73,8 +128,8 @@ public class GameManager : Singleton<GameManager>
     public void LeaderboardOpen()
     {
         leaderboardMenu.SetActive(!leaderboardMenu.activeInHierarchy);
-        verticalLeaderboardData.SetActive(!verticalLeaderboardData.activeInHierarchy);
-        pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
+        vLeaderboardData.SetActive(!vLeaderboardData.activeInHierarchy);
+        pauseMenuV.SetActive(!pauseMenuV.activeInHierarchy);
     }
     private void OnEnable()
     {
@@ -99,7 +154,9 @@ public class GameManager : Singleton<GameManager>
     {
         playerController = FindAnyObjectByType<PlayerController>();
         GameData.Instance.playerData = FindAnyObjectByType<PlayerData>();
-        verticalLeaderboardData = GameData.Instance.playerData.verticalLeaderboardData;
+        vLeaderboardData = GameData.Instance.playerData.vLeaderboardData;
+        verticalUI = GameData.Instance.playerData.verticalUI;
+        horizontalUI = GameData.Instance.playerData.horizontalUI;
         GameData.Instance.Load();
     }
     IEnumerator powerItemMenuFalse(float delayTime)
