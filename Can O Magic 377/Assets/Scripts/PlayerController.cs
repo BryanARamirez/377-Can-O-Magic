@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(_playerData.inTutorial == false)
+        if(_playerData.inTutorial == false && GameData.Instance.gameIsOver == false)
         {
             if (Input.touchCount > 0)
             {
