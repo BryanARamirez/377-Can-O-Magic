@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin; Ramirez, Bryan]
- * Last Updated: [2/21/2024]
+ * Last Updated: [3/20/2024]
  * [Merges magic items when touches the same type of magic items]
  */
 
@@ -36,7 +36,7 @@ public class MagicItemMergeScript : MonoBehaviour
     /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "MagicItem" && collision.gameObject.gameObject.GetComponent<MagicItemMergeScript>() != null)
+        if (collision.gameObject.tag == "MagicItem" && collision.gameObject.GetComponent<MagicItemMergeScript>() != null)
         {
             MagicalItemScript otherMagicalItemScript = collision.gameObject.GetComponent<MagicalItemScript>();
             MagicItemMergeScript otherMergeScript = collision.gameObject.GetComponent<MagicItemMergeScript>();
@@ -52,6 +52,12 @@ public class MagicItemMergeScript : MonoBehaviour
 
                     Vector3 spawnNewItem = (gameObject.transform.position + collision.transform.position) / 2f;
                     GameObject newItem = Instantiate(_mergeToPrefab, spawnNewItem, Quaternion.identity);
+
+                    MergeVFX mergeVFX;
+                    if (TryGetComponent<MergeVFX>(out mergeVFX))
+                    {
+                        mergeVFX.PlayMergeVFX(spawnNewItem);
+                    }
                     newItem.GetComponent<MagicalItemScript>().SetDrop();
 
                     Destroy(collision.gameObject);
@@ -76,6 +82,12 @@ public class MagicItemMergeScript : MonoBehaviour
                 Vector3 spawnNewItem = (gameObject.transform.position + collision.transform.position) / 2f;
                 GameObject newItem = Instantiate(_mergeToPrefab, spawnNewItem, Quaternion.identity);
                 newItem.GetComponent<MagicalItemScript>().SetDrop();
+
+                MergeVFX mergeVFX;
+                if (TryGetComponent<MergeVFX>(out mergeVFX))
+                {
+                    mergeVFX.PlayMergeVFX(spawnNewItem);
+                }
 
                 Destroy(collision.gameObject);
                 Destroy(gameObject);
