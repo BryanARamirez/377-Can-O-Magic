@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [02/17/2024]
+ * Last Updated: [03/14/2024]
  * [script use to keep track of power items]
  */
 
@@ -60,27 +60,8 @@ public class PowerItemData : Singleton<PowerItemData>
         _availableItems[powerItem] = true;
     }
 
-    /// <summary>
-    /// get if the player has a slime ball
-    /// </summary>
-    public bool hasSlime
+    public bool checkAvailable(PowerItemEnum powerItem)
     {
-        get { return _availableItems[PowerItemEnum.SlimeBall]; }
-    }
-
-    /// <summary>
-    /// get if the player has a mimic tongue
-    /// </summary>
-    public bool hasMimic
-    {
-        get { return _availableItems[PowerItemEnum.MimicTongue]; }
-    }
-
-    /// <summary>
-    /// get if the player has a holy aura
-    /// </summary>
-    public bool hasHoly
-    {
-        get { return _availableItems[PowerItemEnum.HolyAura]; }
+        return _availableItems[powerItem];
     }
 }

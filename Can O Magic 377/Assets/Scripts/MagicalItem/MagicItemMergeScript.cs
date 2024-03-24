@@ -36,7 +36,7 @@ public class MagicItemMergeScript : MonoBehaviour
     /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "MagicItem" && collision.gameObject.gameObject.GetComponent<MagicItemMergeScript>() != null)
+        if (collision.gameObject.tag == "MagicItem" && collision.gameObject.GetComponent<MagicItemMergeScript>() != null)
         {
             MagicalItemScript otherMagicalItemScript = collision.gameObject.GetComponent<MagicalItemScript>();
             MagicItemMergeScript otherMergeScript = collision.gameObject.GetComponent<MagicItemMergeScript>();
