@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
         currentObj.transform.position = this.transform.position;
         currentObj.GetComponent<Rigidbody>().useGravity = false;
         boundary = middleToWallDistance - currentObj.GetComponentInChildren<Collider>().bounds.size.x/2;
+        transform.position = new Vector3(0f, transform.position.y, 0f);
         randomNextIndex = Random.Range(0, magicObj.Count);
         _playerData.DisplayNextItem(magicObj[randomNextIndex].GetComponent<NextMagicItemSprite>().itemSprite);
         nextObjIndex = randomNextIndex;
@@ -100,6 +101,7 @@ public class PlayerController : MonoBehaviour
         currentObj.transform.position = transform.position;
         currentObj.GetComponent<Rigidbody>().useGravity = false;
         boundary = middleToWallDistance - currentObj.GetComponentInChildren<Collider>().bounds.size.x / 2;
+        transform.position = new Vector3(0f, transform.position.y, 0f);
     }
 
     /// <summary>
@@ -144,6 +146,7 @@ public class PlayerController : MonoBehaviour
             _playerData.DisplayNextItem(magicObj[randomNextIndex].GetComponent<NextMagicItemSprite>().itemSprite);
             currentObj.GetComponent<Rigidbody>().useGravity = false;
             boundary = middleToWallDistance - currentObj.GetComponentInChildren<Collider>().bounds.size.x / 2;
+            transform.position = new Vector3(0f, transform.position.y, 0f);
         }
     }
 }
