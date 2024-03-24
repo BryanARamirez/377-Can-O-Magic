@@ -17,11 +17,13 @@ public class GameData : Singleton<GameData>
     public string playerName;
     public TouchScreenKeyboard keyboard;
     public PlayerData playerData;
+    public SoundSettings soundSettings;
     public List<GameDataContainer> highScoreTable;
 
     public override void Awake()
     {
         playerData = FindAnyObjectByType<PlayerData>();
+        soundSettings = FindAnyObjectByType<SoundSettings>();
         if (File.Exists(Application.persistentDataPath + "/gameData.dat") == false)
         {
             highScoreTable = new List<GameDataContainer>()
@@ -68,6 +70,7 @@ public class GameData : Singleton<GameData>
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Open(Application.persistentDataPath + "/gameData.dat", FileMode.Create);
         GameDataContainer gameData = new GameDataContainer();
+        gameData.musicVolume = soundSettings.musicSliderV.value;
         gameData.hasDoneTutorialInt = hasDoneTutorial ? 1 : 0;
         gameData.highScore = highScore;
         gameData.playerName = playerName;
@@ -110,6 +113,7 @@ public class GameData : Singleton<GameData>
                 new GameDataContainer{highScore = gameData.fourthScore, playerName = gameData.fourthName},
                 new GameDataContainer{highScore = gameData.fifthScore, playerName = gameData.fifthName}
             };
+            soundSettings.SetVolume(gameData.musicVolume);
         }
     }
 }
@@ -130,4 +134,5 @@ public class GameDataContainer
     public string thirdName;
     public string fourthName;
     public string fifthName;
+    public float musicVolume;
 }

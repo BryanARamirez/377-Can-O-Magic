@@ -39,7 +39,6 @@ public class PlayerData : MonoBehaviour
     [SerializeField] private TMP_Text fourthNameTextH;
     [SerializeField] private TMP_Text fifthNameTextH;
 
-    [SerializeField] private TMP_Text test;
     public GameObject vLeaderboardData;
     public GameObject verticalUI;
     public GameObject horizontalUI;
@@ -81,7 +80,6 @@ public class PlayerData : MonoBehaviour
         UpdateScore();
         scoreTextV.text = "Score: " + currentScore.ToString();
         scoreTextH.text = "Score: " + currentScore.ToString();
-        test.text = GameData.Instance.playerName;
         UpdateLeaderboard();
     }
 

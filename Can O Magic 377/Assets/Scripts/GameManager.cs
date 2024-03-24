@@ -18,6 +18,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject horizontalUI;
     [SerializeField] private GameObject verticalButtons;
     [SerializeField] private GameObject horizontalButtons;
+    [SerializeField] private GameObject SettingsV;
+    [SerializeField] private GameObject SettingsH;
 
     public override void Awake()
     {
@@ -103,6 +105,26 @@ public class GameManager : Singleton<GameManager>
                         break;
                 }
             }
+        }
+    }
+    public void Settings()
+    {
+        switch (Screen.orientation)
+        {
+            case ScreenOrientation.Portrait:
+            case ScreenOrientation.PortraitUpsideDown:
+                SettingsV.SetActive(!SettingsV.activeInHierarchy);
+                pauseMenuV.SetActive(!pauseMenuV.activeInHierarchy);
+                break;
+
+            case ScreenOrientation.LandscapeLeft:
+            case ScreenOrientation.LandscapeRight:
+                SettingsH.SetActive(!SettingsH.activeInHierarchy);
+                pauseMenuH.SetActive(!pauseMenuH.activeInHierarchy);
+                break;
+
+            default:
+                break;
         }
     }
     public void quitGame()
