@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin; Ramirez, Bryan]
- * Last Updated: [2/21/2024]
+ * Last Updated: [3/20/2024]
  * [Merges magic items when touches the same type of magic items]
  */
 
@@ -52,6 +52,12 @@ public class MagicItemMergeScript : MonoBehaviour
 
                     Vector3 spawnNewItem = (gameObject.transform.position + collision.transform.position) / 2f;
                     GameObject newItem = Instantiate(_mergeToPrefab, spawnNewItem, Quaternion.identity);
+
+                    MergeVFX mergeVFX;
+                    if (TryGetComponent<MergeVFX>(out mergeVFX))
+                    {
+                        mergeVFX.PlayMergeVFX(spawnNewItem);
+                    }
                     newItem.GetComponent<MagicalItemScript>().SetDrop();
 
                     Destroy(collision.gameObject);
@@ -76,6 +82,12 @@ public class MagicItemMergeScript : MonoBehaviour
                 Vector3 spawnNewItem = (gameObject.transform.position + collision.transform.position) / 2f;
                 GameObject newItem = Instantiate(_mergeToPrefab, spawnNewItem, Quaternion.identity);
                 newItem.GetComponent<MagicalItemScript>().SetDrop();
+
+                MergeVFX mergeVFX;
+                if (TryGetComponent<MergeVFX>(out mergeVFX))
+                {
+                    mergeVFX.PlayMergeVFX(spawnNewItem);
+                }
 
                 Destroy(collision.gameObject);
                 Destroy(gameObject);
