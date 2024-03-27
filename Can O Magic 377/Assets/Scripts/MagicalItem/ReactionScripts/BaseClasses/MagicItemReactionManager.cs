@@ -53,6 +53,10 @@ public class MagicItemReactionManager : MonoBehaviour
                 _magicalItemScript.Reacted();
                 otherMagicalItemScript.Reacted();
 
+                GameManager.Instance.reactionHappened = true;
+                GameManager.Instance.reactionOrb1 = _magicalItemScript.magicItemName.ToString();
+                GameManager.Instance.reactionOrb2 = otherMagicalItemScript.magicItemName.ToString();
+
                 temp.Reaction(collision.gameObject);
             }
         }

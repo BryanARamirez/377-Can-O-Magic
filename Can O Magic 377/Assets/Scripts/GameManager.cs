@@ -21,6 +21,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject SettingsV;
     [SerializeField] private GameObject SettingsH;
 
+    public bool reactionHappened;
+    public string reactionOrb1, reactionOrb2;
+
     public override void Awake()
     {
         base.Awake();

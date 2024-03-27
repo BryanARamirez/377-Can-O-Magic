@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _playerData = GetComponent<PlayerData>();
-        Application.targetFrameRate = 60;
         isWaiting = false;
         steamScript = GameObject.FindGameObjectWithTag("Steam").GetComponent<SteamScript>();
         int randomIndex = Random.Range(0, magicObj.Count);
