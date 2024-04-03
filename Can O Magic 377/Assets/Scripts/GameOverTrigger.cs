@@ -49,5 +49,6 @@ public class GameOverTrigger : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         _canGameOver = true;
+        GetComponent<Rigidbody>().drag = 1f;
     }
 }

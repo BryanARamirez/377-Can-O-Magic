@@ -11739,7 +11739,13 @@ MonoBehaviour:
   - {fileID: 3958378610598462008, guid: 6da915f13ab69bb42b382423bc3b2811, type: 3}
   - {fileID: 3958378610598462008, guid: 6da915f13ab69bb42b382423bc3b2811, type: 3}
   - {fileID: 3958378610598462008, guid: aa5f7b0e302f8804faabddff960ab0ec, type: 3}
+  - {fileID: 3958378610598462008, guid: aa5f7b0e302f8804faabddff960ab0ec, type: 3}
   - {fileID: 3958378610598462008, guid: 34131681c82f59346999df199a9cecac, type: 3}
+  - {fileID: 3958378610598462008, guid: 34131681c82f59346999df199a9cecac, type: 3}
+  - {fileID: 3958378610598462008, guid: 34131681c82f59346999df199a9cecac, type: 3}
+  - {fileID: 3958378610598462008, guid: 940a0c1803438cb4ebe6d5abc5c6ca16, type: 3}
+  - {fileID: 3958378610598462008, guid: 940a0c1803438cb4ebe6d5abc5c6ca16, type: 3}
+  - {fileID: 3958378610598462008, guid: 940a0c1803438cb4ebe6d5abc5c6ca16, type: 3}
   - {fileID: 3958378610598462008, guid: 940a0c1803438cb4ebe6d5abc5c6ca16, type: 3}
   steamScript: {fileID: 0}
   randomNextIndex: 0
@@ -11753,7 +11759,7 @@ Transform:
   m_GameObject: {fileID: 2015353182}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8.44, z: 0}
+  m_LocalPosition: {x: 0, y: 9.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
