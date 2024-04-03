@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5457241882393097733}
   - component: {fileID: 5666655111072835827}
   - component: {fileID: 1137471550574240362}
+  - component: {fileID: -8587086906244840012}
   m_Layer: 0
   m_Name: 4_PurpleRune
   m_TagString: MagicItem
@@ -121,6 +122,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mergeVFX: {fileID: 3249253529233398128, guid: b217662c98acec049a6585de05ba5ce9,
     type: 3}
+--- !u!114 &-8587086906244840012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958378610598462008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b26bedbbc574d345b1906ee1c460b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _reactionFor: 59
+  _getPowerItem: 1
 --- !u!1 &6036662526934018163
 GameObject:
   m_ObjectHideFlags: 0

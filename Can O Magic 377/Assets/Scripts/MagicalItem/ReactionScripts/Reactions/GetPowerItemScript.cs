@@ -20,5 +20,9 @@ public class GetPowerItemScript : BaseReactionScript
     public override void Reaction(GameObject otherItem)
     {
         PowerItemData.Instance.GainPowerItem(_getPowerItem);
+        if (!PowerItemData.Instance.checkAvailable(_getPowerItem))
+        {
+            Destroy(gameObject);
+        }
     }
 }

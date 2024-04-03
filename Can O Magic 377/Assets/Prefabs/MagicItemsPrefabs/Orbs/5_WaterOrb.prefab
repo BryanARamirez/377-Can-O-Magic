@@ -144,10 +144,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7155ef123011e2e4f9c765722f3030f2,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4364668924180607609}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7155ef123011e2e4f9c765722f3030f2,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7053732338913915832}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7155ef123011e2e4f9c765722f3030f2,
         type: 3}
@@ -269,20 +265,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _reactionFor: 2
   AllMagicItems: []
---- !u!114 &4364668924180607609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2481502674135989606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b26bedbbc574d345b1906ee1c460b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _reactionFor: 1
-  _getPowerItem: 0
 --- !u!114 &7053732338913915832
 MonoBehaviour:
   m_ObjectHideFlags: 0
