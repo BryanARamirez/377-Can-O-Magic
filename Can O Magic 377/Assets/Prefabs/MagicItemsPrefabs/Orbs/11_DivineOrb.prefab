@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7421709520098952089}
   - component: {fileID: 9213162071527072938}
   - component: {fileID: 745597720648618660}
-  - component: {fileID: 7407488144168671744}
   - component: {fileID: 7307695367623825942}
   - component: {fileID: 2005709550419085285}
+  - component: {fileID: 7774017831605243501}
   m_Layer: 0
   m_Name: 11_DivineOrb
   m_TagString: MagicItem
@@ -46,7 +46,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3958378610598462008}
   serializedVersion: 4
-  m_Mass: 1.05
+  m_Mass: 4.2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -93,20 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531b8d2f9764eb841b43be93e6d3bb79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7407488144168671744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3958378610598462008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b26bedbbc574d345b1906ee1c460b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _reactionFor: 4
-  _getPowerItem: 2
 --- !u!114 &7307695367623825942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +119,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mergeVFX: {fileID: 3249253529233398128, guid: b217662c98acec049a6585de05ba5ce9,
     type: 3}
+--- !u!114 &7774017831605243501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958378610598462008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b26bedbbc574d345b1906ee1c460b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _reactionFor: 56
+  _getPowerItem: 2
 --- !u!1 &5142477212843731676
 GameObject:
   m_ObjectHideFlags: 0
