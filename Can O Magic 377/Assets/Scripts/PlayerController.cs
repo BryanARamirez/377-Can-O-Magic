@@ -56,10 +56,15 @@ public class PlayerController : MonoBehaviour
                         {
                             Vector3 lockedPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, zDist));
                             lockedPos.y = this.transform.position.y;
-                            if (lockedPos.x < boundary && lockedPos.x > -boundary)
+                            if (lockedPos.x > boundary)
                             {
-                                transform.position = lockedPos;
+                                lockedPos.x = boundary;
                             }
+                            else if (lockedPos.x < -boundary)
+                            {
+                                lockedPos.x = -boundary;
+                            }
+                            transform.position = lockedPos;
                         }
                     }
                     if (touch.phase == TouchPhase.Ended && touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance && isWaiting == false)
@@ -89,7 +94,7 @@ public class PlayerController : MonoBehaviour
     public void ReplaceCurrentItem(GameObject newItem)
     {
         isReplacing = true;
-
+        isWaiting = false;
         if (currentObj != null)
         {
             Destroy(currentObj);

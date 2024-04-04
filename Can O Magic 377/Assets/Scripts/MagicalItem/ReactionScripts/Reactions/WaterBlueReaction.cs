@@ -63,7 +63,7 @@ public class WaterBlueReaction : BaseReactionScript
 
             if (magicItem.GetComponent<MagicalItemScript>().hasDropped)
             {
-                magicItem.transform.position = new Vector3(Random.Range(_bottomLeftOfCan.position.x, _topRightOfCan.position.x), Random.Range(_bottomLeftOfCan.position.y, _topRightOfCan.position.y-1f), 0f);
+                magicItem.transform.position = new Vector3(Random.Range(_bottomLeftOfCan.position.x+1, _topRightOfCan.position.x-1), Random.Range(_bottomLeftOfCan.position.y, _topRightOfCan.position.y-1f), 0f);
 
             }       
         }
