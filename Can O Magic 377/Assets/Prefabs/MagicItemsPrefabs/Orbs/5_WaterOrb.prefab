@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691ded5ef099eb1418eb29a123ac607a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reactionFor: 2
+  _reactionFor: 51
   AllMagicItems: []
 --- !u!114 &7053732338913915832
 MonoBehaviour:

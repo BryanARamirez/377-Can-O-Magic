@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
     public void ReplaceCurrentItem(GameObject newItem)
     {
         isReplacing = true;
-
+        isWaiting = false;
         if (currentObj != null)
         {
             Destroy(currentObj);

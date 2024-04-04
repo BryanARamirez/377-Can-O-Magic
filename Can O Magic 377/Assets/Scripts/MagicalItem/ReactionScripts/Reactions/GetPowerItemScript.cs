@@ -22,7 +22,6 @@ public class GetPowerItemScript : BaseReactionScript
         if (!PowerItemData.Instance.checkAvailable(_getPowerItem))
         {
             PowerItemData.Instance.GainPowerItem(_getPowerItem);
-            Destroy(gameObject);
         }
     }
 }

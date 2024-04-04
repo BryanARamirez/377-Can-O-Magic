@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: -2327595903861254077}
   - component: {fileID: -3069468396204516749}
   - component: {fileID: -4378916531439056617}
+  - component: {fileID: 999808444095315146}
+  - component: {fileID: 311615866488199616}
   m_Layer: 0
   m_Name: 4_EarthOrb
   m_TagString: MagicItem
@@ -135,6 +137,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mergeVFX: {fileID: 3249253529233398128, guid: b217662c98acec049a6585de05ba5ce9,
     type: 3}
+--- !u!114 &999808444095315146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958378610598462008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b26bedbbc574d345b1906ee1c460b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _reactionFor: 50
+  _getPowerItem: 0
+--- !u!114 &311615866488199616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958378610598462008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531b8d2f9764eb841b43be93e6d3bb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5142477212843731676
 GameObject:
   m_ObjectHideFlags: 0
