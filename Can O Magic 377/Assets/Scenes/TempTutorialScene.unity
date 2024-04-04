@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5302,6 +5302,7 @@ GameObject:
   - component: {fileID: 980165572}
   - component: {fileID: 980165571}
   - component: {fileID: 980165570}
+  - component: {fileID: 980165573}
   m_Layer: 5
   m_Name: SlimeBallButton
   m_TagString: Untagged
@@ -5423,6 +5424,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980165568}
   m_CullTransparentMesh: 1
+--- !u!114 &980165573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980165568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de13b96098fb6004d93fb9a263a101a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 980165570}
+  _checkItem: 0
 --- !u!1 &991667835
 GameObject:
   m_ObjectHideFlags: 0
@@ -6047,6 +6062,7 @@ GameObject:
   - component: {fileID: 1126759752}
   - component: {fileID: 1126759751}
   - component: {fileID: 1126759750}
+  - component: {fileID: 1126759753}
   m_Layer: 0
   m_Name: Holy Aura Button
   m_TagString: Untagged
@@ -6168,6 +6184,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126759748}
   m_CullTransparentMesh: 1
+--- !u!114 &1126759753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126759748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de13b96098fb6004d93fb9a263a101a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1126759750}
+  _checkItem: 2
 --- !u!1 &1129807041
 GameObject:
   m_ObjectHideFlags: 0
@@ -6793,6 +6823,7 @@ GameObject:
   - component: {fileID: 1230021256}
   - component: {fileID: 1230021255}
   - component: {fileID: 1230021254}
+  - component: {fileID: 1230021257}
   m_Layer: 5
   m_Name: BombButton
   m_TagString: Untagged
@@ -6914,6 +6945,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230021252}
   m_CullTransparentMesh: 1
+--- !u!114 &1230021257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230021252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de13b96098fb6004d93fb9a263a101a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1230021254}
+  _checkItem: 3
 --- !u!1 &1244434567
 GameObject:
   m_ObjectHideFlags: 0
@@ -7314,6 +7359,7 @@ GameObject:
   - component: {fileID: 1350983770}
   - component: {fileID: 1350983769}
   - component: {fileID: 1350983768}
+  - component: {fileID: 1350983771}
   m_Layer: 5
   m_Name: MimicToungeButton
   m_TagString: Untagged
@@ -7435,6 +7481,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350983766}
   m_CullTransparentMesh: 1
+--- !u!114 &1350983771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350983766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de13b96098fb6004d93fb9a263a101a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1350983768}
+  _checkItem: 1
 --- !u!1 &1355337117
 GameObject:
   m_ObjectHideFlags: 0
@@ -7447,6 +7507,7 @@ GameObject:
   - component: {fileID: 1355337121}
   - component: {fileID: 1355337120}
   - component: {fileID: 1355337119}
+  - component: {fileID: 1355337122}
   m_Layer: 0
   m_Name: Mimic Tounge Button
   m_TagString: Untagged
@@ -7568,6 +7629,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355337117}
   m_CullTransparentMesh: 1
+--- !u!114 &1355337122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355337117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de13b96098fb6004d93fb9a263a101a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1355337119}
+  _checkItem: 1
 --- !u!1 &1362632436
 GameObject:
   m_ObjectHideFlags: 0
@@ -8156,6 +8231,7 @@ GameObject:
   - component: {fileID: 1510736476}
   - component: {fileID: 1510736475}
   - component: {fileID: 1510736474}
+  - component: {fileID: 1510736477}
   m_Layer: 5
   m_Name: HolyAuraButton
   m_TagString: Untagged
@@ -8277,6 +8353,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1510736472}
   m_CullTransparentMesh: 1
+--- !u!114 &1510736477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510736472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de13b96098fb6004d93fb9a263a101a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1510736474}
+  _checkItem: 2
 --- !u!1 &1522287899
 GameObject:
   m_ObjectHideFlags: 0
@@ -10301,6 +10391,7 @@ GameObject:
   - component: {fileID: 1798823850}
   - component: {fileID: 1798823849}
   - component: {fileID: 1798823848}
+  - component: {fileID: 1798823851}
   m_Layer: 0
   m_Name: Magic Bomb
   m_TagString: Untagged
@@ -10422,6 +10513,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798823846}
   m_CullTransparentMesh: 1
+--- !u!114 &1798823851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798823846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de13b96098fb6004d93fb9a263a101a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1798823848}
+  _checkItem: 3
 --- !u!1 &1799375971
 GameObject:
   m_ObjectHideFlags: 0
@@ -11768,6 +11873,7 @@ GameObject:
   - component: {fileID: 2019279890}
   - component: {fileID: 2019279889}
   - component: {fileID: 2019279888}
+  - component: {fileID: 2019279891}
   m_Layer: 0
   m_Name: Slime Button
   m_TagString: Untagged
@@ -11889,6 +11995,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2019279886}
   m_CullTransparentMesh: 1
+--- !u!114 &2019279891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019279886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de13b96098fb6004d93fb9a263a101a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 2019279888}
+  _checkItem: 0
 --- !u!1 &2026514092
 GameObject:
   m_ObjectHideFlags: 0
