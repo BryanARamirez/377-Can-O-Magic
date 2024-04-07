@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/14/2024]
+ * Last Updated: [04/04/2024]
  * [script use to keep track of power items]
  */
 
@@ -60,8 +60,31 @@ public class PowerItemData : Singleton<PowerItemData>
         _availableItems[powerItem] = true;
     }
 
+    /// <summary>
+    /// checks if the passed power item is available
+    /// </summary>
+    /// <param name="powerItem">Item that wants to be checked</param>
+    /// <returns>is powerItem available</returns>
     public bool checkAvailable(PowerItemEnum powerItem)
     {
         return _availableItems[powerItem];
+    }
+
+    /// <summary>
+    /// function to get the number of power items available
+    /// </summary>
+    /// <returns>int of power items available</returns>
+    public int NumberOfPowerItems()
+    {
+        int num = 0;
+        foreach (KeyValuePair<PowerItemEnum, bool> powerItem in _availableItems)
+        {
+            if (powerItem.Value)
+            {
+                num++;
+            }
+        }
+
+        return num;
     }
 }

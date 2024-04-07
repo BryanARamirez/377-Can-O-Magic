@@ -225,6 +225,8 @@ MonoBehaviour:
   _hasDropped: 0
   _hasReacted: 0
   _isMimic: 0
+  _magicItemModel: {fileID: 239403224035217857}
+  _darkenPercentage: 0.3
 --- !u!114 &5857121298406579546
 MonoBehaviour:
   m_ObjectHideFlags: 0
