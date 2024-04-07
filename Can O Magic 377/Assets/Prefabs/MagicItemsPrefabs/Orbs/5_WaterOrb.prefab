@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33365b27bf4f24a42924debff3589b61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reactionFor: 52
+  _reactionFor: 2
 --- !u!114 &415168409210592890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691ded5ef099eb1418eb29a123ac607a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reactionFor: 51
+  _reactionFor: 1
 --- !u!114 &7053732338913915832
 MonoBehaviour:
   m_ObjectHideFlags: 0

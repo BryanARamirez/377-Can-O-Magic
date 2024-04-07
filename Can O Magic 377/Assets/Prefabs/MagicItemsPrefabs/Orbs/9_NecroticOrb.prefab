@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14cfc11e2a817c64282bcb947f275a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reactionFor: 56
+  _reactionFor: 6
   _shrinkDivideBy: 2
 --- !u!114 &-7183958954454691745
 MonoBehaviour:
