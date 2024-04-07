@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5457241882393097733}
   - component: {fileID: -3200739564122096016}
   - component: {fileID: -3579569770294050938}
+  - component: {fileID: 5180330254864676366}
   m_Layer: 0
   m_Name: 6_PlasmaOrb
   m_TagString: MagicItem
@@ -122,6 +123,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mergeVFX: {fileID: 3249253529233398128, guid: b217662c98acec049a6585de05ba5ce9,
     type: 3}
+--- !u!114 &5180330254864676366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958378610598462008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7503ab81b0ee51a48af8858d5db881ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemSprite: {fileID: 21300000, guid: 12e4fdecf108e6447addf82b7739bb76, type: 3}
 --- !u!1 &5142477212843731676
 GameObject:
   m_ObjectHideFlags: 0
