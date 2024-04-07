@@ -19,6 +19,17 @@ public class MagicalItemScript : MonoBehaviour
     [SerializeField] private bool _hasReacted = false;
 
     [SerializeField] private bool _isMimic = false;
+    private bool hitSomethingOnce;
+
+    [SerializeField] private GameObject _magicItemModel;
+    private Material _magicItemMaterial;
+    [Range(0, 1)]
+    [SerializeField] private float _darkenPercentage = .3f;
+
+    private void Awake()
+    {
+        _magicItemMaterial = _magicItemModel.GetComponent<Renderer>().material;
+    }
 
     /// <summary>
     /// get the magic item's type of magic item
@@ -30,7 +41,11 @@ public class MagicalItemScript : MonoBehaviour
 
     public void Reacted()
     {
-        _hasReacted = true;
+        if (!_hasReacted)
+        {
+            _hasReacted = true;
+            _magicItemMaterial.color = new Color(_magicItemMaterial.color.r * (1 - _darkenPercentage), _magicItemMaterial.color.g * (1 - _darkenPercentage), _magicItemMaterial.color.b * (1 - _darkenPercentage), _magicItemMaterial.color.a);
+        }
     }
 
     public void SetMimic()
@@ -45,7 +60,14 @@ public class MagicalItemScript : MonoBehaviour
 
     public int GetPoints()
     {
-        return _itemData.points;
+        if (!_isMimic)
+        {
+            return _itemData.points;
+        }
+        else
+        {
+            return _itemData.points/2;
+        }
     }
 
     /// <summary>
@@ -64,5 +86,14 @@ public class MagicalItemScript : MonoBehaviour
     public bool hasDropped
     {
         get { return _hasDropped; }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(hitSomethingOnce == false)
+        {
+            GameData.Instance.Save();
+            hitSomethingOnce = true;
+        }
     }
 }

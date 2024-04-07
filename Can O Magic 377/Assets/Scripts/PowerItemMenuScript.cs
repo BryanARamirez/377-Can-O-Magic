@@ -19,4 +19,10 @@ public class PowerItemMenuScript : MonoBehaviour
         PowerItemData.Instance.UsePowerItem(PowerItemEnum.SlimeBall);
         GameManager.Instance.powerItemClose();
     }
+
+    public void BombSpawn()
+    {
+        PowerItemData.Instance.UsePowerItem(PowerItemEnum.Bomb);
+        GameManager.Instance.powerItemClose();
+    }
 }

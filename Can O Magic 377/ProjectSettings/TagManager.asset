@@ -12,6 +12,12 @@ TagManager:
   - TopRight
   - TsunamiLimiter
   - CurrentScore
+  - PlayerController
+  - verticalLeaderboard
+  - verticalUI
+  - horizontalUI
+  - NextItemH
+  - NextItemV
   layers:
   - Default
   - TransparentFX

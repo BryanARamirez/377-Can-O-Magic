@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [02/17/2024]
+ * Last Updated: [04/04/2024]
  * [script use to keep track of power items]
  */
 
@@ -56,30 +56,35 @@ public class PowerItemData : Singleton<PowerItemData>
     /// <param name="powerItem">power item type they can use</param>
     public void GainPowerItem(PowerItemEnum powerItem)
     {
+        Debug.Log("player got " + powerItem);
         _availableItems[powerItem] = true;
     }
 
     /// <summary>
-    /// get if the player has a slime ball
+    /// checks if the passed power item is available
     /// </summary>
-    public bool hasSlime
+    /// <param name="powerItem">Item that wants to be checked</param>
+    /// <returns>is powerItem available</returns>
+    public bool checkAvailable(PowerItemEnum powerItem)
     {
-        get { return _availableItems[PowerItemEnum.SlimeBall]; }
+        return _availableItems[powerItem];
     }
 
     /// <summary>
-    /// get if the player has a mimic tongue
+    /// function to get the number of power items available
     /// </summary>
-    public bool hasMimic
+    /// <returns>int of power items available</returns>
+    public int NumberOfPowerItems()
     {
-        get { return _availableItems[PowerItemEnum.MimicTongue]; }
-    }
+        int num = 0;
+        foreach (KeyValuePair<PowerItemEnum, bool> powerItem in _availableItems)
+        {
+            if (powerItem.Value)
+            {
+                num++;
+            }
+        }
 
-    /// <summary>
-    /// get if the player has a holy aura
-    /// </summary>
-    public bool hasHoly
-    {
-        get { return _availableItems[PowerItemEnum.HolyAura]; }
+        return num;
     }
 }
