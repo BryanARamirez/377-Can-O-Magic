@@ -8,7 +8,7 @@ using UnityEngine;
  * [Scriptable object of data for magical item]
  */
 
-[CreateAssetMenu(fileName = "New MagicItemData", menuName = "Magic Item Data", order = 51)]
+[CreateAssetMenu(fileName = "New MagicItemData", menuName = "Magic Item Data", order = 0)]
 public class MagicItemData : ScriptableObject
 {
     [SerializeField] private MagicItemEnum _magicItemName;

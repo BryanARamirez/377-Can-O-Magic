@@ -10,10 +10,32 @@ public class SoundSettings : MonoBehaviour
     public Slider musicSliderH;
     [SerializeField] private AudioMixer audioMixer;
 
-    public void SetVolume(float sliderValue)
+    private void Start()
     {
-        audioMixer.SetFloat("MasterVolume", Mathf.Log10(sliderValue) * 20);
-        SetSliders(sliderValue);
+        SetMusicVolume();
+    }
+    public void SetMusicVolume()
+    {
+        float musicVolume;
+        switch (Screen.orientation)
+        {
+            case ScreenOrientation.Portrait:
+            case ScreenOrientation.PortraitUpsideDown:
+                musicVolume = musicSliderV.value;
+                audioMixer.SetFloat("MusicVolume", Mathf.Log10(musicVolume) * 20);
+                SetSliders(musicVolume);
+                break;
+
+            case ScreenOrientation.LandscapeLeft:
+            case ScreenOrientation.LandscapeRight:
+                musicVolume = musicSliderH.value;
+                audioMixer.SetFloat("MusicVolume", Mathf.Log10(musicVolume) * 20);
+                SetSliders(musicVolume);
+                break;
+
+            default:
+                break;
+        }
     }
 
     public void SetSliders(float sliderValue)

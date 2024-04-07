@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,9 +23,15 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject SettingsV;
     [SerializeField] private GameObject SettingsH;
 
+    public bool reactionHappened;
+    public string reactionOrb1, reactionOrb2;
+
+
+
     public override void Awake()
     {
         base.Awake();
+        GameData.Instance.steam = GameObject.FindGameObjectWithTag("Steam");
         GameData.Instance.playerData = FindAnyObjectByType<PlayerData>();
         vLeaderboardData = GameData.Instance.playerData.vLeaderboardData;
         verticalUI = GameData.Instance.playerData.verticalUI;
@@ -131,6 +139,27 @@ public class GameManager : Singleton<GameManager>
     {
         Application.Quit();
     }
+    public void Restart()
+    {
+        File.Delete(Application.persistentDataPath + "/sceneData.dat");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        switch (Screen.orientation)
+        {
+            case ScreenOrientation.Portrait:
+            case ScreenOrientation.PortraitUpsideDown:
+                pauseMenuV.SetActive(!pauseMenuV.activeInHierarchy);
+                break;
+
+            case ScreenOrientation.LandscapeLeft:
+            case ScreenOrientation.LandscapeRight:
+                pauseMenuH.SetActive(!pauseMenuH.activeInHierarchy);
+                break;
+
+            default:
+                break;
+        }
+        Time.timeScale = 1.0f;
+    }
     public void powerItemOpen()
     {
         if(leaderboardMenu.activeInHierarchy == false)
@@ -175,6 +204,7 @@ public class GameManager : Singleton<GameManager>
     private void OnChangeScene(Scene scene, LoadSceneMode mode)
     {
         playerController = FindAnyObjectByType<PlayerController>();
+        GameData.Instance.steam = GameObject.FindGameObjectWithTag("Steam");
         GameData.Instance.playerData = FindAnyObjectByType<PlayerData>();
         vLeaderboardData = GameData.Instance.playerData.vLeaderboardData;
         verticalUI = GameData.Instance.playerData.verticalUI;

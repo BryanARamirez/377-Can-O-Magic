@@ -19,6 +19,7 @@ public class MagicalItemScript : MonoBehaviour
     [SerializeField] private bool _hasReacted = false;
 
     [SerializeField] private bool _isMimic = false;
+    private bool hitSomethingOnce;
 
     [SerializeField] private GameObject _magicItemModel;
     private Material _magicItemMaterial;
@@ -85,5 +86,14 @@ public class MagicalItemScript : MonoBehaviour
     public bool hasDropped
     {
         get { return _hasDropped; }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(hitSomethingOnce == false)
+        {
+            GameData.Instance.Save();
+            hitSomethingOnce = true;
+        }
     }
 }

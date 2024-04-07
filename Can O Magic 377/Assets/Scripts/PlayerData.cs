@@ -66,7 +66,6 @@ public class PlayerData : MonoBehaviour
             GameData.Instance.highScoreTable[0].highScore = currentScore;
             GameData.Instance.RankScores();
         }
-        GameData.Instance.Save();
     }
 
     public void DisplayNextItem(Sprite nextItemSprite)
