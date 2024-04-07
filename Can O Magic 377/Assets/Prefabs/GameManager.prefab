@@ -50,11 +50,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eddd7bfb59d983547af4ddb1f9afc893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 4330800039075335937}
+  pauseMenuV: {fileID: 0}
+  pauseMenuH: {fileID: 0}
   powerItemMenu: {fileID: 0}
+  leaderboardMenu: {fileID: 0}
+  vLeaderboardData: {fileID: 0}
   playerController: {fileID: 0}
   tutorialScript: {fileID: 0}
   powerItemMenuScript: {fileID: 0}
+  verticalUI: {fileID: 0}
+  horizontalUI: {fileID: 0}
+  verticalButtons: {fileID: 0}
+  horizontalButtons: {fileID: 0}
+  SettingsV: {fileID: 0}
+  SettingsH: {fileID: 0}
 --- !u!114 &1576042094548284601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,8 +77,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasDoneTutorial: 0
+  nameEntered: 0
+  gameIsOver: 0
   hasDoneTutorialInt: 0
   highScore: 0
+  playerName: 
+  playerData: {fileID: 0}
+  soundSettings: {fileID: 0}
+  highScoreTable: []
 --- !u!114 &745841386447733496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +101,7 @@ MonoBehaviour:
   _powerItemPrefabListValue:
   - {fileID: 3736714292386934412, guid: 103c2735f31d4ac4593e41e3f2eedcc6, type: 3}
   - {fileID: 4180723753599176874, guid: 6e0efad76907afb42adf3828c39a6a65, type: 3}
-  - {fileID: 4537173832017922449, guid: b973b7420564b11418c5807e0192c2a3, type: 3}
+  - {fileID: 3195902820692750319, guid: 7dc9a77adb5644e4a8dad842578cfb06, type: 3}
   - {fileID: 8430031992343098825, guid: 47b72e916a919444e8203cbb5a09fa9c, type: 3}
 --- !u!114 &6972819490578618005
 MonoBehaviour:

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1335892249406092788}
   - component: {fileID: -752877187994119456}
   m_Layer: 0
-  m_Name: HolyAuraItem
+  m_Name: oldHolyAuraItem
   m_TagString: PowerItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
