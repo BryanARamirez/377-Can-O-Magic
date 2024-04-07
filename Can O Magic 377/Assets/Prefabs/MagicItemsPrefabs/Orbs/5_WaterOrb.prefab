@@ -275,7 +275,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reactionFor: 51
-  AllMagicItems: []
 --- !u!114 &7053732338913915832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce8270db2bf47b45beb9946c733835a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reactionFor: 55
+  _reactionFor: 5
   _mergeToPrefab: {fileID: 3958378610598462008, guid: e64bed18b31e49745ad2f21e510b630a,
     type: 3}
 --- !u!114 &-4393109477022903259
@@ -328,7 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1191a61908953014fa098303c286e4bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mergeVFX: {fileID: 3249253529233398128, guid: b217662c98acec049a6585de05ba5ce9,
+  _mergeVFX: {fileID: 5718548259009455428, guid: f3dba40c73af97644896cb57853e0364,
     type: 3}
 --- !u!4 &2971180740680542172 stripped
 Transform:

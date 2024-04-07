@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1191a61908953014fa098303c286e4bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mergeVFX: {fileID: 3249253529233398128, guid: b217662c98acec049a6585de05ba5ce9,
+  _mergeVFX: {fileID: 5718548259009455428, guid: f3dba40c73af97644896cb57853e0364,
     type: 3}
 --- !u!114 &1442355645354961318
 MonoBehaviour:
@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b26bedbbc574d345b1906ee1c460b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reactionFor: 53
+  _reactionFor: 3
   _getPowerItem: 3
 --- !u!114 &3375052349348148947
 MonoBehaviour:

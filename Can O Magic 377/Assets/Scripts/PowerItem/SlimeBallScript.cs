@@ -16,6 +16,13 @@ public class SlimeBallScript : MonoBehaviour
 {
     [SerializeField]private List<GameObject> _stuckObjects;
 
+    private MergeVFX _vFX;
+
+    private void Awake()
+    {
+        _vFX = GetComponent<MergeVFX>();
+    }
+
     /// <summary>
     /// when collides with Magic item:
     /// checks if the object is already sticking
@@ -45,6 +52,7 @@ public class SlimeBallScript : MonoBehaviour
             joint.anchor = collision.contacts[0].point;
             joint.connectedBody = collision.contacts[0].otherCollider.transform.GetComponentInParent<Rigidbody>();
             joint.enableCollision = false;
+            _vFX.PlayMergeVFX(joint.transform.position);
 
             if (_stuckObjects.Count > 0)
             {

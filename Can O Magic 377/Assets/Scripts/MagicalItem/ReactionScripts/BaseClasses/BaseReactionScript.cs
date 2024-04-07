@@ -18,7 +18,7 @@ public class BaseReactionScript : MonoBehaviour
     /// </summary>
     public virtual void Reaction(GameObject otherItem)
     {
-    
+        
     }
 
     /// <summary>

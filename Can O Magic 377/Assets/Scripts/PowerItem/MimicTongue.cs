@@ -12,6 +12,7 @@ public class MimicTongue : MonoBehaviour
 {
     //needed componenets
     private PlayerController _playerController;
+    private MergeVFX _mergeVFX;
 
     //has the game object been copied
     private bool _hasCopied = false;
@@ -22,6 +23,7 @@ public class MimicTongue : MonoBehaviour
     private void Awake()
     {
         _playerController = FindObjectOfType<PlayerController>().GetComponent<PlayerController>();
+        _mergeVFX = GetComponent<MergeVFX>();
     }
 
     /// <summary>
@@ -33,6 +35,7 @@ public class MimicTongue : MonoBehaviour
         if (!_hasCopied && collision.gameObject.tag == "MagicItem")
         {
             _hasCopied = true;
+            _mergeVFX.PlayMergeVFX(transform.position);
             GameObject copiedItem = collision.gameObject;
             _playerController.ReplaceCurrentItem(copiedItem, true);
         }

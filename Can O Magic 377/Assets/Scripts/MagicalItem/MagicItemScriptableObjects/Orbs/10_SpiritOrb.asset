@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c67acc20bf0e947be05dc48c5356e5, type: 3}
   m_Name: 10_SpiritOrb
   m_EditorClassIdentifier: 
-  _magicItemName: 59
+  _magicItemName: 9
   _points: 1525

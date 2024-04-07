@@ -18,6 +18,7 @@ TagManager:
   - horizontalUI
   - NextItemH
   - NextItemV
+  - TsunamiVFX
   layers:
   - Default
   - TransparentFX

@@ -212,7 +212,7 @@ public class GameData : Singleton<GameData>
                 float tempLocationZ = sceneData.gameObjectLocationZ[i];
                 Vector3 tempLocation = new Vector3((float)tempLocationX, (float)tempLocationY, (float)tempLocationZ);
 
-                GameObject NewItem = Instantiate(prefabGO[sceneData.gameObjectsIDS[i] - 50], tempLocation, Quaternion.identity);
+                GameObject NewItem = Instantiate(prefabGO[sceneData.gameObjectsIDS[i]], tempLocation, Quaternion.identity);
                 NewItem.GetComponent<MagicalItemScript>().SetDrop();
                 if (sceneData.gameObjectsHaveReacted[i] == 1)
                 {

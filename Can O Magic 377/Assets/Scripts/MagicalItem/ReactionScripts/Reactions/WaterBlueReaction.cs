@@ -17,7 +17,8 @@ public class WaterBlueReaction : BaseReactionScript
     private TsunamiLimiterScript _tsunamiLimiterScript;
     private Transform _topRightOfCan;
     private Transform _bottomLeftOfCan;
-    public GameObject[] AllMagicItems;
+    private GameObject[] AllMagicItems;
+    private GameObject _tsunamiVFX;
 
     private void Reset()
     {
@@ -33,6 +34,7 @@ public class WaterBlueReaction : BaseReactionScript
         _tsunamiLimiterScript = GameObject.FindGameObjectWithTag("TsunamiLimiter").GetComponent<TsunamiLimiterScript>();
         _topRightOfCan = GameObject.FindGameObjectWithTag("TopRight").transform;
         _bottomLeftOfCan = GameObject.FindGameObjectWithTag("BottomLeft").transform;
+        _tsunamiVFX = GameObject.FindGameObjectWithTag("TsunamiVFX");
     }
 
     /// <summary>
@@ -43,6 +45,7 @@ public class WaterBlueReaction : BaseReactionScript
     /// <param name="otherItem"></param>
     public override void Reaction(GameObject otherItem)
     {
+        _tsunamiVFX.GetComponent<ParticleSystem>().Play();
         GameObject[] AllPowerItems = GameObject.FindGameObjectsWithTag("PowerItem");
 
         foreach (GameObject powerItem in AllPowerItems)
