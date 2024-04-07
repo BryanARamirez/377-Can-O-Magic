@@ -24,7 +24,7 @@ public class GameData : Singleton<GameData>
     public List<int> prefabIDS = new List<int>();
     public List<GameObject> prefabGO = new List<GameObject>();
     private List<int> gameObjectIDs = new List<int>();
-    private List<GameObject> gameObjectsInScene = new List<GameObject>();
+    public List<GameObject> gameObjectsInScene = new List<GameObject>();
 
     private List<float> gameObjectsLocationsX = new List<float>();
     private List<float> gameObjectsLocationsY = new List<float>();

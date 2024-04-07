@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,6 +23,7 @@ public class GameOverManager : Singleton<GameOverManager>
         Debug.Log("Game Over");
         GameData.Instance.UpdateScoreboard();
         GameData.Instance.Save();
+        File.Delete(Application.persistentDataPath + "/sceneData.dat");
         GameData.Instance.keyboard.text = "";
         GameData.Instance.playerName = "";
         GameData.Instance.nameEntered = false;

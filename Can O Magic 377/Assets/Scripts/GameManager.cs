@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -136,6 +138,27 @@ public class GameManager : Singleton<GameManager>
     public void quitGame()
     {
         Application.Quit();
+    }
+    public void Restart()
+    {
+        File.Delete(Application.persistentDataPath + "/sceneData.dat");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        switch (Screen.orientation)
+        {
+            case ScreenOrientation.Portrait:
+            case ScreenOrientation.PortraitUpsideDown:
+                pauseMenuV.SetActive(!pauseMenuV.activeInHierarchy);
+                break;
+
+            case ScreenOrientation.LandscapeLeft:
+            case ScreenOrientation.LandscapeRight:
+                pauseMenuH.SetActive(!pauseMenuH.activeInHierarchy);
+                break;
+
+            default:
+                break;
+        }
+        Time.timeScale = 1.0f;
     }
     public void powerItemOpen()
     {
