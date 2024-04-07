@@ -24,9 +24,12 @@ public class GameManager : Singleton<GameManager>
     public bool reactionHappened;
     public string reactionOrb1, reactionOrb2;
 
+
+
     public override void Awake()
     {
         base.Awake();
+        GameData.Instance.steam = GameObject.FindGameObjectWithTag("Steam");
         GameData.Instance.playerData = FindAnyObjectByType<PlayerData>();
         vLeaderboardData = GameData.Instance.playerData.vLeaderboardData;
         verticalUI = GameData.Instance.playerData.verticalUI;
@@ -178,6 +181,7 @@ public class GameManager : Singleton<GameManager>
     private void OnChangeScene(Scene scene, LoadSceneMode mode)
     {
         playerController = FindAnyObjectByType<PlayerController>();
+        GameData.Instance.steam = GameObject.FindGameObjectWithTag("Steam");
         GameData.Instance.playerData = FindAnyObjectByType<PlayerData>();
         vLeaderboardData = GameData.Instance.playerData.vLeaderboardData;
         verticalUI = GameData.Instance.playerData.verticalUI;

@@ -9,7 +9,7 @@ public class SteamScript : MonoBehaviour
     [SerializeField] private TMP_Text _steamCounterV;
     [SerializeField] private TMP_Text _steamCounterH;
     [SerializeField] private int _maxDropCount = 3;
-    private int _currentDropCount = 0;
+    public int _currentDropCount = 0;
 
     [SerializeField] private bool drop = false;
 

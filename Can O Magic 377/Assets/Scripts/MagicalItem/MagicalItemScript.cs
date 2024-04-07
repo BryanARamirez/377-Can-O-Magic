@@ -41,6 +41,7 @@ public class MagicalItemScript : MonoBehaviour
     public void SetDrop()
     {
         _hasDropped = true;
+        GameData.Instance.Save();
     }
 
     public int GetPoints()
