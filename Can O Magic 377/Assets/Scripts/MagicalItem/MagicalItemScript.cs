@@ -19,6 +19,7 @@ public class MagicalItemScript : MonoBehaviour
     [SerializeField] private bool _hasReacted = false;
 
     [SerializeField] private bool _isMimic = false;
+    private bool hitSomethingOnce;
 
     /// <summary>
     /// get the magic item's type of magic item
@@ -41,7 +42,6 @@ public class MagicalItemScript : MonoBehaviour
     public void SetDrop()
     {
         _hasDropped = true;
-        GameData.Instance.Save();
     }
 
     public int GetPoints()
@@ -72,5 +72,14 @@ public class MagicalItemScript : MonoBehaviour
     public bool hasDropped
     {
         get { return _hasDropped; }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(hitSomethingOnce == false)
+        {
+            GameData.Instance.Save();
+            hitSomethingOnce = true;
+        }
     }
 }
