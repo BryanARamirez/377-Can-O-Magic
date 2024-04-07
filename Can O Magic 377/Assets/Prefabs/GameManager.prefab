@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 3911637446132274310}
   - component: {fileID: 6361888814393506581}
   - component: {fileID: 8295949913249278008}
+  - component: {fileID: 8646395046485834825}
   m_Layer: 5
   m_Name: BombButton
   m_TagString: Untagged
@@ -297,6 +298,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8646395046485834825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402595276847744832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de13b96098fb6004d93fb9a263a101a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 8295949913249278008}
+  _checkItem: 3
 --- !u!1 &535844156103830467
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,6 +1010,7 @@ GameObject:
   - component: {fileID: 7445241772306050937}
   - component: {fileID: 627578397519110864}
   - component: {fileID: 5551135035477565784}
+  - component: {fileID: 8292688850308265942}
   m_Layer: 5
   m_Name: SlimeBallButton
   m_TagString: Untagged
@@ -1116,6 +1132,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8292688850308265942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922492341445409546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de13b96098fb6004d93fb9a263a101a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 5551135035477565784}
+  _checkItem: 0
 --- !u!1 &1128669446711614194
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,6 +1158,7 @@ GameObject:
   - component: {fileID: 5850283261038306303}
   - component: {fileID: 2002922562708145316}
   - component: {fileID: 2610643808560845845}
+  - component: {fileID: 642947903335684925}
   m_Layer: 5
   m_Name: HolyAuraButton
   m_TagString: Untagged
@@ -1249,6 +1280,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &642947903335684925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128669446711614194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de13b96098fb6004d93fb9a263a101a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 2610643808560845845}
+  _checkItem: 2
 --- !u!1 &1250141027630288765
 GameObject:
   m_ObjectHideFlags: 0
@@ -2568,6 +2613,7 @@ GameObject:
   - component: {fileID: 1146124281079103057}
   - component: {fileID: 6293648475794694752}
   - component: {fileID: 4463826318754220667}
+  - component: {fileID: 6700346178086163827}
   m_Layer: 0
   m_Name: Magic Bomb
   m_TagString: Untagged
@@ -2689,6 +2735,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6700346178086163827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935780227601405740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de13b96098fb6004d93fb9a263a101a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 4463826318754220667}
+  _checkItem: 3
 --- !u!1 &1964895905142167437
 GameObject:
   m_ObjectHideFlags: 0
@@ -2987,6 +3047,7 @@ GameObject:
   - component: {fileID: 8446451944359361527}
   - component: {fileID: 3172429298752714937}
   - component: {fileID: 6400815833838367032}
+  - component: {fileID: 5120729324075183138}
   m_Layer: 5
   m_Name: MimicToungeButton
   m_TagString: Untagged
@@ -3108,6 +3169,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5120729324075183138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2327432928018169174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de13b96098fb6004d93fb9a263a101a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 6400815833838367032}
+  _checkItem: 1
 --- !u!1 &2573149850309967760
 GameObject:
   m_ObjectHideFlags: 0
@@ -3704,7 +3779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7299752279249066227
 Transform:
   m_ObjectHideFlags: 0
@@ -4509,6 +4584,7 @@ GameObject:
   - component: {fileID: 679483774160894137}
   - component: {fileID: 4660859747012013476}
   - component: {fileID: 1806271587807845467}
+  - component: {fileID: 1117637880231543604}
   m_Layer: 0
   m_Name: Holy Aura Button
   m_TagString: Untagged
@@ -4630,6 +4706,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1117637880231543604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379278187175508225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de13b96098fb6004d93fb9a263a101a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1806271587807845467}
+  _checkItem: 2
 --- !u!1 &3818528834899512513
 GameObject:
   m_ObjectHideFlags: 0
@@ -4746,6 +4836,7 @@ GameObject:
   - component: {fileID: 5878432022802364320}
   - component: {fileID: 8352942149037328261}
   - component: {fileID: 302517156912656785}
+  - component: {fileID: 2624171000323349280}
   m_Layer: 0
   m_Name: Mimic Tounge Button
   m_TagString: Untagged
@@ -4867,6 +4958,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2624171000323349280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966363645305904126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de13b96098fb6004d93fb9a263a101a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 302517156912656785}
+  _checkItem: 1
 --- !u!1 &4089988537787746048
 GameObject:
   m_ObjectHideFlags: 0
@@ -6381,6 +6486,7 @@ GameObject:
   - component: {fileID: 9096573327365452748}
   - component: {fileID: 7784711900452365025}
   - component: {fileID: 7187267325200594277}
+  - component: {fileID: 3176977656404982438}
   m_Layer: 0
   m_Name: Slime Button
   m_TagString: Untagged
@@ -6502,6 +6608,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3176977656404982438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6263212816316967420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de13b96098fb6004d93fb9a263a101a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 7187267325200594277}
+  _checkItem: 0
 --- !u!1 &6449770650077053185
 GameObject:
   m_ObjectHideFlags: 0
@@ -7264,6 +7384,7 @@ GameObject:
   - component: {fileID: 5178810712371142548}
   - component: {fileID: 8882294767443651375}
   - component: {fileID: 7098416684508226982}
+  - component: {fileID: 7942946346425633814}
   m_Layer: 5
   m_Name: PowerItemsButton
   m_TagString: Untagged
@@ -7289,7 +7410,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -8, y: -83}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 205, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &5178810712371142548
 CanvasRenderer:
@@ -7385,6 +7506,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7942946346425633814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725009709344938393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6becf5a72974deb4e865bfc2b23fbe46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonText: {fileID: 5143252753730339514}
 --- !u!1 &6861066503065448495
 GameObject:
   m_ObjectHideFlags: 0
