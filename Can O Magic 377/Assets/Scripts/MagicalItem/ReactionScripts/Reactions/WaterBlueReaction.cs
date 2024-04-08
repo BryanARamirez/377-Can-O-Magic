@@ -46,6 +46,7 @@ public class WaterBlueReaction : BaseReactionScript
     public override void Reaction(GameObject otherItem)
     {
         _tsunamiVFX.GetComponent<ParticleSystem>().Play();
+        _tsunamiVFX.GetComponent<AudioSource>().Play();
         GameObject[] AllPowerItems = GameObject.FindGameObjectsWithTag("PowerItem");
 
         foreach (GameObject powerItem in AllPowerItems)
