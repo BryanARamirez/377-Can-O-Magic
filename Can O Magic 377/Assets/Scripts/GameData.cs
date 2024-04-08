@@ -56,7 +56,7 @@ public class GameData : Singleton<GameData>
         
         DontDestroyOnLoad(this.gameObject);
         //For some reason Load(); needs to be active when testing on PC but not when on the actual phone.
-        Load();
+        //Load();
         RankScores();
     }
     private void OnApplicationQuit()
