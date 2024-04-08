@@ -40,6 +40,10 @@ public class PowerItemData : Singleton<PowerItemData>
         {
             //replace with function to replace current item with power item
             Debug.Log("used " + powerItem);
+            if (_playerController == null)
+            {
+                _playerController = GameObject.FindAnyObjectByType<PlayerController>();
+            }
             _playerController.ReplaceCurrentItem(_powerItemPrefabs[powerItem]);
             _availableItems[powerItem] = false;
         }
