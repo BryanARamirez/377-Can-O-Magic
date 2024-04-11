@@ -23,6 +23,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject SettingsV;
     [SerializeField] private GameObject SettingsH;
 
+    [SerializeField] private GameObject CombinationMenuH;
+    [SerializeField] private GameObject CombinationMenuV;
+
     public bool reactionHappened;
     public string reactionOrb1, reactionOrb2;
 
@@ -113,6 +116,26 @@ public class GameManager : Singleton<GameManager>
                         break;
                 }
             }
+        }
+    }
+    public void CombinationMenu()
+    {
+        switch (Screen.orientation)
+        {
+            case ScreenOrientation.Portrait:
+            case ScreenOrientation.PortraitUpsideDown:
+                CombinationMenuV.SetActive(!CombinationMenuV.activeInHierarchy);
+                pauseMenuV.SetActive(!pauseMenuV.activeInHierarchy);
+                break;
+
+            case ScreenOrientation.LandscapeLeft:
+            case ScreenOrientation.LandscapeRight:
+                CombinationMenuH.SetActive(!CombinationMenuH.activeInHierarchy);
+                pauseMenuH.SetActive(!pauseMenuH.activeInHierarchy);
+                break;
+
+            default:
+                break;
         }
     }
     public void Settings()

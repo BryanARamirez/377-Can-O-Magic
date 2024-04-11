@@ -39,6 +39,7 @@ public class GameOverTrigger : MonoBehaviour
         {
             GameOverManager.Instance.OnGameOver();
         }
+        //This needs to be off while on PC or you get constant error.
         GameData.Instance.playerName = GameData.Instance.keyboard.text;
     }
 
