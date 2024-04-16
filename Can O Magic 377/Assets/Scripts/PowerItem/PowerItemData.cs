@@ -91,4 +91,15 @@ public class PowerItemData : Singleton<PowerItemData>
 
         return num;
     }
+
+    public void ResetInventory()
+    {
+        List<PowerItemEnum> keys = new List<PowerItemEnum>(_availableItems.Keys);
+        //Dictionary<PowerItemEnum, bool>.KeyCollection keys = _availableItems.Keys;
+
+        foreach (PowerItemEnum key  in keys)
+        {
+            _availableItems[key] = false;
+        }
+    }
 }
