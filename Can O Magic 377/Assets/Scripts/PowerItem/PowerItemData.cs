@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [04/04/2024]
+ * Last Updated: [04/15/2024]
  * [script use to keep track of power items]
  */
 
@@ -17,6 +17,9 @@ public class PowerItemData : Singleton<PowerItemData>
     [SerializeField] private List<GameObject> _powerItemPrefabListValue;
     private Dictionary<PowerItemEnum, GameObject> _powerItemPrefabs;
 
+    /// <summary>
+    /// sets up needed variables and components
+    /// </summary>
     private void OnEnable()
     {
         _playerController = GameObject.FindAnyObjectByType<PlayerController>();
@@ -92,10 +95,12 @@ public class PowerItemData : Singleton<PowerItemData>
         return num;
     }
 
+    /// <summary>
+    /// resets available power items
+    /// </summary>
     public void ResetInventory()
     {
         List<PowerItemEnum> keys = new List<PowerItemEnum>(_availableItems.Keys);
-        //Dictionary<PowerItemEnum, bool>.KeyCollection keys = _availableItems.Keys;
 
         foreach (PowerItemEnum key  in keys)
         {
