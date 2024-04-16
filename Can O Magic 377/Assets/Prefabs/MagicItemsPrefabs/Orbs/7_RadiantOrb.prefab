@@ -83,7 +83,10 @@ MonoBehaviour:
   _hasReacted: 0
   _isMimic: 0
   _magicItemModel: {fileID: 4526472032514625663}
-  _darkenPercentage: 1
+  _magicItemMaterial:
+  - {fileID: 0}
+  - {fileID: 0}
+  _darkenPercentage: 0.3
 --- !u!114 &5457241882393097733
 MonoBehaviour:
   m_ObjectHideFlags: 0
