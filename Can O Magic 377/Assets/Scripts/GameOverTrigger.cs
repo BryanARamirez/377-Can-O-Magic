@@ -39,7 +39,7 @@ public class GameOverTrigger : MonoBehaviour
         {
             GameOverManager.Instance.OnGameOver();
         }
-        GameData.Instance.playerName = GameData.Instance.keyboard.text;
+        //GameData.Instance.playerName = GameData.Instance.keyboard.text;
     }
 
     /// <summary>
