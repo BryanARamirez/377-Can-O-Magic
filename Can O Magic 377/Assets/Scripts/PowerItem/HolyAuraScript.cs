@@ -19,6 +19,6 @@ public class HolyAuraScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-            holyAuraAOE.SetActive(true);
+        holyAuraAOE.SetActive(true);
     }
 }

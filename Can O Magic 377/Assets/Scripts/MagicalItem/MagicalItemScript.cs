@@ -22,13 +22,13 @@ public class MagicalItemScript : MonoBehaviour
     private bool hitSomethingOnce;
 
     [SerializeField] private GameObject _magicItemModel;
-    private Material _magicItemMaterial;
+    public Material[] _magicItemMaterial = new Material[2];
     [Range(0, 1)]
     [SerializeField] private float _darkenPercentage = .3f;
 
     private void Awake()
     {
-        _magicItemMaterial = _magicItemModel.GetComponent<Renderer>().material;
+        _magicItemMaterial = _magicItemModel.GetComponent<Renderer>().materials;
     }
 
     /// <summary>
@@ -44,7 +44,13 @@ public class MagicalItemScript : MonoBehaviour
         if (!_hasReacted)
         {
             _hasReacted = true;
-            _magicItemMaterial.color = new Color(_magicItemMaterial.color.r * (1 - _darkenPercentage), _magicItemMaterial.color.g * (1 - _darkenPercentage), _magicItemMaterial.color.b * (1 - _darkenPercentage), _magicItemMaterial.color.a);
+
+            foreach (Material mat in _magicItemMaterial)
+            {
+                mat.SetColor("_EmissionColor", Color.black);
+                mat.color = new Color(mat.color.r * (1 - _darkenPercentage), mat.color.g * (1 - _darkenPercentage), mat.color.b * (1 - _darkenPercentage), mat.color.a);
+            }
+            //_magicItemMaterial.color = new Color(_magicItemMaterial.color.r * (1 - _darkenPercentage), _magicItemMaterial.color.g * (1 - _darkenPercentage), _magicItemMaterial.color.b * (1 - _darkenPercentage), _magicItemMaterial.color.a);
         }
     }
 

@@ -159,6 +159,7 @@ public class GameManager : Singleton<GameManager>
                 break;
         }
         Time.timeScale = 1.0f;
+        PowerItemData.Instance.ResetInventory();
     }
     public void powerItemOpen()
     {
