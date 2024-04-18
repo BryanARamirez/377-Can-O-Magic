@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/03/2024]
+ * Last Updated: [04/17/2024]
  * [reaction for conduction]
  */
 
@@ -56,8 +56,9 @@ public class WaterPlasmaReaction : BaseReactionScript
                 _isConnected = true;
             }
 
-            if (collision.gameObject != _conductingObject && collision.gameObject.tag == "MagicItem" && collision.gameObject.gameObject.GetComponent<MagicItemMergeScript>() != null)
+            if (collision.gameObject != _conductingObject && collision.gameObject.tag == "MagicItem" && collision.gameObject.GetComponent<MagicItemMergeScript>() != null)
             {
+                Debug.Log("buh");
                 MagicalItemScript otherMagicalItemScript = collision.gameObject.GetComponent<MagicalItemScript>();
                 MagicItemMergeScript otherMergeScript = collision.gameObject.GetComponent<MagicItemMergeScript>();
 

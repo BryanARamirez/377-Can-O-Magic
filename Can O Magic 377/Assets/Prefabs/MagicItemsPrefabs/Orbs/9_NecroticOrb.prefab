@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reactionFor: 6
-  _shrinkDivideBy: 0.5
+  _shrinkDivideBy: 2
 --- !u!114 &-7183958954454691745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,17 +285,17 @@ PrefabInstance:
     - target: {fileID: 461714977170885322, guid: 3146729f9377c0540b7b4d3d4f66034c,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 461714977170885322, guid: 3146729f9377c0540b7b4d3d4f66034c,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 461714977170885322, guid: 3146729f9377c0540b7b4d3d4f66034c,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 461714977170885322, guid: 3146729f9377c0540b7b4d3d4f66034c,
         type: 3}
