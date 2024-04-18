@@ -24,9 +24,12 @@ public class PowerItemMenuButton : MonoBehaviour
     {
         if (PowerItemData.Instance.NumberOfPowerItems() != lastAmount)
         {
+            if (PowerItemData.Instance.NumberOfPowerItems() > lastAmount)
+            {
+                StartCoroutine(FlashMenu());
+            }
             lastAmount = PowerItemData.Instance.NumberOfPowerItems();
             _buttonText.text = "Power Item: " + PowerItemData.Instance.NumberOfPowerItems();
-            StartCoroutine(FlashMenu());
         }
     }
 

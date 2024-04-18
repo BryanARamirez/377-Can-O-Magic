@@ -6437,6 +6437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonText: {fileID: 237872912}
+  _buttonImage: {fileID: 1249094306}
 --- !u!1 &1300196176
 GameObject:
   m_ObjectHideFlags: 0
