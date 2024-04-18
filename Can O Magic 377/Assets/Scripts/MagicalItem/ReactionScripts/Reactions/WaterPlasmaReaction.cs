@@ -58,7 +58,6 @@ public class WaterPlasmaReaction : BaseReactionScript
 
             if (collision.gameObject != _conductingObject && collision.gameObject.tag == "MagicItem" && collision.gameObject.GetComponent<MagicItemMergeScript>() != null)
             {
-                Debug.Log("buh");
                 MagicalItemScript otherMagicalItemScript = collision.gameObject.GetComponent<MagicalItemScript>();
                 MagicItemMergeScript otherMergeScript = collision.gameObject.GetComponent<MagicItemMergeScript>();
 
