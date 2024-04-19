@@ -11,6 +11,7 @@ using UnityEngine;
 public class NecroticRadiantReaction : BaseReactionScript
 {
     [SerializeField] private float _shrinkDivideBy;
+    [SerializeField] private GameObject _shrinkVFX;
 
     /// <summary>
     /// resets the default for _reactionFor
@@ -27,5 +28,8 @@ public class NecroticRadiantReaction : BaseReactionScript
     {
         transform.localScale = transform.localScale / _shrinkDivideBy;
         otherItem.transform.localScale = otherItem.transform.localScale / _shrinkDivideBy;
+
+        Instantiate(_shrinkVFX, transform.position, Quaternion.identity);
+        Instantiate(_shrinkVFX, otherItem.transform.position, Quaternion.identity);
     }
 }

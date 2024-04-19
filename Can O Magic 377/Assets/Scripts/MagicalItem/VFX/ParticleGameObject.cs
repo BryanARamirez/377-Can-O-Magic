@@ -16,7 +16,7 @@ public class ParticleGameObject : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        GetComponent<ParticleSystem>().Emit(1);
+        //GetComponent<ParticleSystem>().Emit(1);
         Destroy(gameObject, 3);
     }
 }
