@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [3/20/2024]
+ * Last Updated: [4/19/2024]
  * [Script for all particle effect vfx
  * (MAKE SURE PLAY ON AWAKE IS TRUE)]
  */

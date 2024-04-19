@@ -129,6 +129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reactionFor: 3
+  _voidVFX: {fileID: 8142440698099944235, guid: 4c56d6a8c1b9b0440b6aabe369771f5a,
+    type: 3}
 --- !u!114 &878887171670878346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1191a61908953014fa098303c286e4bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mergeVFX: {fileID: 5718548259009455428, guid: f3dba40c73af97644896cb57853e0364,
+  _mergeVFX: {fileID: 1510894723722044086, guid: b80358fbbcd9e374790ac4a2b1030bb0,
     type: 3}
 --- !u!114 &-539469363183533588
 MonoBehaviour:
