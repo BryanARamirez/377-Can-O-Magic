@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionHitBox: {fileID: 1094630802633580578}
-  _explosionDelayTime: 2.5
+  _explosionDelayTime: 0
   _explosionTime: 0.1
 --- !u!1001 &121295699933762303
 PrefabInstance:

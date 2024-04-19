@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/14/2024]
+ * Last Updated: [04/15/2024]
  * [script for the bomb power item]
  */
 
@@ -21,6 +21,7 @@ public class BombScript : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         StartCoroutine(Explode());
+        
     }
 
     /// <summary>

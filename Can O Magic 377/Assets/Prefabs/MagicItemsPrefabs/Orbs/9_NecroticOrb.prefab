@@ -49,7 +49,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3958378610598462008}
   serializedVersion: 4
-  m_Mass: 4.6
+  m_Mass: 9.2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -85,7 +85,10 @@ MonoBehaviour:
   _hasReacted: 0
   _isMimic: 0
   _magicItemModel: {fileID: 3697705616569878848}
-  _darkenPercentage: 1
+  _magicItemMaterial:
+  - {fileID: 0}
+  - {fileID: 0}
+  _darkenPercentage: 0.3
 --- !u!114 &5457241882393097733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,17 +285,17 @@ PrefabInstance:
     - target: {fileID: 461714977170885322, guid: 3146729f9377c0540b7b4d3d4f66034c,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 461714977170885322, guid: 3146729f9377c0540b7b4d3d4f66034c,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 461714977170885322, guid: 3146729f9377c0540b7b4d3d4f66034c,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 461714977170885322, guid: 3146729f9377c0540b7b4d3d4f66034c,
         type: 3}
