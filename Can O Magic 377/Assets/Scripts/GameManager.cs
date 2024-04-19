@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.RenderGraphModule;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
@@ -23,6 +26,16 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject SettingsV;
     [SerializeField] private GameObject SettingsH;
 
+    [SerializeField] private GameObject CombinationMenuH;
+    [SerializeField] private GameObject CombinationMenuV;
+
+    public GameObject GameOverScreenV;
+    public GameObject GameOverScreenH;
+    public GameObject EnterNameButtonV;
+    public GameObject EnterNameButtonH;
+    public TMP_Text NameV;
+    public TMP_Text NameH;
+
     public bool reactionHappened;
     public string reactionOrb1, reactionOrb2;
 
@@ -37,6 +50,8 @@ public class GameManager : Singleton<GameManager>
         verticalUI = GameData.Instance.playerData.verticalUI;
         horizontalUI = GameData.Instance.playerData.horizontalUI;
         vLeaderboardData.SetActive(false);
+        GameOverScreenH.SetActive(false);
+        GameOverScreenV.SetActive(false);
     }
     private void Update()
     {
@@ -68,6 +83,21 @@ public class GameManager : Singleton<GameManager>
             default: 
                 break;
         }
+        if(GameData.Instance.gameIsOver)
+        {
+            if(GameData.Instance.playerData.currentScore > GameData.Instance.highScoreTable[0].highScore)
+            {
+                GameData.Instance.playerName = GameData.Instance.keyboard.text;
+                NameH.text = GameData.Instance.keyboard.text;
+                NameV.text = GameData.Instance.keyboard.text;
+            }
+        }
+        
+    }
+    public void TestGameOver()
+    {
+        GameData.Instance.gameIsOver = true;
+        GameOverManager.Instance.OnGameOver();
     }
     public void pauseGame()
     {
@@ -113,6 +143,26 @@ public class GameManager : Singleton<GameManager>
                         break;
                 }
             }
+        }
+    }
+    public void CombinationMenu()
+    {
+        switch (Screen.orientation)
+        {
+            case ScreenOrientation.Portrait:
+            case ScreenOrientation.PortraitUpsideDown:
+                CombinationMenuV.SetActive(!CombinationMenuV.activeInHierarchy);
+                pauseMenuV.SetActive(!pauseMenuV.activeInHierarchy);
+                break;
+
+            case ScreenOrientation.LandscapeLeft:
+            case ScreenOrientation.LandscapeRight:
+                CombinationMenuH.SetActive(!CombinationMenuH.activeInHierarchy);
+                pauseMenuH.SetActive(!pauseMenuH.activeInHierarchy);
+                break;
+
+            default:
+                break;
         }
     }
     public void Settings()
@@ -210,6 +260,8 @@ public class GameManager : Singleton<GameManager>
         vLeaderboardData = GameData.Instance.playerData.vLeaderboardData;
         verticalUI = GameData.Instance.playerData.verticalUI;
         horizontalUI = GameData.Instance.playerData.horizontalUI;
+        GameOverScreenV.SetActive(false);
+        GameOverScreenH.SetActive(false);
         GameData.Instance.Load();
     }
     IEnumerator powerItemMenuFalse(float delayTime)

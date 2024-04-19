@@ -88,7 +88,10 @@ public class PlayerData : MonoBehaviour
         currentScore = 0;
         for (int i = 0; i < itemsInCan.Length; i++)
         {
-            currentScore += itemsInCan[i].GetComponent<MagicalItemScript>().GetPoints();
+            if (itemsInCan[i].GetComponent<MagicalItemScript>().hasDropped)
+            {
+                currentScore += itemsInCan[i].GetComponent<MagicalItemScript>().GetPoints();
+            }
         }
     }
     public void UpdateLeaderboard()

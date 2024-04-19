@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [4/15/2024]
+ * Last Updated: [02/26/2024]
  * [Placed in Magic items to detect game over]
  */
 
@@ -26,21 +26,11 @@ public class GameOverTrigger : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (_canGameOver && transform.position.y > _topOfCan.position.y)
+        if(_canGameOver && transform.position.y > _topOfCan.position.y)
         {
             GameData.Instance.gameIsOver = true;
-            PowerItemData.Instance.ResetInventory();
-            GameData.Instance.keyboard = TouchScreenKeyboard.Open(GameData.Instance.playerName);
-        }
-        if (string.IsNullOrEmpty(GameData.Instance.playerName) == false && GameData.Instance.keyboard.active == false)
-        {
-            GameData.Instance.nameEntered = true;
-        }
-        if (GameData.Instance.nameEntered)
-        {
             GameOverManager.Instance.OnGameOver();
         }
-        //GameData.Instance.playerName = GameData.Instance.keyboard.text;
     }
 
     /// <summary>
@@ -50,6 +40,6 @@ public class GameOverTrigger : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         _canGameOver = true;
-        //GetComponent<Rigidbody>().drag = 1f;
+        GetComponent<Rigidbody>().drag = 1f;
     }
 }

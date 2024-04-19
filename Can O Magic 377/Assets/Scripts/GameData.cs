@@ -56,7 +56,7 @@ public class GameData : Singleton<GameData>
         
         DontDestroyOnLoad(this.gameObject);
         //For some reason Load(); needs to be active when testing on PC but not when on the actual phone.
-        //Load();
+        Load();
         RankScores();
     }
     private void OnApplicationQuit()
@@ -195,6 +195,8 @@ public class GameData : Singleton<GameData>
                 new GameDataContainer{highScore = gameData.fourthScore, playerName = gameData.fourthName},
                 new GameDataContainer{highScore = gameData.fifthScore, playerName = gameData.fifthName}
             };
+            soundSettings.musicSliderH.value = gameData.musicVolume;
+            soundSettings.musicSliderV.value = gameData.musicVolume;
             soundSettings.SetMusicVolume();
         }
 
