@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.RenderGraphModule;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
@@ -25,6 +28,13 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] private GameObject CombinationMenuH;
     [SerializeField] private GameObject CombinationMenuV;
+
+    public GameObject GameOverScreenV;
+    public GameObject GameOverScreenH;
+    public GameObject EnterNameButtonV;
+    public GameObject EnterNameButtonH;
+    public TMP_Text NameV;
+    public TMP_Text NameH;
 
     public bool reactionHappened;
     public string reactionOrb1, reactionOrb2;
@@ -71,6 +81,18 @@ public class GameManager : Singleton<GameManager>
             default: 
                 break;
         }
+        if(GameData.Instance.gameIsOver)
+        {
+            GameData.Instance.playerName = GameData.Instance.keyboard.text;
+            NameH.text = GameData.Instance.keyboard.text;
+            NameV.text = GameData.Instance.keyboard.text;
+        }
+        
+    }
+    public void TestGameOver()
+    {
+        GameData.Instance.gameIsOver = true;
+        GameOverManager.Instance.OnGameOver();
     }
     public void pauseGame()
     {
