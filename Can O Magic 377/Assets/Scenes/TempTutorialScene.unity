@@ -7694,7 +7694,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1489136051}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: CombinationMenu
         m_Mode: 1
@@ -19629,7 +19629,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1489136051}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: CombinationMenu
         m_Mode: 1
