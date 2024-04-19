@@ -50,6 +50,8 @@ public class GameManager : Singleton<GameManager>
         verticalUI = GameData.Instance.playerData.verticalUI;
         horizontalUI = GameData.Instance.playerData.horizontalUI;
         vLeaderboardData.SetActive(false);
+        GameOverScreenH.SetActive(false);
+        GameOverScreenV.SetActive(false);
     }
     private void Update()
     {
@@ -83,9 +85,12 @@ public class GameManager : Singleton<GameManager>
         }
         if(GameData.Instance.gameIsOver)
         {
-            GameData.Instance.playerName = GameData.Instance.keyboard.text;
-            NameH.text = GameData.Instance.keyboard.text;
-            NameV.text = GameData.Instance.keyboard.text;
+            if(GameData.Instance.playerData.currentScore > GameData.Instance.highScoreTable[0].highScore)
+            {
+                GameData.Instance.playerName = GameData.Instance.keyboard.text;
+                NameH.text = GameData.Instance.keyboard.text;
+                NameV.text = GameData.Instance.keyboard.text;
+            }
         }
         
     }
@@ -254,6 +259,8 @@ public class GameManager : Singleton<GameManager>
         vLeaderboardData = GameData.Instance.playerData.vLeaderboardData;
         verticalUI = GameData.Instance.playerData.verticalUI;
         horizontalUI = GameData.Instance.playerData.horizontalUI;
+        GameOverScreenV.SetActive(false);
+        GameOverScreenH.SetActive(false);
         GameData.Instance.Load();
     }
     IEnumerator powerItemMenuFalse(float delayTime)

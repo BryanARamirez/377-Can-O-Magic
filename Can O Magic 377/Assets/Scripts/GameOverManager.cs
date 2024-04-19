@@ -65,17 +65,25 @@ public class GameOverManager : Singleton<GameOverManager>
     public void GameOverRestart()
     {
         Debug.Log("Game Over");
-        if (string.IsNullOrEmpty(GameData.Instance.playerName) == true)
+        if(GameData.Instance.playerData.currentScore > GameData.Instance.highScoreTable[0].highScore)
         {
-            GameData.Instance.playerName = "???";
+            if (string.IsNullOrEmpty(GameData.Instance.playerName) == true)
+            {
+                GameData.Instance.playerName = "???";
+            }
         }
         GameData.Instance.UpdateScoreboard();
         GameData.Instance.Save();
         File.Delete(Application.persistentDataPath + "/sceneData.dat");
-        GameData.Instance.keyboard.text = "";
+        if(GameData.Instance.playerData.currentScore > GameData.Instance.highScoreTable[0].highScore)
+        {
+            GameData.Instance.keyboard.text = "";
+        }
         GameData.Instance.playerName = "";
         GameData.Instance.nameEntered = false;
         GameData.Instance.gameIsOver = false;
+        GameManager.Instance.GameOverScreenH.SetActive(false);
+        GameManager.Instance.GameOverScreenV.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
