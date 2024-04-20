@@ -152,13 +152,33 @@ public class GameManager : Singleton<GameManager>
             case ScreenOrientation.Portrait:
             case ScreenOrientation.PortraitUpsideDown:
                 CombinationMenuV.SetActive(!CombinationMenuV.activeInHierarchy);
-                pauseMenuV.SetActive(!pauseMenuV.activeInHierarchy);
+                //pauseMenuV.SetActive(!pauseMenuV.activeInHierarchy);
+                if(CombinationMenuV.activeInHierarchy)
+                {
+                    Time.timeScale = 0;
+                    playerController.enabled = false;
+                }
+                else
+                {
+                    Time.timeScale = 1;
+                    playerController.enabled = true;
+                }
                 break;
 
             case ScreenOrientation.LandscapeLeft:
             case ScreenOrientation.LandscapeRight:
                 CombinationMenuH.SetActive(!CombinationMenuH.activeInHierarchy);
-                pauseMenuH.SetActive(!pauseMenuH.activeInHierarchy);
+                //pauseMenuH.SetActive(!pauseMenuH.activeInHierarchy);
+                if (CombinationMenuH.activeInHierarchy)
+                {
+                    Time.timeScale = 0;
+                    playerController.enabled = false;
+                }
+                else
+                {
+                    Time.timeScale = 1;
+                    playerController.enabled = true;
+                }
                 break;
 
             default:
