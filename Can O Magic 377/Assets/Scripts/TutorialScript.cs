@@ -8,14 +8,15 @@ public class TutorialScript : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI tutorialText;
     [SerializeField] private GameObject tutorialTextObj;
+    [SerializeField] private GameObject earthOrbPrefab;
+    [SerializeField] private GameObject fireOrbPrefab;
     [SerializeField] private GameObject tutorialBackground;
-    [SerializeField] private PlayerData playerData;
+    [SerializeField] private GameObject tutorialSkipButton;
     [SerializeField] private string[] tutorialMergeArray;
     [SerializeField] private string[] tutorialReactionArray;
     [SerializeField] private string[] tutorialEndingArray;
-    private GameData gameData;
-    public GameObject tutorialMergeOrb;
-    public GameObject tutorialReactOrb;
+    private Vector3 startPos = new Vector3(0, -7.779999f, 0);
+    private Vector3 fallPos = new Vector3(0, -2.779999f, 0);
     private float textSpeed = 0.1f;
     private int mergeTaps = 0;
     private int reactTaps = 0;
@@ -29,96 +30,80 @@ public class TutorialScript : MonoBehaviour
 
     private void Start()
     {
-        isReactTutorial = false;
-        isTutorialEnding = false;
-        tutorialEnded = false;
-        tutorialText.text = string.Empty;
-        playerData = FindAnyObjectByType<PlayerData>();
-        gameData = FindAnyObjectByType<GameData>();
-        if(playerData != null )
-        {
-            if (playerData.inTutorial)
-            {
-                tutorialBackground.SetActive(true);
-                tutorialTextObj.SetActive(true);
-                StartDialouge();
-            }
-        }
+        TutorialSetUp();
     }
     private void Update()
     {
-        if(playerData != null)
+        if(GameData.Instance.hasDoneTutorial == false)
         {
-            if (playerData.inTutorial)
+            if (Input.touchCount > 0)
             {
-                 if(Input.touchCount > 0)
+                Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Ended)
                 {
-                    Touch touch = Input.GetTouch(0);
-                    if(touch.phase == TouchPhase.Ended)
+                    if (isReactTutorial == false)
                     {
-                        if(isReactTutorial == false)
+                        if (tutorialText.text == tutorialMergeArray[mergeIndex])
                         {
-                            if (tutorialText.text == tutorialMergeArray[mergeIndex])
+                            NextLine();
+                        }
+                        else
+                        {
+                            StopAllCoroutines();
+                            tutorialText.text = tutorialMergeArray[mergeIndex];
+                        }
+                        if (tutorialText.text == tutorialMergeArray[3])
+                        {
+                            mergeTaps++;
+                            if (mergeTaps == 2)
                             {
-                                NextLine();
-                            }
-                            else
-                            {
-                                StopAllCoroutines();
-                                tutorialText.text = tutorialMergeArray[mergeIndex];
-                            }
-                            if (tutorialText.text == tutorialMergeArray[3])
-                            {
-                                mergeTaps++;
-                                if (mergeTaps == 2)
-                                {
-                                    tutorialMergeOrb.SetActive(true);
-                                    StartCoroutine(ReactWaitTimer());
+                                Instantiate(earthOrbPrefab, fallPos, transform.rotation);
+                                StartCoroutine(ReactWaitTimer());
 
-                                }
                             }
                         }
-                        if (isReactTutorial && isTutorialEnding == false)
+                    }
+                    if (isReactTutorial && isTutorialEnding == false)
+                    {
+                        if (tutorialText.text == tutorialReactionArray[reactIndex])
                         {
-                            if (tutorialText.text == tutorialReactionArray[reactIndex])
+                            NextLine();
+                        }
+                        else
+                        {
+                            StopAllCoroutines();
+                            tutorialText.text = tutorialReactionArray[reactIndex];
+                        }
+                        if (tutorialText.text == tutorialReactionArray[5])
+                        {
+                            reactTaps++;
+                            if (reactTaps == 2)
                             {
-                                NextLine();
-                            }
-                            else
-                            {
-                                StopAllCoroutines();
-                                tutorialText.text = tutorialReactionArray[reactIndex];
-                            }
-                            if (tutorialText.text == tutorialReactionArray[5])
-                            {
-                                reactTaps++;
-                                if (reactTaps == 2)
-                                {
-                                    tutorialReactOrb.SetActive(true);
-                                    StartCoroutine(EndingWaitTimer());
-                                }
+                                Instantiate(fireOrbPrefab, fallPos, transform.rotation);
+                                StartCoroutine(EndingWaitTimer());
                             }
                         }
-                        if(isTutorialEnding)
+                    }
+                    if (isTutorialEnding)
+                    {
+                        if (tutorialText.text == tutorialEndingArray[endingIndex])
                         {
-                            if (tutorialText.text == tutorialEndingArray[endingIndex])
+                            NextLine();
+                        }
+                        else
+                        {
+                            StopAllCoroutines();
+                            tutorialText.text = tutorialEndingArray[endingIndex];
+                        }
+                        if (tutorialText.text == tutorialEndingArray[2])
+                        {
+                            endingTaps++;
+                            if (endingTaps == 2)
                             {
-                                NextLine();
-                            }
-                            else
-                            {
-                                StopAllCoroutines();
-                                tutorialText.text = tutorialEndingArray[endingIndex];
-                            }
-                            if (tutorialText.text == tutorialEndingArray[2])
-                            {
-                                endingTaps++;
-                                if (endingTaps == 2)
-                                {
-                                    gameData.hasDoneTutorial = true;
-                                    gameData.Save();
-                                    tutorialEnded = true;
-                                }
+                                GameData.Instance.hasDoneTutorial = true;
+                                GameData.Instance.Save();
+                                this.enabled = false;
+                                tutorialEnded = true;
                             }
                         }
                     }
@@ -176,6 +161,7 @@ public class TutorialScript : MonoBehaviour
         isReactTutorial = true;
         tutorialBackground.SetActive(true);
         tutorialTextObj.SetActive(true);
+        tutorialSkipButton.SetActive(true);
         StartDialouge();
     }
     IEnumerator EndingWaitTimer()
@@ -185,6 +171,7 @@ public class TutorialScript : MonoBehaviour
         isTutorialEnding = true;
         tutorialBackground.SetActive(true);
         tutorialTextObj.SetActive(true);
+        tutorialSkipButton.SetActive(true);
         StartDialouge();
     }
 
@@ -202,6 +189,7 @@ public class TutorialScript : MonoBehaviour
             {
                 tutorialBackground.SetActive(false);
                 tutorialTextObj.SetActive(false);
+                tutorialSkipButton.SetActive(false);
             }
         }
         else if (isReactTutorial == true && isTutorialEnding == false)
@@ -216,6 +204,7 @@ public class TutorialScript : MonoBehaviour
             {
                 tutorialBackground.SetActive(false);
                 tutorialTextObj.SetActive(false);
+                tutorialSkipButton.SetActive(false);
             }
         }
         else if (isTutorialEnding)
@@ -230,7 +219,26 @@ public class TutorialScript : MonoBehaviour
             {
                 tutorialBackground.SetActive(false);
                 tutorialTextObj.SetActive(false);
+                tutorialSkipButton.SetActive(false);
             }
+        }
+    }
+    public void TutorialSetUp()
+    {
+        mergeTaps = 0;
+        reactTaps = 0;
+        endingTaps = 0;
+        isReactTutorial = false;
+        isTutorialEnding = false;
+        tutorialEnded = false;
+        tutorialText.text = string.Empty;
+        if (GameData.Instance.hasDoneTutorial == false)
+        {
+            tutorialBackground.SetActive(true);
+            tutorialTextObj.SetActive(true);
+            tutorialSkipButton.SetActive(true);
+            Instantiate(earthOrbPrefab, startPos, transform.rotation);
+            StartDialouge();
         }
     }
 }

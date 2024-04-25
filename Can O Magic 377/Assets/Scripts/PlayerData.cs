@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using TMPro;
 
@@ -43,21 +41,12 @@ public class PlayerData : MonoBehaviour
     public GameObject verticalUI;
     public GameObject horizontalUI;
     private GameObject[] itemsInCan;
-    public bool inTutorial;
 
     private void Awake()
     {
         NextImageV = GameObject.FindGameObjectWithTag("NextItemV").GetComponent<Image>();
         NextImageH = GameObject.FindGameObjectWithTag("NextItemH").GetComponent<Image>();
         tutorialScript = FindAnyObjectByType<TutorialScript>();
-        if (tutorialScript != null )
-        {
-            inTutorial = true;
-        }
-        else
-        {
-            inTutorial = false;
-        }
     }
     private void OnApplicationQuit()
     {
