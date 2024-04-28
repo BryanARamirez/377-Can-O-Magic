@@ -72,7 +72,7 @@ public class PowerItemNotifyScript : MonoBehaviour
             }
 
             Color tmp = _spriteRenderer.color;
-            tmp.a = (1 - u);
+            tmp.a = (1 - u * .5f);
             _spriteRenderer.color = tmp;
         }
     }
