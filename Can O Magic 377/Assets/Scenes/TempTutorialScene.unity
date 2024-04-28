@@ -2487,7 +2487,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -8, y: -54.299988}
+  m_AnchoredPosition: {x: -8, y: -54.30005}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &154609447
@@ -13406,7 +13406,7 @@ GameObject:
   - component: {fileID: 1249094308}
   m_Layer: 5
   m_Name: PowerItemsButton
-  m_TagString: Untagged
+  m_TagString: PowerItemButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24135,7 +24135,7 @@ PrefabInstance:
     - target: {fileID: 3647617506978758942, guid: 34eee17f95834e64a87b29366b6b34f7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -23.2
+      value: -23.199951
       objectReference: {fileID: 0}
     - target: {fileID: 4330800039075335937, guid: 34eee17f95834e64a87b29366b6b34f7,
         type: 3}
