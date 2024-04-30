@@ -58,7 +58,7 @@ public class SlimeBallScript : MonoBehaviour
             {
                 for (int index = _stuckObjects.Count - 1; index >= 0; index--)
                 {
-                    Physics.IgnoreCollision(collision.gameObject.GetComponentInChildren<Collider>(), _stuckObjects[index].GetComponentInChildren<Collider>(), true);
+                    //Physics.IgnoreCollision(collision.gameObject.GetComponentInChildren<Collider>(), _stuckObjects[index].GetComponentInChildren<Collider>(), true);
                 }
             }
             _stuckObjects.Add(collision.gameObject);
