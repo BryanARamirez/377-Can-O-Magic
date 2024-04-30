@@ -24,6 +24,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject horizontalButtons;
     [SerializeField] private GameObject SettingsV;
     [SerializeField] private GameObject SettingsH;
+    [SerializeField] private GameObject CreditsH;
+    [SerializeField] private GameObject CreditsV;
 
     [SerializeField] private GameObject CombinationMenuH;
     [SerializeField] private GameObject CombinationMenuV;
@@ -97,6 +99,48 @@ public class GameManager : Singleton<GameManager>
             }
         }
         
+    }
+    public void ScreenOrientationChange()
+    {
+        switch (Screen.orientation)
+        {
+            case ScreenOrientation.Portrait:
+            case ScreenOrientation.PortraitUpsideDown:
+                Screen.orientation = ScreenOrientation.LandscapeLeft;
+                SettingsH.SetActive(true);
+                SettingsV.SetActive(false);
+                break;
+
+            case ScreenOrientation.LandscapeLeft:
+            case ScreenOrientation.LandscapeRight:
+                Screen.orientation = ScreenOrientation.Portrait;
+                SettingsH.SetActive(false);
+                SettingsV.SetActive(true);
+                break;
+
+            default:
+                break;
+        }
+    }
+    public void Credits()
+    {
+        switch (Screen.orientation)
+        {
+            case ScreenOrientation.Portrait:
+            case ScreenOrientation.PortraitUpsideDown:
+                pauseMenuV.SetActive(!pauseMenuH.activeInHierarchy);
+                CreditsV.SetActive(!CreditsH.activeInHierarchy);
+                break;
+
+            case ScreenOrientation.LandscapeLeft:
+            case ScreenOrientation.LandscapeRight:
+                pauseMenuH.SetActive(!pauseMenuH.activeInHierarchy);
+                CreditsH.SetActive(!CreditsH.activeInHierarchy);
+                break;
+
+            default:
+                break;
+        }
     }
     public void TestGameOver()
     {
