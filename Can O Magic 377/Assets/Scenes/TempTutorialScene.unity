@@ -11004,7 +11004,7 @@ GameObject:
   - component: {fileID: 979791039}
   - component: {fileID: 979791040}
   m_Layer: 0
-  m_Name: Holy Aura Button (1)
+  m_Name: refButton
   m_TagString: PowerItemButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15425,74 +15425,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &1471024950
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3958378610598462008, guid: cade5f64b5067f843ac127b16df5bdc6,
-        type: 3}
-      propertyPath: m_Name
-      value: 4_EarthOrb
-      objectReference: {fileID: 0}
-    - target: {fileID: 5134804166630324673, guid: cade5f64b5067f843ac127b16df5bdc6,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5134804166630324673, guid: cade5f64b5067f843ac127b16df5bdc6,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5134804166630324673, guid: cade5f64b5067f843ac127b16df5bdc6,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5134804166630324673, guid: cade5f64b5067f843ac127b16df5bdc6,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5134804166630324673, guid: cade5f64b5067f843ac127b16df5bdc6,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5134804166630324673, guid: cade5f64b5067f843ac127b16df5bdc6,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5134804166630324673, guid: cade5f64b5067f843ac127b16df5bdc6,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5134804166630324673, guid: cade5f64b5067f843ac127b16df5bdc6,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5134804166630324673, guid: cade5f64b5067f843ac127b16df5bdc6,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5134804166630324673, guid: cade5f64b5067f843ac127b16df5bdc6,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cade5f64b5067f843ac127b16df5bdc6, type: 3}
 --- !u!1 &1475851306
 GameObject:
   m_ObjectHideFlags: 0
@@ -21328,74 +21260,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1001 &1887799122
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3966597004904791223, guid: 63f5c157b27b0994889927009efd3917,
-        type: 3}
-      propertyPath: m_Name
-      value: 3_FireOrb
-      objectReference: {fileID: 0}
-    - target: {fileID: 4343720025417983501, guid: 63f5c157b27b0994889927009efd3917,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4343720025417983501, guid: 63f5c157b27b0994889927009efd3917,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 4343720025417983501, guid: 63f5c157b27b0994889927009efd3917,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4343720025417983501, guid: 63f5c157b27b0994889927009efd3917,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4343720025417983501, guid: 63f5c157b27b0994889927009efd3917,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4343720025417983501, guid: 63f5c157b27b0994889927009efd3917,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4343720025417983501, guid: 63f5c157b27b0994889927009efd3917,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4343720025417983501, guid: 63f5c157b27b0994889927009efd3917,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4343720025417983501, guid: 63f5c157b27b0994889927009efd3917,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4343720025417983501, guid: 63f5c157b27b0994889927009efd3917,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 63f5c157b27b0994889927009efd3917, type: 3}
 --- !u!1 &1913510200
 GameObject:
   m_ObjectHideFlags: 0
@@ -22687,7 +22551,6 @@ MonoBehaviour:
   vLeaderboardData: {fileID: 2026514092}
   verticalUI: {fileID: 991667835}
   horizontalUI: {fileID: 2053442511}
-  inTutorial: 0
 --- !u!114 &2015353184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24217,6 +24080,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6725009709344938393, guid: 34eee17f95834e64a87b29366b6b34f7,
+        type: 3}
+      propertyPath: m_TagString
+      value: PowerItemButton
+      objectReference: {fileID: 0}
     - target: {fileID: 6944140593083703709, guid: 34eee17f95834e64a87b29366b6b34f7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -24490,5 +24358,3 @@ SceneRoots:
   - {fileID: 88518093}
   - {fileID: 1855022436}
   - {fileID: 2084054940}
-  - {fileID: 1471024950}
-  - {fileID: 1887799122}
