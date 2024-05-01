@@ -61,7 +61,6 @@ public class GameData : Singleton<GameData>
     }
     private void OnApplicationQuit()
     {
-
         Save();
     }
     public void RankScores()
