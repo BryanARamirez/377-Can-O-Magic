@@ -70,6 +70,17 @@ MonoBehaviour:
   horizontalButtons: {fileID: 0}
   SettingsV: {fileID: 0}
   SettingsH: {fileID: 0}
+  CreditsH: {fileID: 0}
+  CreditsV: {fileID: 0}
+  CombinationMenuH: {fileID: 0}
+  CombinationMenuV: {fileID: 0}
+  tutorialCanvas: {fileID: 0}
+  GameOverScreenV: {fileID: 0}
+  GameOverScreenH: {fileID: 0}
+  EnterNameButtonV: {fileID: 0}
+  EnterNameButtonH: {fileID: 0}
+  NameV: {fileID: 0}
+  NameH: {fileID: 0}
   reactionHappened: 0
   reactionOrb1: 
   reactionOrb2: 
@@ -5552,7 +5563,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Power Items
+  m_text: 'Items: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7519,6 +7530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonText: {fileID: 5143252753730339514}
+  _buttonImage: {fileID: 8882294767443651375}
 --- !u!1 &6861066503065448495
 GameObject:
   m_ObjectHideFlags: 0
