@@ -70,8 +70,11 @@ MonoBehaviour:
   horizontalButtons: {fileID: 0}
   SettingsV: {fileID: 0}
   SettingsH: {fileID: 0}
+  CreditsH: {fileID: 0}
+  CreditsV: {fileID: 0}
   CombinationMenuH: {fileID: 0}
   CombinationMenuV: {fileID: 0}
+  tutorialCanvas: {fileID: 0}
   GameOverScreenV: {fileID: 0}
   GameOverScreenH: {fileID: 0}
   EnterNameButtonV: {fileID: 0}
@@ -1836,50 +1839,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &1427241169150670893
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3080785938718602384}
-  - component: {fileID: 8492819431469860928}
-  m_Layer: 0
-  m_Name: notifyRef
-  m_TagString: PowerItemButton
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &3080785938718602384
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1427241169150670893}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 1.5, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5414439395912667366}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -76, y: 55}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 1, y: 0}
---- !u!222 &8492819431469860928
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1427241169150670893}
-  m_CullTransparentMesh: 1
 --- !u!1 &1471549137652499964
 GameObject:
   m_ObjectHideFlags: 0
@@ -5604,7 +5563,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Power Items
+  m_text: 'Items: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6184,7 +6143,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9162669514051381590}
-  - {fileID: 3080785938718602384}
   - {fileID: 7816935650689406994}
   - {fileID: 5757557380324208993}
   - {fileID: 209692432376565875}
@@ -7440,7 +7398,7 @@ GameObject:
   - component: {fileID: 7942946346425633814}
   m_Layer: 5
   m_Name: PowerItemsButton
-  m_TagString: PowerItemButton
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

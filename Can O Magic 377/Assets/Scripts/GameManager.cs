@@ -5,7 +5,6 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.RenderGraphModule;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
@@ -25,9 +24,13 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject horizontalButtons;
     [SerializeField] private GameObject SettingsV;
     [SerializeField] private GameObject SettingsH;
+    [SerializeField] private GameObject CreditsH;
+    [SerializeField] private GameObject CreditsV;
 
     [SerializeField] private GameObject CombinationMenuH;
     [SerializeField] private GameObject CombinationMenuV;
+
+    [SerializeField] private GameObject tutorialCanvas;
 
     public GameObject GameOverScreenV;
     public GameObject GameOverScreenH;
@@ -59,7 +62,10 @@ public class GameManager : Singleton<GameManager>
         {
             if (tutorialScript.tutorialEnded)
             {
-                SceneManager.LoadScene(1);
+                tutorialScript.tutorialEnded = false;
+                tutorialCanvas.SetActive(false);
+                GameData.Instance.hasDoneTutorial = true;
+                Restart();
             }
         }
         switch(Screen.orientation)
@@ -94,10 +100,68 @@ public class GameManager : Singleton<GameManager>
         }
         
     }
+    public void ScreenOrientationChange()
+    {
+        switch (Screen.orientation)
+        {
+            case ScreenOrientation.Portrait:
+            case ScreenOrientation.PortraitUpsideDown:
+                Screen.orientation = ScreenOrientation.LandscapeLeft;
+                SettingsH.SetActive(true);
+                SettingsV.SetActive(false);
+                break;
+
+            case ScreenOrientation.LandscapeLeft:
+            case ScreenOrientation.LandscapeRight:
+                Screen.orientation = ScreenOrientation.Portrait;
+                SettingsH.SetActive(false);
+                SettingsV.SetActive(true);
+                break;
+
+            default:
+                break;
+        }
+    }
+    public void Credits()
+    {
+        switch (Screen.orientation)
+        {
+            case ScreenOrientation.Portrait:
+            case ScreenOrientation.PortraitUpsideDown:
+                pauseMenuV.SetActive(!pauseMenuV.activeInHierarchy);
+                CreditsV.SetActive(!CreditsV.activeInHierarchy);
+                break;
+
+            case ScreenOrientation.LandscapeLeft:
+            case ScreenOrientation.LandscapeRight:
+                pauseMenuH.SetActive(!pauseMenuH.activeInHierarchy);
+                CreditsH.SetActive(!CreditsH.activeInHierarchy);
+                break;
+
+            default:
+                break;
+        }
+    }
     public void TestGameOver()
     {
         GameData.Instance.gameIsOver = true;
         GameOverManager.Instance.OnGameOver();
+    }
+    public void Tutorial()
+    {
+        GameData.Instance.hasDoneTutorial = false;
+        GameData.Instance.Save();
+        tutorialScript.enabled = true;
+        tutorialCanvas.SetActive(true);
+        Restart(); 
+        tutorialScript.TutorialSetUp();
+    }
+    public void TutorialSkip()
+    {
+        GameData.Instance.hasDoneTutorial = true;
+        GameData.Instance.Save();
+        tutorialScript.enabled = false;
+        tutorialScript.tutorialEnded = true;
     }
     public void pauseGame()
     {
@@ -217,12 +281,18 @@ public class GameManager : Singleton<GameManager>
         {
             case ScreenOrientation.Portrait:
             case ScreenOrientation.PortraitUpsideDown:
-                pauseMenuV.SetActive(!pauseMenuV.activeInHierarchy);
+                if(pauseMenuV.activeInHierarchy)
+                {
+                    pauseMenuV.SetActive(!pauseMenuV.activeInHierarchy);
+                }
                 break;
 
             case ScreenOrientation.LandscapeLeft:
             case ScreenOrientation.LandscapeRight:
-                pauseMenuH.SetActive(!pauseMenuH.activeInHierarchy);
+                if (pauseMenuH.activeInHierarchy)
+                {
+                    pauseMenuH.SetActive(!pauseMenuV.activeInHierarchy);
+                }
                 break;
 
             default:
@@ -255,14 +325,7 @@ public class GameManager : Singleton<GameManager>
     }
     private void OnEnable()
     {
-        if (GameData.Instance.hasDoneTutorial)
-        {
-            SceneManager.LoadScene(1);
-        }
-        else
-        {
-            tutorialScript = FindAnyObjectByType<TutorialScript>();
-        }
+        tutorialScript = FindAnyObjectByType<TutorialScript>();
         playerController = FindAnyObjectByType<PlayerController>();
         powerItemMenuScript = GetComponent<PowerItemMenuScript>();
 
