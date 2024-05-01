@@ -128,8 +128,8 @@ public class GameManager : Singleton<GameManager>
         {
             case ScreenOrientation.Portrait:
             case ScreenOrientation.PortraitUpsideDown:
-                pauseMenuV.SetActive(!pauseMenuH.activeInHierarchy);
-                CreditsV.SetActive(!CreditsH.activeInHierarchy);
+                pauseMenuV.SetActive(!pauseMenuV.activeInHierarchy);
+                CreditsV.SetActive(!CreditsV.activeInHierarchy);
                 break;
 
             case ScreenOrientation.LandscapeLeft:
