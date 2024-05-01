@@ -19,6 +19,7 @@ TagManager:
   - NextItemH
   - NextItemV
   - TsunamiVFX
+  - PowerItemButton
   layers:
   - Default
   - TransparentFX

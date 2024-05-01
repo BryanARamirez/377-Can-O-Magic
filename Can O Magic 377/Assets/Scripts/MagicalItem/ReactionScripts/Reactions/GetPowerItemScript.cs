@@ -12,6 +12,7 @@ public class GetPowerItemScript : BaseReactionScript
 {
     //what power item is given when reacted
     [SerializeField] private PowerItemEnum _getPowerItem;
+    [SerializeField] private GameObject _powerItemSprite;
 
     /// <summary>
     /// tells the PowerItemData class which magic item to give
@@ -23,5 +24,8 @@ public class GetPowerItemScript : BaseReactionScript
         {
             PowerItemData.Instance.GainPowerItem(_getPowerItem);
         }
+
+        Vector3 spawnSprite = (gameObject.transform.position + otherItem.transform.position) / 2f;
+        Instantiate(_powerItemSprite, spawnSprite, Quaternion.identity);
     }
 }
