@@ -6,7 +6,7 @@ using TMPro;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [04/17/2024]
+ * Last Updated: [04/30/2024]
  * [script use to indicate if buttons are interactable]
  */
 
@@ -29,7 +29,7 @@ public class PowerItemMenuButton : MonoBehaviour
                 StartCoroutine(FlashMenu());
             }
             lastAmount = PowerItemData.Instance.NumberOfPowerItems();
-            _buttonText.text = "Power Item: " + PowerItemData.Instance.NumberOfPowerItems();
+            _buttonText.text = "Items: " + PowerItemData.Instance.NumberOfPowerItems();
         }
     }
 

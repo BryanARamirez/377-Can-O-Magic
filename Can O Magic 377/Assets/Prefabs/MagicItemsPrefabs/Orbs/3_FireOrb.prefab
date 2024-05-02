@@ -432,6 +432,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _reactionFor: 3
   _getPowerItem: 3
+  _powerItemSprite: {fileID: 4056447444708337267, guid: 861de7a604473ef4e9fd8b9336e86dfe,
+    type: 3}
 --- !u!114 &3375052349348148947
 MonoBehaviour:
   m_ObjectHideFlags: 0

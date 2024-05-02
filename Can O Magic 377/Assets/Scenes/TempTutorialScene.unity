@@ -2487,7 +2487,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -8, y: -54.299988}
+  m_AnchoredPosition: {x: -8, y: -54.30005}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &154609447
@@ -3510,7 +3510,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Power Items: 0'
+  m_text: 'Items: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10993,6 +10993,50 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5229945386362699917}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &979791038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 979791039}
+  - component: {fileID: 979791040}
+  m_Layer: 0
+  m_Name: refButton
+  m_TagString: PowerItemButton
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &979791039
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979791038}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.75, y: 1.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1229036099}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -76, y: 55}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 1, y: 0}
+--- !u!222 &979791040
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979791038}
+  m_CullTransparentMesh: 1
 --- !u!1 &980165568
 GameObject:
   m_ObjectHideFlags: 0
@@ -13048,6 +13092,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1126759749}
+  - {fileID: 979791039}
   - {fileID: 2019279887}
   - {fileID: 1355337118}
   - {fileID: 1798823847}
@@ -13361,7 +13406,7 @@ GameObject:
   - component: {fileID: 1249094308}
   m_Layer: 5
   m_Name: PowerItemsButton
-  m_TagString: Untagged
+  m_TagString: PowerItemButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22506,7 +22551,6 @@ MonoBehaviour:
   vLeaderboardData: {fileID: 2026514092}
   verticalUI: {fileID: 991667835}
   horizontalUI: {fileID: 2053442511}
-  inTutorial: 0
 --- !u!114 &2015353184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23954,7 +23998,7 @@ PrefabInstance:
     - target: {fileID: 3647617506978758942, guid: 34eee17f95834e64a87b29366b6b34f7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -23.2
+      value: -23.199951
       objectReference: {fileID: 0}
     - target: {fileID: 4330800039075335937, guid: 34eee17f95834e64a87b29366b6b34f7,
         type: 3}
@@ -24035,6 +24079,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725009709344938393, guid: 34eee17f95834e64a87b29366b6b34f7,
+        type: 3}
+      propertyPath: m_TagString
+      value: PowerItemButton
       objectReference: {fileID: 0}
     - target: {fileID: 6944140593083703709, guid: 34eee17f95834e64a87b29366b6b34f7,
         type: 3}
