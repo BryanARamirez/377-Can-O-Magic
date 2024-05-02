@@ -48,10 +48,13 @@ public class SlimeBallScript : MonoBehaviour
                 }
             }
 
-            FixedJoint joint = gameObject.AddComponent<FixedJoint>();
+            SpringJoint joint = gameObject.AddComponent<SpringJoint>();
+            joint.autoConfigureConnectedAnchor = false;
             joint.anchor = collision.contacts[0].point;
             joint.connectedBody = collision.contacts[0].otherCollider.transform.GetComponentInParent<Rigidbody>();
-            joint.enableCollision = false;
+            joint.enableCollision = true;
+            joint.spring = 100;
+            //joint.breakForce = 999999;
             _vFX.PlayMergeVFX(joint.transform.position);
 
             if (_stuckObjects.Count > 0)
