@@ -56,7 +56,7 @@ public class GameData : Singleton<GameData>
         
         DontDestroyOnLoad(this.gameObject);
         //For some reason Load(); needs to be active when testing on PC but not when on the actual phone.
-        //Load();
+        Load();
         RankScores();
     }
     private void OnApplicationQuit()
@@ -132,29 +132,41 @@ public class GameData : Singleton<GameData>
         gameObjectsHaveReacted = new List<int>();
         steamOn = 0;
         steamCount = 0;
-
-       gameObjectsInScene.AddRange(GameObject.FindGameObjectsWithTag("MagicItem"));
+        /*if (steam.GetComponent<SteamScript>()._currentDropCount > 0)
+        {
+            steamOn = 1;
+            steamCount = steam.GetComponent<SteamScript>()._currentDropCount;
+        }*/
+        gameObjectsInScene.AddRange(GameObject.FindGameObjectsWithTag("MagicItem"));
+        gameObjectsInScene.AddRange(GameObject.FindGameObjectsWithTag("PowerItem"));
         for (int i = 0; i < gameObjectsInScene.Count; i++)
         {
-            if (gameObjectsInScene[i].GetComponent<MagicalItemScript>().hasDropped)
+            if (gameObjectsInScene[i].gameObject.tag == "MagicItem")
             {
-                gameObjectIDs.Add((int)gameObjectsInScene[i].GetComponent<MagicalItemScript>().magicItemName);
+                if (gameObjectsInScene[i].GetComponent<MagicalItemScript>().hasDropped)
+                {
+                    //Debug.Log("Working");
+                    gameObjectIDs.Add((int)gameObjectsInScene[i].GetComponent<MagicalItemScript>().magicItemName);
+                    gameObjectsLocationsX.Add(gameObjectsInScene[i].transform.position.x);
+                    gameObjectsLocationsY.Add(gameObjectsInScene[i].transform.position.y);
+                    gameObjectsLocationsZ.Add(gameObjectsInScene[i].transform.position.z);
+                    if (gameObjectsInScene[i].GetComponent<MagicalItemScript>().hasReacted)
+                    {
+                        gameObjectsHaveReacted.Add(1);
+                    }
+                    else
+                    {
+                        gameObjectsHaveReacted.Add(0);
+                    }
+                }
+            }
+            if (gameObjectsInScene[i].gameObject.tag == "PowerItem")
+            {
+                //Debug.Log("Power ItemSaved");
+                gameObjectIDs.Add((int)gameObjectsInScene[i].GetComponent<PowerItemIDHolder>().powerItemName + 11);
                 gameObjectsLocationsX.Add(gameObjectsInScene[i].transform.position.x);
                 gameObjectsLocationsY.Add(gameObjectsInScene[i].transform.position.y);
                 gameObjectsLocationsZ.Add(gameObjectsInScene[i].transform.position.z);
-                if(gameObjectsInScene[i].GetComponent<MagicalItemScript>().hasReacted)
-                {
-                    gameObjectsHaveReacted.Add(1);
-                }
-                else
-                {
-                    gameObjectsHaveReacted.Add(0);
-                }
-                if(steam.GetComponent<SteamScript>()._currentDropCount > 0)
-                {
-                    steamOn = 1;
-                    steamCount = steam.GetComponent<SteamScript>()._currentDropCount;
-                }
             }
         }
 
@@ -214,10 +226,13 @@ public class GameData : Singleton<GameData>
                 Vector3 tempLocation = new Vector3((float)tempLocationX, (float)tempLocationY, (float)tempLocationZ);
                 Debug.Log(sceneData.gameObjectsIDS[i]);
                 GameObject NewItem = Instantiate(prefabGO[sceneData.gameObjectsIDS[i]], tempLocation, Quaternion.identity);
-                NewItem.GetComponent<MagicalItemScript>().SetDrop();
-                if (sceneData.gameObjectsHaveReacted[i] == 1)
+                if(NewItem.tag == "MagicItem")
                 {
-                    NewItem.GetComponent<MagicalItemScript>().Reacted();
+                    NewItem.GetComponent<MagicalItemScript>().SetDrop();
+                    if (sceneData.gameObjectsHaveReacted[i] == 1)
+                    {
+                        NewItem.GetComponent<MagicalItemScript>().Reacted();
+                    }
                 }
                 if(steamOn == 1)
                 {
@@ -227,6 +242,7 @@ public class GameData : Singleton<GameData>
             }
             Time.timeScale = 1;
         }
+        Time.timeScale = 1;
     }
 }
 

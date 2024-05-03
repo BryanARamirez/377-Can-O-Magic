@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8649188467885374985}
   - component: {fileID: -3610390478041937019}
   - component: {fileID: 3091841483103901390}
+  - component: {fileID: -9041187950262099872}
   m_Layer: 0
   m_Name: SlimeBall
   m_TagString: PowerItem
@@ -103,6 +104,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mergeVFX: {fileID: 2676829562007784648, guid: 9450ff7322ab9324baea87052160f7ab,
     type: 3}
+--- !u!114 &-9041187950262099872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3736714292386934412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4357ab47654e48d4490bf060c93b833b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemData: {fileID: 11400000, guid: 161b451b421f6ad409d52b20be976de8, type: 2}
 --- !u!1 &6778777997356820140
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -2613701290501022512}
   - component: {fileID: 8691694352139231775}
   - component: {fileID: 1765732287205271812}
+  - component: {fileID: -202353453061788490}
   m_Layer: 0
   m_Name: MimicTongue
   m_TagString: PowerItem
@@ -102,6 +103,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mergeVFX: {fileID: 2608589176127144966, guid: 6ce9409a2464e454da3a3754a9f55bcf,
     type: 3}
+--- !u!114 &-202353453061788490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4180723753599176874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4357ab47654e48d4490bf060c93b833b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemData: {fileID: 11400000, guid: 0e95ca266b157ce47a3b92e31280a669, type: 2}
 --- !u!1 &8834171450898826136
 GameObject:
   m_ObjectHideFlags: 0

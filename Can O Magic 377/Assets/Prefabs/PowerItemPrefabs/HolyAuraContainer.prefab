@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1551379701472229701}
   - component: {fileID: 4215965916751609212}
   - component: {fileID: 3054135274611592814}
+  - component: {fileID: -8411397518865876541}
   m_Layer: 0
   m_Name: HolyAuraContainer
   m_TagString: PowerItem
@@ -99,6 +100,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holyAuraAOE: {fileID: 6341632673213504719}
+--- !u!114 &-8411397518865876541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3195902820692750319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4357ab47654e48d4490bf060c93b833b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemData: {fileID: 11400000, guid: a8866d756d8add84dbf63ee4776f85c4, type: 2}
 --- !u!1 &6341632673213504719
 GameObject:
   m_ObjectHideFlags: 0
