@@ -7,7 +7,7 @@ public class ToolTips : MonoBehaviour
     [SerializeField] private GameObject text;
     public void ToolTip()
     {
-        text.SetActive(true);
+        text.SetActive(!text.activeInHierarchy);
     }
     public void ToolTipDisable()
     {
