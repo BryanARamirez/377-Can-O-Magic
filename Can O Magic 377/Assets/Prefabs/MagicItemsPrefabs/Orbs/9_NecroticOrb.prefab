@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reactionFor: 6
-  _shrinkDivideBy: 2
+  _shrinkDivideBy: 1.25
   _shrinkVFX: {fileID: 2542498880032562088, guid: f2180826d0d3d89459f90b1aecbc8273,
     type: 3}
 --- !u!114 &-7183958954454691745

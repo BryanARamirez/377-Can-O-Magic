@@ -5565,6 +5565,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1897922653661549264, guid: 6d348cfe01f68ff4597e8720a999ace7,
+        type: 3}
+      propertyPath: m_TagString
+      value: PowerItemButton
+      objectReference: {fileID: 0}
     - target: {fileID: 3159723742254631846, guid: 6d348cfe01f68ff4597e8720a999ace7,
         type: 3}
       propertyPath: m_IsActive
@@ -5574,6 +5579,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919999342288209531, guid: 6d348cfe01f68ff4597e8720a999ace7,
+        type: 3}
+      propertyPath: m_text
+      value: 'Items: 0'
       objectReference: {fileID: 0}
     - target: {fileID: 6576114055959788519, guid: 6d348cfe01f68ff4597e8720a999ace7,
         type: 3}

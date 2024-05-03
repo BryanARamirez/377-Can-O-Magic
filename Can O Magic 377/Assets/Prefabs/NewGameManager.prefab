@@ -5095,7 +5095,7 @@ GameObject:
   - component: {fileID: 4120804060661586186}
   m_Layer: 5
   m_Name: PowerItemsButton
-  m_TagString: Untagged
+  m_TagString: PowerItemButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12019,6 +12019,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &4729311771343339986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8997794308534090672}
+  - component: {fileID: 2036775001914615449}
+  m_Layer: 0
+  m_Name: notify ref
+  m_TagString: PowerItemButton
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8997794308534090672
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4729311771343339986}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.75, y: 1.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1871009630735652859}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -136.9, y: 77.2}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 1, y: 0}
+--- !u!222 &2036775001914615449
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4729311771343339986}
+  m_CullTransparentMesh: 1
 --- !u!1 &4738110611509583850
 GameObject:
   m_ObjectHideFlags: 0
@@ -17286,6 +17330,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2543015302606330915}
+  - {fileID: 8997794308534090672}
   - {fileID: 1342729100257244967}
   - {fileID: 359203957273288520}
   - {fileID: 3317467130626559186}
@@ -22938,7 +22983,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Power Items: 0'
+  m_text: 'Items: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -22965,8 +23010,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12.6
-  m_fontSizeBase: 12.6
+  m_fontSize: 13.57
+  m_fontSizeBase: 13.57
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -23312,7 +23357,7 @@ PrefabInstance:
     - target: {fileID: 217404956738311228, guid: 34eee17f95834e64a87b29366b6b34f7,
         type: 3}
       propertyPath: m_Name
-      value: GameManager Variant
+      value: NewGameManager
       objectReference: {fileID: 0}
     - target: {fileID: 1576042094548284601, guid: 34eee17f95834e64a87b29366b6b34f7,
         type: 3}
