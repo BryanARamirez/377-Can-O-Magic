@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,15 +21,17 @@ public class PlayerController : MonoBehaviour
     public bool isPowerItemMenuOpen;
     private bool isReplacing = false;
 
-    private void Awake()
+    private void Start()
     {
         _playerData = GetComponent<PlayerData>();
         isWaiting = false;
         steamScript = GameObject.FindGameObjectWithTag("Steam").GetComponent<SteamScript>();
-        int randomIndex = Random.Range(0, magicObj.Count);
-        currentObjIndex = randomIndex;
-        if(GameData.Instance.spawningStart == false)
+        int randomIndex;
+        if (GameData.Instance.spawningStart == false)
         {
+            randomIndex = Random.Range(0, magicObj.Count);
+            currentObjIndex = randomIndex;
+            currentObjIndex = randomIndex;
             currentObj = Instantiate(magicObj[randomIndex]);
             currentObj.transform.parent = this.transform;
             currentObj.transform.position = this.transform.position;
@@ -38,6 +39,10 @@ public class PlayerController : MonoBehaviour
             boundary = middleToWallDistance - currentObj.GetComponentInChildren<Collider>().bounds.size.x / 2;
             transform.position = new Vector3(0f, transform.position.y, 0f);
             randomNextIndex = Random.Range(0, magicObj.Count);
+        }
+        else
+        {
+
         }
         _playerData.DisplayNextItem(magicObj[randomNextIndex].GetComponent<NextMagicItemSprite>().itemSprite);
         nextObjIndex = randomNextIndex;
