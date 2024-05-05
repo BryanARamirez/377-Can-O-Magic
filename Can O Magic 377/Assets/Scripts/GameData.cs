@@ -31,11 +31,13 @@ public class GameData : Singleton<GameData>
     private List<float> gameObjectsLocationsZ = new List<float>();
     private List<int> gameObjectsHaveReacted = new List<int>();
     private List<int> conductingWaterOrb = new List<int>();
+    private List<int> shunkenOrbs = new List<int>();
     private int steamOn;
     private int steamCount;
     public GameObject steam;
     public bool spawningStart;
     public int screenOrientaionID = 0;
+    private bool isSaving;
 
 
 
@@ -93,148 +95,163 @@ public class GameData : Singleton<GameData>
     }
     public void Save()
     {
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Open(Application.persistentDataPath + "/gameData.dat", FileMode.Create);
-        GameDataContainer gameData = new GameDataContainer();
-        switch (Screen.orientation)
+        if(isSaving == false)
         {
-            case ScreenOrientation.Portrait:
-            case ScreenOrientation.PortraitUpsideDown:
-                gameData.musicVolume = soundSettings.musicSliderV.value;
-                break;
-            case ScreenOrientation.LandscapeLeft:
-            case ScreenOrientation.LandscapeRight:
-                gameData.musicVolume = soundSettings.musicSliderH.value;
-                break;
-            default:
-                break;
-        }
-        gameData.hasDoneTutorialInt = hasDoneTutorial ? 1 : 0;
-        gameData.highScore = highScore;
-        gameData.playerName = playerName;
-        gameData.firstScore = highScoreTable[0].highScore;
-        gameData.secondScore = highScoreTable[1].highScore;
-        gameData.thirdScore = highScoreTable[2].highScore;
-        gameData.fourthScore = highScoreTable[3].highScore;
-        gameData.fifthScore = highScoreTable[4].highScore;
-        gameData.firstName = highScoreTable[0].playerName;
-        gameData.secondName = highScoreTable[1].playerName;
-        gameData.thirdName = highScoreTable[2].playerName;
-        gameData.fourthName = highScoreTable[3].playerName;
-        gameData.fifthName = highScoreTable[4].playerName;
-        gameData.screenOrientaionID = screenOrientaionID;
-
-        bf.Serialize(file, gameData);
-        file.Close();
-
-        file = File.Open(Application.persistentDataPath + "/sceneData.dat", FileMode.Create);
-        GameScene sceneData = new GameScene();
-        gameObjectsInScene = new List<GameObject>();
-        gameObjectIDs = new List<int>();
-        gameObjectsLocationsX = new List<float>();
-        gameObjectsLocationsY = new List<float>();
-        gameObjectsLocationsZ = new List<float>();
-        gameObjectsHaveReacted = new List<int>();
-        conductingWaterOrb = new List<int>();
-        steamOn = 0;
-        steamCount = 0;
-        if (steam.GetComponent<SteamScript>()._currentDropCount > 0)
-        {
-            steamOn = 1;
-            steamCount = steam.GetComponent<SteamScript>()._currentDropCount;
-        }
-        sceneData.steamOn = steamOn;
-        sceneData.steamCount = steamCount;
-        gameObjectsInScene.AddRange(GameObject.FindGameObjectsWithTag("MagicItem"));
-        gameObjectsInScene.AddRange(GameObject.FindGameObjectsWithTag("PowerItem"));
-        sceneData.currentOrb = (int)playerData.gameObject.GetComponent<PlayerController>().currentObj.GetComponent<MagicalItemScript>().magicItemName;
-        Debug.Log("Current Orb ID: " + sceneData.currentOrb);
-        sceneData.nextOrbIndex = playerData.gameObject.GetComponent<PlayerController>().randomNextIndex;
-        for (int i = 0; i < gameObjectsInScene.Count; i++)
-        {
-            if (gameObjectsInScene[i].gameObject.tag == "MagicItem")
+            isSaving = true;
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/gameData.dat", FileMode.Create);
+            GameDataContainer gameData = new GameDataContainer();
+            switch (Screen.orientation)
             {
-                if (gameObjectsInScene[i].GetComponent<MagicalItemScript>().hasDropped)
+                case ScreenOrientation.Portrait:
+                case ScreenOrientation.PortraitUpsideDown:
+                    gameData.musicVolume = soundSettings.musicSliderV.value;
+                    break;
+                case ScreenOrientation.LandscapeLeft:
+                case ScreenOrientation.LandscapeRight:
+                    gameData.musicVolume = soundSettings.musicSliderH.value;
+                    break;
+                default:
+                    break;
+            }
+            gameData.hasDoneTutorialInt = hasDoneTutorial ? 1 : 0;
+            gameData.highScore = highScore;
+            gameData.playerName = playerName;
+            gameData.firstScore = highScoreTable[0].highScore;
+            gameData.secondScore = highScoreTable[1].highScore;
+            gameData.thirdScore = highScoreTable[2].highScore;
+            gameData.fourthScore = highScoreTable[3].highScore;
+            gameData.fifthScore = highScoreTable[4].highScore;
+            gameData.firstName = highScoreTable[0].playerName;
+            gameData.secondName = highScoreTable[1].playerName;
+            gameData.thirdName = highScoreTable[2].playerName;
+            gameData.fourthName = highScoreTable[3].playerName;
+            gameData.fifthName = highScoreTable[4].playerName;
+            gameData.screenOrientaionID = screenOrientaionID;
+
+            bf.Serialize(file, gameData);
+            file.Close();
+
+            file = File.Open(Application.persistentDataPath + "/sceneData.dat", FileMode.Create);
+            GameScene sceneData = new GameScene();
+            gameObjectsInScene = new List<GameObject>();
+            gameObjectIDs = new List<int>();
+            gameObjectsLocationsX = new List<float>();
+            gameObjectsLocationsY = new List<float>();
+            gameObjectsLocationsZ = new List<float>();
+            gameObjectsHaveReacted = new List<int>();
+            conductingWaterOrb = new List<int>();
+            shunkenOrbs = new List<int>();
+            steamOn = 0;
+            steamCount = 0;
+            if (steam.GetComponent<SteamScript>()._currentDropCount > 0)
+            {
+                steamOn = 1;
+                steamCount = steam.GetComponent<SteamScript>()._currentDropCount;
+            }
+            sceneData.steamOn = steamOn;
+            sceneData.steamCount = steamCount;
+            gameObjectsInScene.AddRange(GameObject.FindGameObjectsWithTag("MagicItem"));
+            gameObjectsInScene.AddRange(GameObject.FindGameObjectsWithTag("PowerItem"));
+            sceneData.currentOrb = (int)playerData.gameObject.GetComponent<PlayerController>().currentObj.GetComponent<MagicalItemScript>().magicItemName;
+            Debug.Log("Current Orb ID: " + sceneData.currentOrb);
+            sceneData.nextOrbIndex = playerData.gameObject.GetComponent<PlayerController>().randomNextIndex;
+            for (int i = 0; i < gameObjectsInScene.Count; i++)
+            {
+                if (gameObjectsInScene[i].gameObject.tag == "MagicItem")
                 {
-                    //Debug.Log("Working");
-                    gameObjectIDs.Add((int)gameObjectsInScene[i].GetComponent<MagicalItemScript>().magicItemName);
+                    if (gameObjectsInScene[i].GetComponent<MagicalItemScript>().hasDropped)
+                    {
+                        //Debug.Log("Working");
+                        gameObjectIDs.Add((int)gameObjectsInScene[i].GetComponent<MagicalItemScript>().magicItemName);
+                        gameObjectsLocationsX.Add(gameObjectsInScene[i].transform.position.x);
+                        gameObjectsLocationsY.Add(gameObjectsInScene[i].transform.position.y);
+                        gameObjectsLocationsZ.Add(gameObjectsInScene[i].transform.position.z);
+                        if (gameObjectsInScene[i].GetComponent<MagicalItemScript>().hasReacted)
+                        {
+                            gameObjectsHaveReacted.Add(1);
+                        }
+                        else
+                        {
+                            gameObjectsHaveReacted.Add(0);
+                        }
+                        if (gameObjectsInScene[i].GetComponent<MagicalItemScript>().magicItemName == MagicItemEnum.WaterOrb)
+                        {
+                            if (gameObjectsInScene[i].GetComponent<WaterPlasmaReaction>()._isConducting)
+                            {
+                                conductingWaterOrb.Add(1);
+                            }
+                        }
+                        else
+                        {
+                            conductingWaterOrb.Add(0);
+                        }
+                        if (gameObjectsInScene[i].GetComponent<MagicalItemScript>().isShrunk)
+                        {
+                            shunkenOrbs.Add(1);
+                        }
+                        else
+                        {
+                            shunkenOrbs.Add(0);
+                        }
+                    }
+                }
+                if (gameObjectsInScene[i].gameObject.tag == "PowerItem")
+                {
+                    //Debug.Log("Power ItemSaved");
+                    gameObjectIDs.Add((int)gameObjectsInScene[i].GetComponent<PowerItemIDHolder>().powerItemName + 11);
                     gameObjectsLocationsX.Add(gameObjectsInScene[i].transform.position.x);
                     gameObjectsLocationsY.Add(gameObjectsInScene[i].transform.position.y);
                     gameObjectsLocationsZ.Add(gameObjectsInScene[i].transform.position.z);
-                    if (gameObjectsInScene[i].GetComponent<MagicalItemScript>().hasReacted)
-                    {
-                        gameObjectsHaveReacted.Add(1);
-                    }
-                    else
-                    {
-                        gameObjectsHaveReacted.Add(0);
-                    }
-                }
-                if (gameObjectsInScene[i].GetComponent<MagicalItemScript>().magicItemName == MagicItemEnum.WaterOrb)
-                {
-                    if(gameObjectsInScene[i].GetComponent<WaterPlasmaReaction>()._isConducting)
-                    {
-                        conductingWaterOrb.Add(1);
-                    }
-                }
-                else
-                {
-                    conductingWaterOrb.Add(0);
                 }
             }
-            if (gameObjectsInScene[i].gameObject.tag == "PowerItem")
+
+            if (PowerItemData.Instance.checkAvailable(PowerItemEnum.MimicTongue))
             {
-                //Debug.Log("Power ItemSaved");
-                gameObjectIDs.Add((int)gameObjectsInScene[i].GetComponent<PowerItemIDHolder>().powerItemName + 11);
-                gameObjectsLocationsX.Add(gameObjectsInScene[i].transform.position.x);
-                gameObjectsLocationsY.Add(gameObjectsInScene[i].transform.position.y);
-                gameObjectsLocationsZ.Add(gameObjectsInScene[i].transform.position.z);
+                sceneData.hasMimicTongue = 1;
             }
-        }
+            else
+            {
+                sceneData.hasMimicTongue = 0;
+            }
+            if (PowerItemData.Instance.checkAvailable(PowerItemEnum.SlimeBall))
+            {
+                sceneData.hasSlimeBall = 1;
+            }
+            else
+            {
+                sceneData.hasSlimeBall = 0;
+            }
+            if (PowerItemData.Instance.checkAvailable(PowerItemEnum.HolyAura))
+            {
+                sceneData.hasHolyAura = 1;
+            }
+            else
+            {
+                sceneData.hasHolyAura = 0;
+            }
+            if (PowerItemData.Instance.checkAvailable(PowerItemEnum.Bomb))
+            {
+                sceneData.hasBomb = 1;
+            }
+            else
+            {
+                sceneData.hasBomb = 0;
+            }
 
-        if(PowerItemData.Instance.checkAvailable(PowerItemEnum.MimicTongue))
-        {
-            sceneData.hasMimicTongue = 1;
-        }
-        else
-        {
-            sceneData.hasMimicTongue = 0;
-        }
-        if (PowerItemData.Instance.checkAvailable(PowerItemEnum.SlimeBall))
-        {
-            sceneData.hasSlimeBall = 1;
-        }
-        else
-        {
-            sceneData.hasSlimeBall = 0;
-        }
-        if (PowerItemData.Instance.checkAvailable(PowerItemEnum.HolyAura))
-        {
-            sceneData.hasHolyAura = 1;
-        }
-        else
-        {
-            sceneData.hasHolyAura = 0;
-        }
-        if (PowerItemData.Instance.checkAvailable(PowerItemEnum.Bomb))
-        {
-            sceneData.hasBomb = 1;
-        }
-        else
-        {
-            sceneData.hasBomb = 0;
-        }
-
-        sceneData.gameObjectsIDS = gameObjectIDs.ToArray();
-        sceneData.gameObjectLocationX = gameObjectsLocationsX.ToArray();
-        sceneData.gameObjectLocationY = gameObjectsLocationsY.ToArray();
-        sceneData.gameObjectLocationZ = gameObjectsLocationsZ.ToArray();
-        sceneData.gameObjectsHaveReacted = gameObjectsHaveReacted.ToArray();
-        sceneData.conductingWaterOrb = conductingWaterOrb.ToArray();
+            sceneData.gameObjectsIDS = gameObjectIDs.ToArray();
+            sceneData.gameObjectLocationX = gameObjectsLocationsX.ToArray();
+            sceneData.gameObjectLocationY = gameObjectsLocationsY.ToArray();
+            sceneData.gameObjectLocationZ = gameObjectsLocationsZ.ToArray();
+            sceneData.gameObjectsHaveReacted = gameObjectsHaveReacted.ToArray();
+            sceneData.conductingWaterOrb = conductingWaterOrb.ToArray();
+            sceneData.shrunkenOrbs = shunkenOrbs.ToArray();
 
 
-        bf.Serialize(file, sceneData);
-        file.Close();
+            bf.Serialize(file, sceneData);
+            file.Close();
+            isSaving = false;
+        }
     }
     public void Load()
     {
@@ -288,7 +305,7 @@ public class GameData : Singleton<GameData>
                 if(NewItem.tag == "MagicItem")
                 {
                     NewItem.GetComponent<MagicalItemScript>().SetDrop();
-                    if (sceneData.gameObjectsHaveReacted[i] == 1)
+                    if (sceneData.gameObjectsHaveReacted[i] == 1 && NewItem.GetComponent<MagicalItemScript>().magicItemName != MagicItemEnum.NovaOrb && NewItem.GetComponent<MagicalItemScript>().magicItemName != MagicItemEnum.EarthOrb)
                     {
                         NewItem.GetComponent<MagicalItemScript>().Reacted();
                     }
@@ -298,6 +315,15 @@ public class GameData : Singleton<GameData>
                         {
                             NewItem.GetComponent<OnLoadConduction>().canConduct = true;
                         }
+                        else
+                        {
+                            NewItem.GetComponent<OnLoadConduction>().canConduct = false;
+                        }
+                    }
+                    if (sceneData.shrunkenOrbs[i] == 1)
+                    {
+                        NewItem.GetComponent<MagicalItemScript>().SetShrunk();
+                        NewItem.transform.localScale = NewItem.transform.localScale / 1.25f;
                     }
                 }
             }
@@ -351,6 +377,7 @@ public class GameScene
     public float[] gameObjectLocationZ;
     public int[] gameObjectsHaveReacted;
     public int[] conductingWaterOrb;
+    public int[] shrunkenOrbs;
     public int hasHolyAura;
     public int hasBomb;
     public int hasSlimeBall;

@@ -27,7 +27,9 @@ public class NecroticRadiantReaction : BaseReactionScript
     public override void Reaction(GameObject otherItem)
     {
         transform.localScale = transform.localScale / _shrinkDivideBy;
+        this.gameObject.GetComponent<MagicalItemScript>().SetShrunk();
         otherItem.transform.localScale = otherItem.transform.localScale / _shrinkDivideBy;
+        otherItem.GetComponent<MagicalItemScript>().SetShrunk();
 
         Instantiate(_shrinkVFX, transform.position, Quaternion.identity);
         Instantiate(_shrinkVFX, otherItem.transform.position, Quaternion.identity);

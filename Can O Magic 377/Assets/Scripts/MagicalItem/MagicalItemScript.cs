@@ -25,6 +25,7 @@ public class MagicalItemScript : MonoBehaviour
     public Material[] _magicItemMaterial = new Material[2];
     [Range(0, 1)]
     [SerializeField] private float _darkenPercentage = .3f;
+    private bool _hasShrunk = false;
 
     private void Awake()
     {
@@ -57,6 +58,10 @@ public class MagicalItemScript : MonoBehaviour
     public void SetMimic()
     {
         _isMimic = true;
+    }
+    public void SetShrunk()
+    {
+        _hasShrunk = true;
     }
 
     public void SetDrop()
@@ -92,6 +97,10 @@ public class MagicalItemScript : MonoBehaviour
     public bool hasDropped
     {
         get { return _hasDropped; }
+    }
+    public bool isShrunk
+    {
+        get { return _hasShrunk; }
     }
 
     private void OnCollisionEnter(Collision collision)
