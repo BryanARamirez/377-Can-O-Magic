@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class PlayerController : MonoBehaviour
 {
     //How far the touch for dragging goes to the right
     private float middleToWallDistance = 4.6f;
+    private float topBoundary = 9.5f;
     private float boundary;
     public GameObject currentObj;
     [SerializeField] private int nextObjIndex;
@@ -44,15 +46,32 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(GameData.Instance.hasDoneTutorial == true && GameData.Instance.gameIsOver == false)
+        switch (Screen.orientation)
+        {
+            case ScreenOrientation.Portrait:
+            case ScreenOrientation.PortraitUpsideDown:
+                topBoundary = 9.5f;
+                break;
+
+            case ScreenOrientation.LandscapeLeft:
+            case ScreenOrientation.LandscapeRight:
+                topBoundary = 100f;
+                break;
+
+            default:
+                break;
+        }
+        if (GameData.Instance.hasDoneTutorial == true && GameData.Instance.gameIsOver == false)
         {
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
                 Vector3 touchedPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, zDist));
+                Vector2 tempPos = Camera.main.ScreenToWorldPoint(new Vector2(0,touch.position.y));
+                Debug.Log("TouchPosY: " + tempPos.y);
                 if(isPowerItemMenuOpen == false)
                 {
-                    if (touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance)
+                    if (touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance && tempPos.y <= topBoundary)
                     {
                         if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
                         {
@@ -69,7 +88,7 @@ public class PlayerController : MonoBehaviour
                             transform.position = lockedPos;
                         }
                     }
-                    if (touch.phase == TouchPhase.Ended && touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance && isWaiting == false)
+                    if (touch.phase == TouchPhase.Ended && touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance && isWaiting == false && tempPos.y <= topBoundary)
                     {
                         isWaiting = true;
                         if (currentObj.GetComponent<MagicalItemScript>() != null)

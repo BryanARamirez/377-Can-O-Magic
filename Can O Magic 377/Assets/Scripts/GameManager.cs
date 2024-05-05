@@ -102,18 +102,26 @@ public class GameManager : Singleton<GameManager>
     }
     public void ScreenOrientationChange()
     {
+
         switch (Screen.orientation)
         {
             case ScreenOrientation.Portrait:
+                Screen.orientation = ScreenOrientation.LandscapeRight;
+                SettingsH.SetActive(true);
+                SettingsV.SetActive(false);
+                break;
             case ScreenOrientation.PortraitUpsideDown:
                 Screen.orientation = ScreenOrientation.LandscapeLeft;
                 SettingsH.SetActive(true);
                 SettingsV.SetActive(false);
                 break;
-
             case ScreenOrientation.LandscapeLeft:
-            case ScreenOrientation.LandscapeRight:
                 Screen.orientation = ScreenOrientation.Portrait;
+                SettingsH.SetActive(false);
+                SettingsV.SetActive(true);
+                break;
+            case ScreenOrientation.LandscapeRight:
+                Screen.orientation = ScreenOrientation.PortraitUpsideDown;
                 SettingsH.SetActive(false);
                 SettingsV.SetActive(true);
                 break;
