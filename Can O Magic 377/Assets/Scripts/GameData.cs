@@ -30,6 +30,7 @@ public class GameData : Singleton<GameData>
     private List<float> gameObjectsLocationsY = new List<float>();
     private List<float> gameObjectsLocationsZ = new List<float>();
     private List<int> gameObjectsHaveReacted = new List<int>();
+    private List<int> conductingWaterOrb = new List<int>();
     private int steamOn;
     private int steamCount;
     public GameObject steam;
@@ -134,6 +135,7 @@ public class GameData : Singleton<GameData>
         gameObjectsLocationsY = new List<float>();
         gameObjectsLocationsZ = new List<float>();
         gameObjectsHaveReacted = new List<int>();
+        conductingWaterOrb = new List<int>();
         steamOn = 0;
         steamCount = 0;
         if (steam.GetComponent<SteamScript>()._currentDropCount > 0)
@@ -167,6 +169,17 @@ public class GameData : Singleton<GameData>
                     {
                         gameObjectsHaveReacted.Add(0);
                     }
+                }
+                if (gameObjectsInScene[i].GetComponent<MagicalItemScript>().magicItemName == MagicItemEnum.WaterOrb)
+                {
+                    if(gameObjectsInScene[i].GetComponent<WaterPlasmaReaction>()._isConducting)
+                    {
+                        conductingWaterOrb.Add(1);
+                    }
+                }
+                else
+                {
+                    conductingWaterOrb.Add(0);
                 }
             }
             if (gameObjectsInScene[i].gameObject.tag == "PowerItem")
@@ -217,6 +230,7 @@ public class GameData : Singleton<GameData>
         sceneData.gameObjectLocationY = gameObjectsLocationsY.ToArray();
         sceneData.gameObjectLocationZ = gameObjectsLocationsZ.ToArray();
         sceneData.gameObjectsHaveReacted = gameObjectsHaveReacted.ToArray();
+        sceneData.conductingWaterOrb = conductingWaterOrb.ToArray();
 
 
         bf.Serialize(file, sceneData);
@@ -278,6 +292,13 @@ public class GameData : Singleton<GameData>
                     {
                         NewItem.GetComponent<MagicalItemScript>().Reacted();
                     }
+                    if(NewItem.GetComponent<MagicalItemScript>().magicItemName == MagicItemEnum.WaterOrb)
+                    {
+                        if (sceneData.conductingWaterOrb[i] == 1)
+                        {
+                            NewItem.GetComponent<OnLoadConduction>().canConduct = true;
+                        }
+                    }
                 }
             }
             if (sceneData.steamOn == 1)
@@ -329,6 +350,7 @@ public class GameScene
     public float[] gameObjectLocationY;
     public float[] gameObjectLocationZ;
     public int[] gameObjectsHaveReacted;
+    public int[] conductingWaterOrb;
     public int hasHolyAura;
     public int hasBomb;
     public int hasSlimeBall;
