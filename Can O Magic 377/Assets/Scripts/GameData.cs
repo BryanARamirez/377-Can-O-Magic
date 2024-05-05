@@ -34,6 +34,7 @@ public class GameData : Singleton<GameData>
     private int steamCount;
     public GameObject steam;
     public bool spawningStart;
+    public int screenOrientaionID = 0;
 
 
 
@@ -58,7 +59,7 @@ public class GameData : Singleton<GameData>
         
         DontDestroyOnLoad(this.gameObject);
         //For some reason Load(); needs to be active when testing on PC but not when on the actual phone.
-        //Load();
+        Load();
         RankScores();
     }
     private void OnApplicationQuit()
@@ -120,6 +121,7 @@ public class GameData : Singleton<GameData>
         gameData.thirdName = highScoreTable[2].playerName;
         gameData.fourthName = highScoreTable[3].playerName;
         gameData.fifthName = highScoreTable[4].playerName;
+        gameData.screenOrientaionID = screenOrientaionID;
 
         bf.Serialize(file, gameData);
         file.Close();
@@ -246,6 +248,7 @@ public class GameData : Singleton<GameData>
                 new GameDataContainer{highScore = gameData.fourthScore, playerName = gameData.fourthName},
                 new GameDataContainer{highScore = gameData.fifthScore, playerName = gameData.fifthName}
             };
+            screenOrientaionID = gameData.screenOrientaionID;
             soundSettings.musicSliderH.value = gameData.musicVolume;
             soundSettings.musicSliderV.value = gameData.musicVolume;
             soundSettings.SetMusicVolume();
@@ -315,6 +318,7 @@ public class GameDataContainer
     public string fourthName;
     public string fifthName;
     public float musicVolume;
+    public int screenOrientaionID;
 }
 
 [Serializable]
