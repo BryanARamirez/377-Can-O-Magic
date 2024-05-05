@@ -33,6 +33,7 @@ public class GameData : Singleton<GameData>
     private int steamOn;
     private int steamCount;
     public GameObject steam;
+    public bool spawningStart;
 
 
 
@@ -142,6 +143,9 @@ public class GameData : Singleton<GameData>
         sceneData.steamCount = steamCount;
         gameObjectsInScene.AddRange(GameObject.FindGameObjectsWithTag("MagicItem"));
         gameObjectsInScene.AddRange(GameObject.FindGameObjectsWithTag("PowerItem"));
+        sceneData.currentOrb = (int)playerData.gameObject.GetComponent<PlayerController>().currentObj.GetComponent<MagicalItemScript>().magicItemName;
+        Debug.Log("Current Orb ID: " + sceneData.currentOrb);
+        sceneData.nextOrbIndex = playerData.gameObject.GetComponent<PlayerController>().randomNextIndex;
         for (int i = 0; i < gameObjectsInScene.Count; i++)
         {
             if (gameObjectsInScene[i].gameObject.tag == "MagicItem")
@@ -249,6 +253,7 @@ public class GameData : Singleton<GameData>
 
         if(File.Exists(Application.persistentDataPath + "/sceneData.dat"))
         {
+            spawningStart = true;
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/sceneData.dat", FileMode.Open);
             GameScene sceneData = (GameScene)bf.Deserialize(file);
@@ -285,6 +290,8 @@ public class GameData : Singleton<GameData>
                 PowerItemData.Instance.GainPowerItem(PowerItemEnum.Bomb);
             if (sceneData.hasMimicTongue == 1)
                 PowerItemData.Instance.GainPowerItem(PowerItemEnum.MimicTongue);
+            playerData.gameObject.GetComponent<PlayerController>().ReplaceCurrentItem(prefabGO[sceneData.currentOrb]);
+            playerData.gameObject.GetComponent<PlayerController>().randomNextIndex = sceneData.nextOrbIndex;
             Time.timeScale = 1;
         }
         Time.timeScale = 1;
@@ -324,4 +331,6 @@ public class GameScene
     public int hasMimicTongue;
     public int steamOn;
     public int steamCount;
+    public int currentOrb;
+    public int nextOrbIndex;
 }

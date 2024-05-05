@@ -27,13 +27,16 @@ public class PlayerController : MonoBehaviour
         steamScript = GameObject.FindGameObjectWithTag("Steam").GetComponent<SteamScript>();
         int randomIndex = Random.Range(0, magicObj.Count);
         currentObjIndex = randomIndex;
-        currentObj = Instantiate(magicObj[randomIndex]);
-        currentObj.transform.parent = this.transform;
-        currentObj.transform.position = this.transform.position;
-        currentObj.GetComponent<Rigidbody>().useGravity = false;
-        boundary = middleToWallDistance - currentObj.GetComponentInChildren<Collider>().bounds.size.x/2;
-        transform.position = new Vector3(0f, transform.position.y, 0f);
-        randomNextIndex = Random.Range(0, magicObj.Count);
+        if(GameData.Instance.spawningStart == false)
+        {
+            currentObj = Instantiate(magicObj[randomIndex]);
+            currentObj.transform.parent = this.transform;
+            currentObj.transform.position = this.transform.position;
+            currentObj.GetComponent<Rigidbody>().useGravity = false;
+            boundary = middleToWallDistance - currentObj.GetComponentInChildren<Collider>().bounds.size.x / 2;
+            transform.position = new Vector3(0f, transform.position.y, 0f);
+            randomNextIndex = Random.Range(0, magicObj.Count);
+        }
         _playerData.DisplayNextItem(magicObj[randomNextIndex].GetComponent<NextMagicItemSprite>().itemSprite);
         nextObjIndex = randomNextIndex;
         isPowerItemMenuOpen = false;
