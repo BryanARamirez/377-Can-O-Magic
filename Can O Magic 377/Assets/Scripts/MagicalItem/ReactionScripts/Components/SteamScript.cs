@@ -27,6 +27,7 @@ public class SteamScript : MonoBehaviour
     {
         _steamModel.SetActive(true);
         _currentDropCount = _maxDropCount;
+        GameData.Instance.Save();
         //_steamCounterH.text = _currentDropCount.ToString();
         //_steamCounterV.text = _currentDropCount.ToString();
         //add audio

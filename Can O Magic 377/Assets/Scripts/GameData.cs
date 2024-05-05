@@ -40,6 +40,7 @@ public class GameData : Singleton<GameData>
     {
         playerData = FindAnyObjectByType<PlayerData>();
         soundSettings = FindAnyObjectByType<SoundSettings>();
+        steam = FindAnyObjectByType<SteamScript>().gameObject;
         if (File.Exists(Application.persistentDataPath + "/gameData.dat") == false)
         {
             highScoreTable = new List<GameDataContainer>()
@@ -132,11 +133,13 @@ public class GameData : Singleton<GameData>
         gameObjectsHaveReacted = new List<int>();
         steamOn = 0;
         steamCount = 0;
-        /*if (steam.GetComponent<SteamScript>()._currentDropCount > 0)
+        if (steam.GetComponent<SteamScript>()._currentDropCount > 0)
         {
             steamOn = 1;
             steamCount = steam.GetComponent<SteamScript>()._currentDropCount;
-        }*/
+        }
+        sceneData.steamOn = steamOn;
+        sceneData.steamCount = steamCount;
         gameObjectsInScene.AddRange(GameObject.FindGameObjectsWithTag("MagicItem"));
         gameObjectsInScene.AddRange(GameObject.FindGameObjectsWithTag("PowerItem"));
         for (int i = 0; i < gameObjectsInScene.Count; i++)
@@ -168,6 +171,39 @@ public class GameData : Singleton<GameData>
                 gameObjectsLocationsY.Add(gameObjectsInScene[i].transform.position.y);
                 gameObjectsLocationsZ.Add(gameObjectsInScene[i].transform.position.z);
             }
+        }
+
+        if(PowerItemData.Instance.checkAvailable(PowerItemEnum.MimicTongue))
+        {
+            sceneData.hasMimicTongue = 1;
+        }
+        else
+        {
+            sceneData.hasMimicTongue = 0;
+        }
+        if (PowerItemData.Instance.checkAvailable(PowerItemEnum.SlimeBall))
+        {
+            sceneData.hasSlimeBall = 1;
+        }
+        else
+        {
+            sceneData.hasSlimeBall = 0;
+        }
+        if (PowerItemData.Instance.checkAvailable(PowerItemEnum.HolyAura))
+        {
+            sceneData.hasHolyAura = 1;
+        }
+        else
+        {
+            sceneData.hasHolyAura = 0;
+        }
+        if (PowerItemData.Instance.checkAvailable(PowerItemEnum.Bomb))
+        {
+            sceneData.hasBomb = 1;
+        }
+        else
+        {
+            sceneData.hasBomb = 0;
         }
 
         sceneData.gameObjectsIDS = gameObjectIDs.ToArray();
@@ -218,6 +254,7 @@ public class GameData : Singleton<GameData>
             GameScene sceneData = (GameScene)bf.Deserialize(file);
             file.Close();
             Time.timeScale = 0;
+
             for (int i = 0; i < sceneData.gameObjectsIDS.Length; i++)
             {
                 float tempLocationX = sceneData.gameObjectLocationX[i];
@@ -234,12 +271,20 @@ public class GameData : Singleton<GameData>
                         NewItem.GetComponent<MagicalItemScript>().Reacted();
                     }
                 }
-                if(steamOn == 1)
-                {
-                    steam.GetComponent<SteamScript>().ActivateSteam();
-                    steam.GetComponent<SteamScript>()._currentDropCount = steamCount;
-                }
             }
+            if (sceneData.steamOn == 1)
+            {
+                steam.GetComponent<SteamScript>().ActivateSteam();
+                steam.GetComponent<SteamScript>()._currentDropCount = sceneData.steamCount;
+            }
+            if(sceneData.hasSlimeBall == 1)
+                PowerItemData.Instance.GainPowerItem(PowerItemEnum.SlimeBall);
+            if (sceneData.hasHolyAura == 1)
+                PowerItemData.Instance.GainPowerItem(PowerItemEnum.HolyAura);
+            if (sceneData.hasBomb == 1)
+                PowerItemData.Instance.GainPowerItem(PowerItemEnum.Bomb);
+            if (sceneData.hasMimicTongue == 1)
+                PowerItemData.Instance.GainPowerItem(PowerItemEnum.MimicTongue);
             Time.timeScale = 1;
         }
         Time.timeScale = 1;
@@ -273,6 +318,10 @@ public class GameScene
     public float[] gameObjectLocationY;
     public float[] gameObjectLocationZ;
     public int[] gameObjectsHaveReacted;
+    public int hasHolyAura;
+    public int hasBomb;
+    public int hasSlimeBall;
+    public int hasMimicTongue;
     public int steamOn;
     public int steamCount;
 }
