@@ -84,6 +84,7 @@ public class GameOverManager : Singleton<GameOverManager>
         GameData.Instance.gameIsOver = false;
         GameManager.Instance.GameOverScreenH.SetActive(false);
         GameManager.Instance.GameOverScreenV.SetActive(false);
+        GameData.Instance.spawningStart = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -42,6 +42,7 @@ public class SoundSettings : MonoBehaviour
             default:
                 break;
         }
+        //GameData.Instance.Save();
     }
     public void SetSFXVolume()
     {
@@ -65,6 +66,7 @@ public class SoundSettings : MonoBehaviour
             default:
                 break;
         }
+        //GameData.Instance.Save();
     }
     public void SetMasterVolume()
     {
@@ -88,6 +90,13 @@ public class SoundSettings : MonoBehaviour
             default:
                 break;
         }
+        //GameData.Instance.Save();
+    }
+    public void SetAllVolume()
+    {
+        SetMasterVolume();
+        SetMusicVolume();
+        SetSFXVolume();
     }
 
     public void SetMusicSliders(float sliderValue)

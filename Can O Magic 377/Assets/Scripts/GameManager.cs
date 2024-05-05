@@ -68,6 +68,25 @@ public class GameManager : Singleton<GameManager>
                 Restart();
             }
         }
+        switch(GameData.Instance.screenOrientaionID)
+        {
+            case 0:
+                Screen.orientation = ScreenOrientation.LandscapeLeft;
+                break;
+
+            case 1:
+                Screen.orientation = ScreenOrientation.Portrait;
+                break;
+            case 2:
+                Screen.orientation = ScreenOrientation.LandscapeRight;
+                break;
+            case 3:
+                Screen.orientation = ScreenOrientation.PortraitUpsideDown;
+                break;
+            default:
+                Screen.orientation = ScreenOrientation.LandscapeLeft;
+                break;
+        }
         switch(Screen.orientation)
         {
             case ScreenOrientation.Portrait:
@@ -102,18 +121,26 @@ public class GameManager : Singleton<GameManager>
     }
     public void ScreenOrientationChange()
     {
+
         switch (Screen.orientation)
         {
             case ScreenOrientation.Portrait:
-            case ScreenOrientation.PortraitUpsideDown:
-                Screen.orientation = ScreenOrientation.LandscapeLeft;
+                GameData.Instance.screenOrientaionID = 2;
                 SettingsH.SetActive(true);
                 SettingsV.SetActive(false);
                 break;
-
+            case ScreenOrientation.PortraitUpsideDown:
+                GameData.Instance.screenOrientaionID = 0;
+                SettingsH.SetActive(true);
+                SettingsV.SetActive(false);
+                break;
             case ScreenOrientation.LandscapeLeft:
+                GameData.Instance.screenOrientaionID = 1;
+                SettingsH.SetActive(false);
+                SettingsV.SetActive(true);
+                break;
             case ScreenOrientation.LandscapeRight:
-                Screen.orientation = ScreenOrientation.Portrait;
+                GameData.Instance.screenOrientaionID = 3;
                 SettingsH.SetActive(false);
                 SettingsV.SetActive(true);
                 break;
@@ -268,6 +295,7 @@ public class GameManager : Singleton<GameManager>
             default:
                 break;
         }
+        GameData.Instance.Save();
     }
     public void quitGame()
     {
@@ -276,6 +304,8 @@ public class GameManager : Singleton<GameManager>
     public void Restart()
     {
         File.Delete(Application.persistentDataPath + "/sceneData.dat");
+        GameData.Instance.Load();
+        GameData.Instance.spawningStart = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         switch (Screen.orientation)
         {
@@ -298,6 +328,7 @@ public class GameManager : Singleton<GameManager>
             default:
                 break;
         }
+        this.GetComponent<SoundSettings>().SetAllVolume();
         Time.timeScale = 1.0f;
         PowerItemData.Instance.ResetInventory();
     }

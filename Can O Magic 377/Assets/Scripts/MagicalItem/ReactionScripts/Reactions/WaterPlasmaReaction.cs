@@ -10,11 +10,11 @@ using UnityEngine;
 
 public class WaterPlasmaReaction : BaseReactionScript
 {
-    private GameObject _conductingObject;
+    public GameObject _conductingObject;
     [SerializeField] private GameObject _mergeToPrefab;
 
-    private bool _isConducting = false;
-    private bool _isConnected = false;
+    public bool _isConducting = false;
+    public bool _isConnected = false;
 
     /// <summary>
     /// resets the default for _reactionFor

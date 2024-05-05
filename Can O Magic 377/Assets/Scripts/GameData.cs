@@ -30,9 +30,12 @@ public class GameData : Singleton<GameData>
     private List<float> gameObjectsLocationsY = new List<float>();
     private List<float> gameObjectsLocationsZ = new List<float>();
     private List<int> gameObjectsHaveReacted = new List<int>();
+    private List<int> conductingWaterOrb = new List<int>();
     private int steamOn;
     private int steamCount;
     public GameObject steam;
+    public bool spawningStart;
+    public int screenOrientaionID = 0;
 
 
 
@@ -40,6 +43,7 @@ public class GameData : Singleton<GameData>
     {
         playerData = FindAnyObjectByType<PlayerData>();
         soundSettings = FindAnyObjectByType<SoundSettings>();
+        steam = FindAnyObjectByType<SteamScript>().gameObject;
         if (File.Exists(Application.persistentDataPath + "/gameData.dat") == false)
         {
             highScoreTable = new List<GameDataContainer>()
@@ -56,7 +60,7 @@ public class GameData : Singleton<GameData>
         
         DontDestroyOnLoad(this.gameObject);
         //For some reason Load(); needs to be active when testing on PC but not when on the actual phone.
-        //Load();
+        Load();
         RankScores();
     }
     private void OnApplicationQuit()
@@ -118,6 +122,7 @@ public class GameData : Singleton<GameData>
         gameData.thirdName = highScoreTable[2].playerName;
         gameData.fourthName = highScoreTable[3].playerName;
         gameData.fifthName = highScoreTable[4].playerName;
+        gameData.screenOrientaionID = screenOrientaionID;
 
         bf.Serialize(file, gameData);
         file.Close();
@@ -130,32 +135,94 @@ public class GameData : Singleton<GameData>
         gameObjectsLocationsY = new List<float>();
         gameObjectsLocationsZ = new List<float>();
         gameObjectsHaveReacted = new List<int>();
+        conductingWaterOrb = new List<int>();
         steamOn = 0;
         steamCount = 0;
-
-       gameObjectsInScene.AddRange(GameObject.FindGameObjectsWithTag("MagicItem"));
+        if (steam.GetComponent<SteamScript>()._currentDropCount > 0)
+        {
+            steamOn = 1;
+            steamCount = steam.GetComponent<SteamScript>()._currentDropCount;
+        }
+        sceneData.steamOn = steamOn;
+        sceneData.steamCount = steamCount;
+        gameObjectsInScene.AddRange(GameObject.FindGameObjectsWithTag("MagicItem"));
+        gameObjectsInScene.AddRange(GameObject.FindGameObjectsWithTag("PowerItem"));
+        sceneData.currentOrb = (int)playerData.gameObject.GetComponent<PlayerController>().currentObj.GetComponent<MagicalItemScript>().magicItemName;
+        Debug.Log("Current Orb ID: " + sceneData.currentOrb);
+        sceneData.nextOrbIndex = playerData.gameObject.GetComponent<PlayerController>().randomNextIndex;
         for (int i = 0; i < gameObjectsInScene.Count; i++)
         {
-            if (gameObjectsInScene[i].GetComponent<MagicalItemScript>().hasDropped)
+            if (gameObjectsInScene[i].gameObject.tag == "MagicItem")
             {
-                gameObjectIDs.Add((int)gameObjectsInScene[i].GetComponent<MagicalItemScript>().magicItemName);
-                gameObjectsLocationsX.Add(gameObjectsInScene[i].transform.position.x);
-                gameObjectsLocationsY.Add(gameObjectsInScene[i].transform.position.y);
-                gameObjectsLocationsZ.Add(gameObjectsInScene[i].transform.position.z);
-                if(gameObjectsInScene[i].GetComponent<MagicalItemScript>().hasReacted)
+                if (gameObjectsInScene[i].GetComponent<MagicalItemScript>().hasDropped)
                 {
-                    gameObjectsHaveReacted.Add(1);
+                    //Debug.Log("Working");
+                    gameObjectIDs.Add((int)gameObjectsInScene[i].GetComponent<MagicalItemScript>().magicItemName);
+                    gameObjectsLocationsX.Add(gameObjectsInScene[i].transform.position.x);
+                    gameObjectsLocationsY.Add(gameObjectsInScene[i].transform.position.y);
+                    gameObjectsLocationsZ.Add(gameObjectsInScene[i].transform.position.z);
+                    if (gameObjectsInScene[i].GetComponent<MagicalItemScript>().hasReacted)
+                    {
+                        gameObjectsHaveReacted.Add(1);
+                    }
+                    else
+                    {
+                        gameObjectsHaveReacted.Add(0);
+                    }
+                }
+                if (gameObjectsInScene[i].GetComponent<MagicalItemScript>().magicItemName == MagicItemEnum.WaterOrb)
+                {
+                    if(gameObjectsInScene[i].GetComponent<WaterPlasmaReaction>()._isConducting)
+                    {
+                        conductingWaterOrb.Add(1);
+                    }
                 }
                 else
                 {
-                    gameObjectsHaveReacted.Add(0);
-                }
-                if(steam.GetComponent<SteamScript>()._currentDropCount > 0)
-                {
-                    steamOn = 1;
-                    steamCount = steam.GetComponent<SteamScript>()._currentDropCount;
+                    conductingWaterOrb.Add(0);
                 }
             }
+            if (gameObjectsInScene[i].gameObject.tag == "PowerItem")
+            {
+                //Debug.Log("Power ItemSaved");
+                gameObjectIDs.Add((int)gameObjectsInScene[i].GetComponent<PowerItemIDHolder>().powerItemName + 11);
+                gameObjectsLocationsX.Add(gameObjectsInScene[i].transform.position.x);
+                gameObjectsLocationsY.Add(gameObjectsInScene[i].transform.position.y);
+                gameObjectsLocationsZ.Add(gameObjectsInScene[i].transform.position.z);
+            }
+        }
+
+        if(PowerItemData.Instance.checkAvailable(PowerItemEnum.MimicTongue))
+        {
+            sceneData.hasMimicTongue = 1;
+        }
+        else
+        {
+            sceneData.hasMimicTongue = 0;
+        }
+        if (PowerItemData.Instance.checkAvailable(PowerItemEnum.SlimeBall))
+        {
+            sceneData.hasSlimeBall = 1;
+        }
+        else
+        {
+            sceneData.hasSlimeBall = 0;
+        }
+        if (PowerItemData.Instance.checkAvailable(PowerItemEnum.HolyAura))
+        {
+            sceneData.hasHolyAura = 1;
+        }
+        else
+        {
+            sceneData.hasHolyAura = 0;
+        }
+        if (PowerItemData.Instance.checkAvailable(PowerItemEnum.Bomb))
+        {
+            sceneData.hasBomb = 1;
+        }
+        else
+        {
+            sceneData.hasBomb = 0;
         }
 
         sceneData.gameObjectsIDS = gameObjectIDs.ToArray();
@@ -163,6 +230,7 @@ public class GameData : Singleton<GameData>
         sceneData.gameObjectLocationY = gameObjectsLocationsY.ToArray();
         sceneData.gameObjectLocationZ = gameObjectsLocationsZ.ToArray();
         sceneData.gameObjectsHaveReacted = gameObjectsHaveReacted.ToArray();
+        sceneData.conductingWaterOrb = conductingWaterOrb.ToArray();
 
 
         bf.Serialize(file, sceneData);
@@ -194,6 +262,7 @@ public class GameData : Singleton<GameData>
                 new GameDataContainer{highScore = gameData.fourthScore, playerName = gameData.fourthName},
                 new GameDataContainer{highScore = gameData.fifthScore, playerName = gameData.fifthName}
             };
+            screenOrientaionID = gameData.screenOrientaionID;
             soundSettings.musicSliderH.value = gameData.musicVolume;
             soundSettings.musicSliderV.value = gameData.musicVolume;
             soundSettings.SetMusicVolume();
@@ -201,11 +270,13 @@ public class GameData : Singleton<GameData>
 
         if(File.Exists(Application.persistentDataPath + "/sceneData.dat"))
         {
+            spawningStart = true;
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/sceneData.dat", FileMode.Open);
             GameScene sceneData = (GameScene)bf.Deserialize(file);
             file.Close();
             Time.timeScale = 0;
+
             for (int i = 0; i < sceneData.gameObjectsIDS.Length; i++)
             {
                 float tempLocationX = sceneData.gameObjectLocationX[i];
@@ -214,19 +285,40 @@ public class GameData : Singleton<GameData>
                 Vector3 tempLocation = new Vector3((float)tempLocationX, (float)tempLocationY, (float)tempLocationZ);
                 Debug.Log(sceneData.gameObjectsIDS[i]);
                 GameObject NewItem = Instantiate(prefabGO[sceneData.gameObjectsIDS[i]], tempLocation, Quaternion.identity);
-                NewItem.GetComponent<MagicalItemScript>().SetDrop();
-                if (sceneData.gameObjectsHaveReacted[i] == 1)
+                if(NewItem.tag == "MagicItem")
                 {
-                    NewItem.GetComponent<MagicalItemScript>().Reacted();
-                }
-                if(steamOn == 1)
-                {
-                    steam.GetComponent<SteamScript>().ActivateSteam();
-                    steam.GetComponent<SteamScript>()._currentDropCount = steamCount;
+                    NewItem.GetComponent<MagicalItemScript>().SetDrop();
+                    if (sceneData.gameObjectsHaveReacted[i] == 1)
+                    {
+                        NewItem.GetComponent<MagicalItemScript>().Reacted();
+                    }
+                    if(NewItem.GetComponent<MagicalItemScript>().magicItemName == MagicItemEnum.WaterOrb)
+                    {
+                        if (sceneData.conductingWaterOrb[i] == 1)
+                        {
+                            NewItem.GetComponent<OnLoadConduction>().canConduct = true;
+                        }
+                    }
                 }
             }
+            if (sceneData.steamOn == 1)
+            {
+                steam.GetComponent<SteamScript>().ActivateSteam();
+                steam.GetComponent<SteamScript>()._currentDropCount = sceneData.steamCount;
+            }
+            if(sceneData.hasSlimeBall == 1)
+                PowerItemData.Instance.GainPowerItem(PowerItemEnum.SlimeBall);
+            if (sceneData.hasHolyAura == 1)
+                PowerItemData.Instance.GainPowerItem(PowerItemEnum.HolyAura);
+            if (sceneData.hasBomb == 1)
+                PowerItemData.Instance.GainPowerItem(PowerItemEnum.Bomb);
+            if (sceneData.hasMimicTongue == 1)
+                PowerItemData.Instance.GainPowerItem(PowerItemEnum.MimicTongue);
+            playerData.gameObject.GetComponent<PlayerController>().ReplaceCurrentItem(prefabGO[sceneData.currentOrb]);
+            playerData.gameObject.GetComponent<PlayerController>().randomNextIndex = sceneData.nextOrbIndex;
             Time.timeScale = 1;
         }
+        Time.timeScale = 1;
     }
 }
 
@@ -247,6 +339,7 @@ public class GameDataContainer
     public string fourthName;
     public string fifthName;
     public float musicVolume;
+    public int screenOrientaionID;
 }
 
 [Serializable]
@@ -257,6 +350,13 @@ public class GameScene
     public float[] gameObjectLocationY;
     public float[] gameObjectLocationZ;
     public int[] gameObjectsHaveReacted;
+    public int[] conductingWaterOrb;
+    public int hasHolyAura;
+    public int hasBomb;
+    public int hasSlimeBall;
+    public int hasMimicTongue;
     public int steamOn;
     public int steamCount;
+    public int currentOrb;
+    public int nextOrbIndex;
 }

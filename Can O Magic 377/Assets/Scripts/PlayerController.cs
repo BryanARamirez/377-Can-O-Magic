@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     //How far the touch for dragging goes to the right
     private float middleToWallDistance = 4.6f;
+    private float topBoundary = 9.5f;
     private float boundary;
     public GameObject currentObj;
     [SerializeField] private int nextObjIndex;
@@ -20,20 +21,29 @@ public class PlayerController : MonoBehaviour
     public bool isPowerItemMenuOpen;
     private bool isReplacing = false;
 
-    private void Awake()
+    private void Start()
     {
         _playerData = GetComponent<PlayerData>();
         isWaiting = false;
         steamScript = GameObject.FindGameObjectWithTag("Steam").GetComponent<SteamScript>();
-        int randomIndex = Random.Range(0, magicObj.Count);
-        currentObjIndex = randomIndex;
-        currentObj = Instantiate(magicObj[randomIndex]);
-        currentObj.transform.parent = this.transform;
-        currentObj.transform.position = this.transform.position;
-        currentObj.GetComponent<Rigidbody>().useGravity = false;
-        boundary = middleToWallDistance - currentObj.GetComponentInChildren<Collider>().bounds.size.x/2;
-        transform.position = new Vector3(0f, transform.position.y, 0f);
-        randomNextIndex = Random.Range(0, magicObj.Count);
+        int randomIndex;
+        if (GameData.Instance.spawningStart == false)
+        {
+            randomIndex = Random.Range(0, magicObj.Count);
+            currentObjIndex = randomIndex;
+            currentObjIndex = randomIndex;
+            currentObj = Instantiate(magicObj[randomIndex]);
+            currentObj.transform.parent = this.transform;
+            currentObj.transform.position = this.transform.position;
+            currentObj.GetComponent<Rigidbody>().useGravity = false;
+            boundary = middleToWallDistance - currentObj.GetComponentInChildren<Collider>().bounds.size.x / 2;
+            transform.position = new Vector3(0f, transform.position.y, 0f);
+            randomNextIndex = Random.Range(0, magicObj.Count);
+        }
+        else
+        {
+
+        }
         _playerData.DisplayNextItem(magicObj[randomNextIndex].GetComponent<NextMagicItemSprite>().itemSprite);
         nextObjIndex = randomNextIndex;
         isPowerItemMenuOpen = false;
@@ -41,15 +51,32 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(GameData.Instance.hasDoneTutorial == true && GameData.Instance.gameIsOver == false)
+        switch (Screen.orientation)
+        {
+            case ScreenOrientation.Portrait:
+            case ScreenOrientation.PortraitUpsideDown:
+                topBoundary = 9.5f;
+                break;
+
+            case ScreenOrientation.LandscapeLeft:
+            case ScreenOrientation.LandscapeRight:
+                topBoundary = 100f;
+                break;
+
+            default:
+                break;
+        }
+        if (GameData.Instance.hasDoneTutorial == true && GameData.Instance.gameIsOver == false)
         {
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
                 Vector3 touchedPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, zDist));
+                Vector2 tempPos = Camera.main.ScreenToWorldPoint(new Vector2(0,touch.position.y));
+                Debug.Log("TouchPosY: " + tempPos.y);
                 if(isPowerItemMenuOpen == false)
                 {
-                    if (touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance)
+                    if (touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance && tempPos.y <= topBoundary)
                     {
                         if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
                         {
@@ -66,7 +93,7 @@ public class PlayerController : MonoBehaviour
                             transform.position = lockedPos;
                         }
                     }
-                    if (touch.phase == TouchPhase.Ended && touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance && isWaiting == false)
+                    if (touch.phase == TouchPhase.Ended && touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance && isWaiting == false && tempPos.y <= topBoundary)
                     {
                         isWaiting = true;
                         if (currentObj.GetComponent<MagicalItemScript>() != null)

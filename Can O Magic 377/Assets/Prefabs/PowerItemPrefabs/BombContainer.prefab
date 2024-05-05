@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8979413077627342201}
   - component: {fileID: 7503148886438561812}
   - component: {fileID: 4595567259776711895}
+  - component: {fileID: -8549245267514660067}
   m_Layer: 0
   m_Name: BombContainer
   m_TagString: PowerItem
@@ -91,6 +92,19 @@ MonoBehaviour:
   _explosionHitBox: {fileID: 1094630802633580578}
   _explosionDelayTime: 0
   _explosionTime: 0.1
+--- !u!114 &-8549245267514660067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430031992343098825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4357ab47654e48d4490bf060c93b833b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemData: {fileID: 11400000, guid: 6b083ce68885b004ea99ebc8d454ccc3, type: 2}
 --- !u!1001 &121295699933762303
 PrefabInstance:
   m_ObjectHideFlags: 0
