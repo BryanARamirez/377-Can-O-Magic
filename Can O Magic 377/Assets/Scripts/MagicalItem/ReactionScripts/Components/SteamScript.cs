@@ -6,8 +6,8 @@ using TMPro;
 public class SteamScript : MonoBehaviour
 {
     [SerializeField] private GameObject _steamModel;
-    //[SerializeField] private TMP_Text _steamCounterV;
-    //[SerializeField] private TMP_Text _steamCounterH;
+    [SerializeField] private TMP_Text _steamCounterV;
+    [SerializeField] private TMP_Text _steamCounterH;
     [SerializeField] private int _maxDropCount = 3;
     public int _currentDropCount = 0;
 
@@ -27,8 +27,7 @@ public class SteamScript : MonoBehaviour
     {
         _steamModel.SetActive(true);
         _currentDropCount = _maxDropCount;
-        //_steamCounterH.text = _currentDropCount.ToString();
-        //_steamCounterV.text = _currentDropCount.ToString();
+        UpdateText();
         //add audio
         //add effects
     }
@@ -39,15 +38,19 @@ public class SteamScript : MonoBehaviour
         if (_currentDropCount > 0)
         {
             _currentDropCount--;
-            //_steamCounterH.text = _currentDropCount.ToString();
-            //_steamCounterV.text = _currentDropCount.ToString();
+            UpdateText();
 
             if (_currentDropCount <= 0)
             {
                 _steamModel.SetActive(false);
-                //_steamCounterH.text = "";
-                //_steamCounterV.text = "";
+                _steamCounterH.text = "";
+                _steamCounterV.text = "";
             }
         }
-    }   
+    }  
+    public void UpdateText()
+    {
+        _steamCounterH.text = _currentDropCount.ToString();
+        _steamCounterV.text = _currentDropCount.ToString();
+    }
 }

@@ -62,7 +62,7 @@ public class GameData : Singleton<GameData>
         
         DontDestroyOnLoad(this.gameObject);
         //For some reason Load(); needs to be active when testing on PC but not when on the actual phone.
-        Load();
+        //Load();
         RankScores();
     }
     private void OnApplicationQuit()
@@ -331,6 +331,7 @@ public class GameData : Singleton<GameData>
             {
                 steam.GetComponent<SteamScript>().ActivateSteam();
                 steam.GetComponent<SteamScript>()._currentDropCount = sceneData.steamCount;
+                steam.GetComponent<SteamScript>().UpdateText();
             }
             if(sceneData.hasSlimeBall == 1)
                 PowerItemData.Instance.GainPowerItem(PowerItemEnum.SlimeBall);
