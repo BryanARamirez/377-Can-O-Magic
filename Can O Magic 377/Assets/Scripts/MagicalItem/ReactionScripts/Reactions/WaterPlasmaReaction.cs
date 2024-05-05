@@ -12,6 +12,7 @@ public class WaterPlasmaReaction : BaseReactionScript
 {
     public GameObject _conductingObject;
     [SerializeField] private GameObject _mergeToPrefab;
+    [SerializeField] private GameObject _vfx;
 
     public bool _isConducting = false;
     public bool _isConnected = false;
@@ -34,6 +35,8 @@ public class WaterPlasmaReaction : BaseReactionScript
     {
         _isConducting = true;
         _conductingObject = otherItem;
+        Vector3 spawnNewItem = (gameObject.transform.position + otherItem.transform.position) / 2f;
+        Instantiate(_vfx, spawnNewItem, Quaternion.identity);
     }
 
     /// <summary>

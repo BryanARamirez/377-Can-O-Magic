@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7503148886438561812}
   - component: {fileID: 4595567259776711895}
   - component: {fileID: -8549245267514660067}
+  - component: {fileID: 4647444353340481145}
   m_Layer: 0
   m_Name: BombContainer
   m_TagString: PowerItem
@@ -105,6 +106,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemData: {fileID: 11400000, guid: 6b083ce68885b004ea99ebc8d454ccc3, type: 2}
+--- !u!114 &4647444353340481145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430031992343098825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1191a61908953014fa098303c286e4bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mergeVFX: {fileID: 1230461243876101343, guid: 0c087a974a4962147b30353e592d6f6d,
+    type: 3}
 --- !u!1001 &121295699933762303
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -323,6 +323,7 @@ MonoBehaviour:
   _conductingObject: {fileID: 0}
   _mergeToPrefab: {fileID: 3958378610598462008, guid: e64bed18b31e49745ad2f21e510b630a,
     type: 3}
+  _vfx: {fileID: 5741456665712957446, guid: 0c41d1dd38df5eb45a0ee761a8554d27, type: 3}
   _isConducting: 0
   _isConnected: 0
 --- !u!114 &-4393109477022903259

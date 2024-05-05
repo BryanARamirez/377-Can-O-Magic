@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4652324295836901104}
   - component: {fileID: 401574520646945979}
   - component: {fileID: 4433243883362951820}
+  - component: {fileID: 5874043783025643827}
   m_Layer: 0
   m_Name: Electricity System
   m_TagString: Untagged
@@ -4838,7 +4839,8 @@ AudioSource:
   m_GameObject: {fileID: 5741456665712957446}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 324208668339609330, guid: e42137ab3eaea394aabe07e57a37de5b,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 27bf5d457369bb248925e3915e7829af, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -4925,3 +4927,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5874043783025643827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5741456665712957446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5588c50aa850c944585dc25967bbd82a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

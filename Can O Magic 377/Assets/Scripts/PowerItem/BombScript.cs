@@ -14,12 +14,20 @@ public class BombScript : MonoBehaviour
     [SerializeField] private float _explosionDelayTime = 3f;
     [SerializeField] private float _explosionTime = .1f;
 
+    private MergeVFX _mergeVFX;
+
+    private void OnEnable()
+    {
+        _mergeVFX = GetComponent<MergeVFX>();
+    }
+
     /// <summary>
     /// starts bomb explosion countdown
     /// </summary>
     /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
     {
+        _mergeVFX.PlayMergeVFX(transform.position);
         StartCoroutine(Explode());
         
     }
