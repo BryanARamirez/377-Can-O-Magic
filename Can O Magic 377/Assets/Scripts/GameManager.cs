@@ -277,6 +277,7 @@ public class GameManager : Singleton<GameManager>
     {
         File.Delete(Application.persistentDataPath + "/sceneData.dat");
         GameData.Instance.Load();
+        GameData.Instance.spawningStart = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         switch (Screen.orientation)
         {
