@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1.0f;
         _playerData = GetComponent<PlayerData>();
         isWaiting = false;
         steamScript = GameObject.FindGameObjectWithTag("Steam").GetComponent<SteamScript>();
