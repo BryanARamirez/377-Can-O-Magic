@@ -47,17 +47,19 @@ public class MagicItemReactionManager : MonoBehaviour
             MagicalItemScript otherMagicalItemScript = collision.gameObject.GetComponent<MagicalItemScript>();
 
             BaseReactionScript temp;
-
-            if (_reactions.TryGetValue(otherMagicalItemScript.magicItemName, out temp) && !_magicalItemScript.hasReacted && !otherMagicalItemScript.hasReacted)
+            if(otherMagicalItemScript.isTsunamiable)
             {
-                _magicalItemScript.Reacted();
-                otherMagicalItemScript.Reacted();
+                if (_reactions.TryGetValue(otherMagicalItemScript.magicItemName, out temp) && !_magicalItemScript.hasReacted && !otherMagicalItemScript.hasReacted)
+                {
+                    _magicalItemScript.Reacted();
+                    otherMagicalItemScript.Reacted();
 
-                GameManager.Instance.reactionHappened = true;
-                GameManager.Instance.reactionOrb1 = _magicalItemScript.magicItemName.ToString();
-                GameManager.Instance.reactionOrb2 = otherMagicalItemScript.magicItemName.ToString();
+                    GameManager.Instance.reactionHappened = true;
+                    GameManager.Instance.reactionOrb1 = _magicalItemScript.magicItemName.ToString();
+                    GameManager.Instance.reactionOrb2 = otherMagicalItemScript.magicItemName.ToString();
 
-                temp.Reaction(collision.gameObject);
+                    temp.Reaction(collision.gameObject);
+                }
             }
         }
     }

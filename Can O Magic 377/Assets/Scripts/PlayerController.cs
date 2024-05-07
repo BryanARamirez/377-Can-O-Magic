@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
                 Touch touch = Input.GetTouch(0);
                 Vector3 touchedPos = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, 0, zDist));
                 Vector2 tempPos = Camera.main.ScreenToWorldPoint(new Vector2(0,touch.position.y));
-                Debug.Log("TouchPosY: " + tempPos.y);
+                //Debug.Log("TouchPosY: " + tempPos.y);
                 if(isPowerItemMenuOpen == false)
                 {
                     if (touchedPos.x <= middleToWallDistance && touchedPos.x >= -middleToWallDistance && tempPos.y <= topBoundary)
@@ -178,6 +178,10 @@ public class PlayerController : MonoBehaviour
             currentObj.GetComponent<Rigidbody>().useGravity = false;
             boundary = middleToWallDistance - currentObj.GetComponentInChildren<Collider>().bounds.size.x / 2;
             transform.position = new Vector3(0f, transform.position.y, 0f);
+            if(GameData.Instance.isSaving == false)
+            {
+                GameData.Instance.SaveCurrentOrb();
+            }
         }
     }
 }

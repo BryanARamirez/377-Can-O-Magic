@@ -22,6 +22,7 @@ public class NovaEarthReaction : BaseReactionScript
 
     public override void Reaction(GameObject otherItem)
     {
+        this.gameObject.GetComponent<MagicalItemScript>().UnSetTsunami();
         Physics.IgnoreCollision(gameObject.GetComponentInChildren<Collider>(), otherItem.GetComponentInChildren<Collider>(), true);
         Instantiate(_voidVFX, transform.position, Quaternion.identity);
     }

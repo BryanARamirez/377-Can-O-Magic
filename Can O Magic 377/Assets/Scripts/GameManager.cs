@@ -148,6 +148,8 @@ public class GameManager : Singleton<GameManager>
             default:
                 break;
         }
+        if (GameData.Instance.isSaving == false)
+            GameData.Instance.Save();
     }
     public void Credits()
     {
@@ -304,6 +306,7 @@ public class GameManager : Singleton<GameManager>
     public void Restart()
     {
         File.Delete(Application.persistentDataPath + "/sceneData.dat");
+        File.Delete(Application.persistentDataPath + "/heldOrb.dat");
         GameData.Instance.Load();
         GameData.Instance.spawningStart = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -321,7 +324,7 @@ public class GameManager : Singleton<GameManager>
             case ScreenOrientation.LandscapeRight:
                 if (pauseMenuH.activeInHierarchy)
                 {
-                    pauseMenuH.SetActive(!pauseMenuV.activeInHierarchy);
+                    pauseMenuH.SetActive(!pauseMenuH.activeInHierarchy);
                 }
                 break;
 
@@ -377,6 +380,8 @@ public class GameManager : Singleton<GameManager>
         GameOverScreenV.SetActive(false);
         GameOverScreenH.SetActive(false);
         GameData.Instance.Load();
+        GameData.Instance.gameIsOver = false;
+        Time.timeScale = 1.0f;
     }
     IEnumerator powerItemMenuFalse(float delayTime)
     {

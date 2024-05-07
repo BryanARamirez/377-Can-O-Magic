@@ -300,7 +300,7 @@ PrefabInstance:
     - target: {fileID: 6409046731411071586, guid: e0d117388ee31e240b3860260b1367e8,
         type: 3}
       propertyPath: m_TagString
-      value: PowerItem
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

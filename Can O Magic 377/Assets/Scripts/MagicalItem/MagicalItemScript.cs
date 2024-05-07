@@ -26,6 +26,7 @@ public class MagicalItemScript : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] private float _darkenPercentage = .3f;
     private bool _hasShrunk = false;
+    private bool _canTsunami = true;
 
     private void Awake()
     {
@@ -62,6 +63,10 @@ public class MagicalItemScript : MonoBehaviour
     public void SetShrunk()
     {
         _hasShrunk = true;
+    }
+    public void UnSetTsunami()
+    {
+        _canTsunami = false;
     }
 
     public void SetDrop()
@@ -102,12 +107,19 @@ public class MagicalItemScript : MonoBehaviour
     {
         get { return _hasShrunk; }
     }
+    public bool isTsunamiable
+    {
+        get { return _canTsunami; }
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         if(hitSomethingOnce == false)
         {
-            GameData.Instance.Save();
+            if(GameData.Instance.isSaving == false)
+            {
+                GameData.Instance.SaveScene();
+            }
             hitSomethingOnce = true;
         }
     }

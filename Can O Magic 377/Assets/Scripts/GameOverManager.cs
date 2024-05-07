@@ -20,6 +20,7 @@ public class GameOverManager : Singleton<GameOverManager>
     /// </summary>
     public void OnGameOver()
     {
+        Time.timeScale = 0;
         switch (Screen.orientation)
         {
             case ScreenOrientation.Portrait:
@@ -75,7 +76,8 @@ public class GameOverManager : Singleton<GameOverManager>
         GameData.Instance.UpdateScoreboard();
         GameData.Instance.Save();
         File.Delete(Application.persistentDataPath + "/sceneData.dat");
-        if(GameData.Instance.playerData.currentScore > GameData.Instance.highScoreTable[0].highScore)
+        File.Delete(Application.persistentDataPath + "/heldOrb.dat");
+        if (GameData.Instance.playerData.currentScore > GameData.Instance.highScoreTable[0].highScore)
         {
             GameData.Instance.keyboard.text = "";
         }
@@ -85,6 +87,9 @@ public class GameOverManager : Singleton<GameOverManager>
         GameManager.Instance.GameOverScreenH.SetActive(false);
         GameManager.Instance.GameOverScreenV.SetActive(false);
         GameData.Instance.spawningStart = false;
+        PowerItemData.Instance.ResetInventory();
+        GameData.Instance.Load();
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
