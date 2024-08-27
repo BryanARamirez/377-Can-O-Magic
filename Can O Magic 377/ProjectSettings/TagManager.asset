@@ -6,6 +6,20 @@ TagManager:
   tags:
   - MagicItem
   - Steam
+  - PowerItem
+  - HolyAura
+  - BottomLeft
+  - TopRight
+  - TsunamiLimiter
+  - CurrentScore
+  - PlayerController
+  - verticalLeaderboard
+  - verticalUI
+  - horizontalUI
+  - NextItemH
+  - NextItemV
+  - TsunamiVFX
+  - PowerItemButton
   layers:
   - Default
   - TransparentFX
